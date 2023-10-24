@@ -1,1 +1,59 @@
-/* You can add global styles to this file, and also import other style files */
+/* imports */
+@import '~material-icons/iconfont/material-icons.css';
+
+mat-icon {
+    font-family: 'Material Icons' !important;  
+}
+
+
+/* Fontes */
+@font-face {
+    font-family: 'PoppinsRegular';
+    src: url('assets/fonts/Poppins-Medium.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PoppinsMedium';
+    src: url('assets/fonts/Poppins-Medium.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PoppinsLight';
+    src: url('assets/fonts/Poppins-Light.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PoppinsExtraLight';
+    src: url('assets/fonts/Poppins-ExtraLight.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PoppinsThin';
+    src: url('assets/fonts/Poppins-Thin.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PoppinsSemiBold';
+    src: url('assets/fonts/Poppins-SemiBold.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'PoppinsBold';
+    src: url('assets/fonts/Poppins-Bold.ttf');
+    font-weight: 400;
+    font-style: normal;
+}
+html, body { height: 100%; }
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
