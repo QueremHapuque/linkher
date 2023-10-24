@@ -23,8 +23,10 @@
 
 .toolbar img {
     margin: 0 16px;
+    transition: transform 0.2s;
 }
 
-/* .toolbar :hover {
-    opacity: 0.8;
-} */
+.toolbar img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
