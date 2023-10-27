@@ -20,7 +20,7 @@ export const navbarData = [
         label: 'Fale Conosco'
     },
     {
-        routeLink: 'home',
+        routeLink: 'account-settings',
         icon: 'settings',
         label: 'Configurações'
     },
