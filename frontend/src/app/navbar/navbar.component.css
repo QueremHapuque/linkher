@@ -18,7 +18,7 @@
     background-color: #FBFAFC;
     color: #D1105A;
     font-weight: 600;
-    box-shadow: 0px 5px 5px lightgray;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
 
 .toolbar img {
@@ -29,4 +29,8 @@
 .toolbar img:hover {
     transform: scale(1.1);
     cursor: pointer;
+}
+
+.mat-mdc-button>.mat-icon {
+    width: 30px !important;
 }
