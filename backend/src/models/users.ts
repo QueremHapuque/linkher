@@ -1,6 +1,9 @@
 import { DataTypes } from 'sequelize';
 import { db } from '../database/db';
+import { jobVacanciesModel } from './jobVacancies';
 import { reportsModel } from './reports';
+import { researchCallsModel } from './researchCalls';
+import { resumeModel } from './resume';
 
 export const usersModel = db.define('users', {
   id: {
@@ -27,3 +30,12 @@ export const usersModel = db.define('users', {
 
 usersModel.hasMany(reportsModel);
 reportsModel.belongsTo(usersModel);
+
+usersModel.hasMany(jobVacanciesModel);
+jobVacanciesModel.belongsTo(usersModel);
+
+usersModel.hasMany(researchCallsModel);
+researchCallsModel.belongsTo(usersModel);
+
+usersModel.hasOne(resumeModel);
+resumeModel.belongsTo(usersModel);
