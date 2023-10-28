@@ -1,5 +1,4 @@
 .parent-container {
   display: flex;
   flex-direction: column;
-  height: 0vh; /* Garante que a div pai ocupe a altura total da tela */
 }

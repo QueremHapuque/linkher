@@ -1,8 +1,6 @@
 :host {
   flex: 1;
   margin: 8% auto 0;
-
-  /* text-align: center; */
 }
 
 .config-content {
@@ -25,24 +23,15 @@ h2 {
   font-family: "PoppinsSemiBold";
 }
 
-/* Estiliza os botões */
 .option-button {
-  margin-left: 10px; /* Adicione margem à esquerda para separar os botões */
+  margin-left: 10px;
   width: 124px;
   height: 32px;
   border-radius: 8px;
   background-color: #471CA8;
   color: aliceblue;
   font-family: "PoppinsSemiBold";
-
 }
-
-.icone-customizado {
-  width: 24px; /* Define a largura desejada */
-  height: 24px; /* Define a altura desejada */
-  fill: #007bff; /* Define a cor de preenchimento desejada */
-}
-
 
 .option-info span {
   margin-left: 8px;
