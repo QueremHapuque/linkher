@@ -1,0 +1,36 @@
+<div>
+  <h2>Configurações de Conta</h2>
+
+  <!-- Opção 1: Alterar Email -->
+  <div class="config-option">
+    <div class="option-info">
+      <img src="/assets/images/email-icon.png" alt="Ícone de Alterar Email">
+      <span>Email</span>
+    </div>
+    <button (click)="'openChangeEmailModal()'" class="option-button">Alterar Email</button>
+  </div>
+
+  <!-- Linha de divisão entre as opções -->
+  <hr>
+
+  <!-- Opção 2: Alterar Senha -->
+  <div class="config-option">
+    <div class="option-info">
+      <img src="/assets/images/change-password-icon.png" alt="Ícone de Alterar Senha">
+      <span>Senha</span>
+    </div>
+    <button (click)="'openChangePasswordModal()'" class="option-button">Alterar Senha</button>
+  </div>
+
+  <!-- Linha de divisão entre as opções -->
+  <hr>
+
+  <!-- Opção 3: Excluir Conta -->
+  <div class="config-option">
+    <div class="option-info">
+      <img src="/assets/images/delete-account-icon.png" alt="Ícone de Deletar Conta">
+      <span>Conta</span>
+    </div>
+    <button (click)="'openDeleteAccountModal()'" class="option-button">Excluir Conta</button>
+  </div>
+</div>

@@ -1,0 +1,42 @@
+/* Posiciona os botões à direita usando flexbox */
+h2 {
+  font-family: "PoppinsBold";
+  color: #884AB2;
+}
+
+.config-option {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #884AB2;
+  font-family: "PoppinsSemiBold";
+}
+
+/* Estiliza os botões */
+.option-button {
+  margin-left: 10px; /* Adicione margem à esquerda para separar os botões */
+  width: 124px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #471CA8;
+  color: aliceblue;
+  font-family: "PoppinsSemiBold";
+
+}
+
+.icone-customizado {
+  width: 24px; /* Define a largura desejada */
+  height: 24px; /* Define a altura desejada */
+  fill: #007bff; /* Define a cor de preenchimento desejada */
+}
+
+
+.option-info span {
+  margin-left: 8px;
+}
+
+
+
+hr{
+  border-color: #884AB2;
+}
