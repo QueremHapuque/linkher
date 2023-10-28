@@ -1,5 +1,5 @@
-<div>
-  <h2>Configurações de Conta</h2>
+<div class="config-content">
+  <h2>Informações do Usuário</h2>
 
   <!-- Opção 1: Alterar Email -->
   <div class="config-option">
@@ -33,4 +33,11 @@
     </div>
     <button (click)="'openDeleteAccountModal()'" class="option-button">Excluir Conta</button>
   </div>
+
+  <button (click)="'logout()'" class="logout-button">
+    <div class="logout-content">
+      <img src="/assets/images/logout-icon.png" alt="Ícone de Encerrar Sessão">
+      <span>Encerrar Sessão</span>
+    </div>
+  </button>
 </div>

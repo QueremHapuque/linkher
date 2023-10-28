@@ -1,7 +1,20 @@
-/* Posiciona os botões à direita usando flexbox */
+:host {
+  flex: 1;
+  margin: 8% auto 0;
+
+  /* text-align: center; */
+}
+
+.config-content {
+  max-width: 448px;
+  margin: 0 auto;
+  padding: 0 16px;
+}
+
 h2 {
   font-family: "PoppinsBold";
   color: #884AB2;
+  margin-bottom: 32px;
 }
 
 .config-option {
@@ -35,8 +48,25 @@ h2 {
   margin-left: 8px;
 }
 
-
-
 hr{
   border-color: #884AB2;
+}
+
+.logout-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 238px;
+  background-color: #471CA8;
+  color: aliceblue;
+  font-family: "PoppinsSemiBold";
+  border-radius: 8px;
+  margin: 88px auto 0
+}
+
+.logout-content {
+  display: flex;
+  gap: 8px;
+  align-items: center;
 }
