@@ -29,7 +29,7 @@ export const jobVacanciesModel = db.define('job_vacancies', {
     allowNull: false,
   },
   requeriments: {
-    type: DataTypes.ARRAY(DataTypes.TEXT),
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   local: {

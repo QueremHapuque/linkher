@@ -33,7 +33,7 @@ export const researchCallsModel = db.define('research_calls', {
     allowNull: false,
   },
   requeriments: {
-    type: DataTypes.ARRAY(DataTypes.TEXT),
+    type: DataTypes.TEXT,
     allowNull: false,
   },
   local: {

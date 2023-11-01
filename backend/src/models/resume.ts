@@ -21,28 +21,28 @@ export const resumeModel = db.define('resume', {
     allowNull: true,
   },
   education: {
-    type: DataTypes.JSONB,
+    type: DataTypes.JSON,
     allowNull: false,
   },
   experience: {
-    type: DataTypes.JSONB,
+    type: DataTypes.JSON,
     allowNull: false,
   },
   languages: {
-    type: DataTypes.JSONB,
+    type: DataTypes.JSON,
     allowNull: false,
   },
   technologies: {
-    type: DataTypes.JSONB,
+    type: DataTypes.JSON,
     allowNull: false,
   },
   certifications: {
-    type: DataTypes.JSONB,
+    type: DataTypes.JSON,
     allowNull: false,
   },
   soft_skills: {
-    type: DataTypes.ARRAY(DataTypes.TEXT),
-    defaultValue: false,
+    type: DataTypes.TEXT,
+    defaultValue: [],
     allowNull: false,
   },
   contract_type: {
