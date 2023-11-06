@@ -10,6 +10,16 @@ module.exports = {
         allowNull: false,
         primaryKey: true,
       },
+      user_id: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {
+          model: 'users',
+          key: 'id',
+        },
+        onDelete: 'CASCADE',
+        onUpdate: 'CASCADE',
+      },
       report_title: {
         type: Sequelize.STRING(100),
         allowNull: false,

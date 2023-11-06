@@ -15,6 +15,6 @@ server.use(
 );
 
 server.listen(SERVER_PORT || '3001', async () => {
-  db.sync({ alter: true });
+  await db.sync({ alter: true });
   console.log(`server running in ${SERVER_PORT} port...`);
 });
