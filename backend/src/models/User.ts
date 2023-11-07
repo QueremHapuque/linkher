@@ -19,11 +19,25 @@ User.init(
     email: {
       type: sequelize.STRING(100),
       allowNull: false,
-      unique: true,
+      unique: {
+        name: 'email',
+        msg: 'Email precisa ser unico',
+      },
+      validate: {
+        isEmail: {
+          msg: 'Email invalido',
+        },
+      },
     },
     password: {
       type: sequelize.STRING(100),
       allowNull: false,
+      validate: {
+        len: {
+          msg: 'Senha precisa ter pelo menos 6 caracteres',
+          args: [6, 50],
+        },
+      },
     },
     is_admin: {
       type: sequelize.BOOLEAN,
