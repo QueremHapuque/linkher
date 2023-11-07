@@ -1,9 +1,11 @@
+import bcrypt from 'bcrypt';
 import sequelize, { Model } from 'sequelize';
 import { db } from '../database/db';
 
 class User extends Model {
   declare id: number;
   declare email: string;
+  declare password_hash: string;
   declare password: string;
   declare is_admin: boolean;
 }
@@ -29,8 +31,12 @@ User.init(
         },
       },
     },
-    password: {
+    password_hash: {
       type: sequelize.STRING(100),
+      defaultValue: '',
+    },
+    password: {
+      type: sequelize.VIRTUAL,
       allowNull: false,
       validate: {
         len: {
@@ -48,6 +54,11 @@ User.init(
   {
     sequelize: db,
     tableName: 'users',
+    hooks: {
+      beforeSave: async (user: User) => {
+        user.password_hash = await bcrypt.hash(user.password, 8);
+      },
+    },
   },
 );
 
