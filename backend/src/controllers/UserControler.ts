@@ -5,7 +5,12 @@ class UserController {
   async create(req: Request, res: Response) {
     try {
       await User.create(req.body);
-      res.json([req.body, res.statusCode]);
+      const { email, is_admin } = req.body;
+      const msg = {
+        email: email,
+        is_admin: is_admin,
+      };
+      res.json(msg);
     } catch (e: any) {
       console.log(e);
       res.status(400).json({ erros: e.errors.map((err: any) => err.message) });
