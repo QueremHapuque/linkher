@@ -27,7 +27,9 @@ class UserService {
       isAdmin: payload.getDataValue('is_admin') as string,
     };
 
-    const token = jwt.sign(user, secret!);
+    const token = jwt.sign(user, secret!, {
+      expiresIn: process.env.SESSION_EXPIRE_TIME!,
+    });
     return token;
   }
 }

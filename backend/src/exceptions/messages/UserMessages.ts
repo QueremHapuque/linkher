@@ -7,4 +7,5 @@ export enum UserErrorMessages {
   USER_PASSWORD = 'Password incorrect',
   USER_EMAIL_USED = 'Email already in use',
   USER_USERNAME_USED = 'Username already in use',
+  USER_AUTH = 'user are not authenticated',
 }

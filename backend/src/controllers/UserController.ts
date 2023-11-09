@@ -1,8 +1,8 @@
 import { Request, Response } from 'express';
-import User from '../models/User';
 import errorHandler from '../exceptions/errorHandler';
-import { NotFoundError } from '../exceptions/types';
 import { UserErrorMessages } from '../exceptions/messages/UserMessages';
+import { NotFoundError } from '../exceptions/types';
+import User from '../models/User';
 import UserService from '../services/UserService';
 
 class UserController {
@@ -13,6 +13,10 @@ class UserController {
     } catch (error) {
       errorHandler(error, res);
     }
+  }
+
+  test(req: Request, res: Response) {
+    return res.status(200).send({ message: 'estou autenticado' });
   }
 
   async login(req: Request, res: Response) {
@@ -33,6 +37,10 @@ class UserController {
       );
 
       if (!isMatch) throw new Error(UserErrorMessages.USER_PASSWORD);
+
+      const token = UserService.createAccessToken(user);
+
+      return res.status(200).send({ token: token });
     } catch (error) {
       errorHandler(error, res);
     }
