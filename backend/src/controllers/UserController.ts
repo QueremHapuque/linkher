@@ -8,8 +8,29 @@ import UserService from '../services/UserService';
 class UserController {
   async create(req: Request, res: Response) {
     try {
-      const newUser = await User.create(req.body);
-      res.status(200).json(newUser);
+      await User.create(req.body);
+      const { email, is_admin } = req.body;
+      const userInfo = {
+        email: email,
+        is_admin: is_admin ?? false,
+      };
+      res.status(200).send(userInfo);
+    } catch (error) {
+      errorHandler(error, res);
+    }
+  }
+
+  async update(req: Request, res: Response): Promise<Response | undefined> {
+    try {
+      if (!req.params.id) throw new Error(UserErrorMessages.USER_ID_NULL);
+
+      const user = await User.findByPk(req.params.id);
+
+      if (!user) throw new NotFoundError(UserErrorMessages.USER_NOT_FOUND);
+
+      const newUser = await user.update(req.body);
+
+      return res.status(200).send(newUser);
     } catch (error) {
       errorHandler(error, res);
     }
