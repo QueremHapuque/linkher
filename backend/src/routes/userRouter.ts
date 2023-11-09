@@ -1,9 +1,12 @@
 import express from 'express';
-import UserControler from '../controllers/UserControler';
+import UserController from '../controllers/UserController';
+import userAuth from '../middlewares/auth';
 
 const router = express.Router();
 
-router.post('/users/', UserControler.create);
-router.put('/user/update/:id', UserControler.update);
+router.post('/users/', UserController.create);
+router.post('/users/login', UserController.login);
+router.get('/users/test', userAuth, UserController.test);
+router.put('/user/update/:id', UserController.update);
 
 export default router;
