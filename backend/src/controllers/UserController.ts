@@ -19,7 +19,7 @@ class UserController {
     return res.status(200).send({ message: 'estou autenticado' });
   }
 
-  async login(req: Request, res: Response) {
+  async login(req: Request, res: Response): Promise<Response | undefined> {
     try {
       const { email, password } = req.body;
 
