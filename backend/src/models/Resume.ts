@@ -8,11 +8,11 @@ class Resume extends Model {
   declare name: string;
   declare email: string;
   declare state: string;
-  declare education: object;
-  declare experience: object;
-  declare languages: object;
-  declare technologies: object;
-  declare certifications: object;
+  declare education: Record<string, string>;
+  declare experience: Record<string, string>;
+  declare languages: Record<string, string>;
+  declare technologies: Record<string, string>;
+  declare certifications: Record<string, string>;
   declare softSkills: string;
   declare contractType: 'CLT' | 'ESTÁGIO' | 'PJ';
   declare seniority: 'JUNIOR' | 'PLENO' | 'SENIOR';
