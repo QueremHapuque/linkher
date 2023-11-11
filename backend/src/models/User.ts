@@ -56,7 +56,9 @@ User.init(
     tableName: 'users',
     hooks: {
       beforeSave: async (user: User) => {
-        user.password_hash = await bcrypt.hash(user.password, 8);
+        if (user.password) {
+          user.password_hash = await bcrypt.hash(user.password, 8);
+        }
       },
     },
   },
