@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Output } from '@angular/core';
 import { navbarData } from './nav-data';
+import { Router } from '@angular/router';
 
 interface SideNavToggle {
   screenWidth: number;
@@ -17,6 +18,16 @@ export class SidebarComponent {
   collapsed = false;
   screenWidth = 0;
   navData = navbarData;
+
+  constructor(private router: Router) {}
+
+  navigateTo(routeLink: string) {
+    const currentPath = this.router.url;
+    if (currentPath) {
+      this.router.navigateByUrl('/', { replaceUrl: true });
+    }
+    this.router.navigateByUrl(routeLink, { replaceUrl: true });
+  }
 
   toggleCollapse(): void {
     this.collapsed = !this.collapsed;

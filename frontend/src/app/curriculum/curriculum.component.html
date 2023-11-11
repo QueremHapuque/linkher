@@ -1,0 +1,238 @@
+<app-navbar></app-navbar>
+<div class="container-content">
+  <app-sidebar></app-sidebar>
+  <div class="cv-container">
+    <!-- INFORMAÇÕES PESSOAIS -->
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-expansion">
+            <mat-panel-title class="title-expansion">
+              Informações Pessoais
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info-field">
+            <img 
+              src="../../assets/images/info.png"
+              alt="Info Icon"
+              class="info-icon">
+            <span class="info-field">Dados pessoais e de contato</span>
+          </div>
+          <div>
+            <mat-form-field class="text-input">
+              <mat-label>Nome</mat-label>
+              <input matInput
+              [formControl]="nameFormControl" [(ngModel)]="name" required>
+              <mat-error>{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+  
+            <mat-form-field class="text-input">
+              <mat-label>Email</mat-label>
+              <input matInput [formControl]="emailFormControl" [(ngModel)]="email" required>
+              <mat-error>{{getErrorMessage()}}</mat-error>
+            </mat-form-field>            
+          </div>
+          <div style="display: flex; justify-content: space-between;">
+            <mat-form-field class="sel-input">
+              <mat-label>Estado</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let state of states" [value]="state.value"
+                  (click)="clickSelectedState(state.value)">
+                  <span [innerHTML]="state.name"></span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+            
+            <mat-form-field class="sel-input">
+              <mat-label>Município</mat-label>
+              <mat-select>
+                <mat-option *ngFor="let county of listCounty" [value]="county.value"
+                (click)="clickSelectedCounty(county.value)">
+                <span [innerHTML]="county.name"></span>
+                </mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+          <div style="display: flex; justify-content: center;">
+            <button mat-button class="save-button"
+            (click)="clickSave()">Salvar</button>
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- FORMAÇÃO -->
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-expansion">
+            <mat-panel-title class="title-expansion">
+              Formação
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info-field">
+            <img 
+              src="../../assets/images/info.png"
+              alt="Info Icon"
+              class="info-icon">
+            <span class="info-field">Formação acadêmica</span>
+          </div>
+          <div class="tittle">
+            <span>Suas formações</span>
+            <!-- <button mat-button></button> -->
+            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+          </div>
+          <div class="content">
+              <p>Bacharelado em Sistemas de Informação - UFRPE</p>
+                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- EXPERIENCIAS -->
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-expansion">
+            <mat-panel-title class="title-expansion">
+              Experiências
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info-field">
+            <img 
+              src="../../assets/images/info.png"
+              alt="Info Icon"
+              class="info-icon">
+            <span class="info-field">Experiência profissional</span>
+          </div>
+
+          <div class="tittle">
+            <span>Suas experiências</span>
+            <!-- <button mat-button></button> -->
+            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+          </div>
+          <div class="content">
+              <p>Estágio em desenvolvimento backend - Cesar</p>
+                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- IDIOMAS E TECNOLOGIAS -->
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-expansion">
+            <mat-panel-title class="title-expansion">
+              Idiomas e Tecnologias
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info-field">
+            <img 
+              src="../../assets/images/info.png"
+              alt="Info Icon"
+              class="info-icon">
+            <span class="info-field">Idiomas e Tecnologias que você domina</span>
+          </div>
+
+          <div class="tittle">
+            <span>Idiomas</span>
+            <!-- <button mat-button></button> -->
+            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+          </div>
+          <div class="content">
+              <p>Inglês - Fluente</p>
+                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          </div>
+          <div class="content">
+            <p>Espanhol - Intermediário</p>
+              <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          </div>
+
+          <div class="tittle">
+            <span>Tecnologias</span>
+            <!-- <button mat-button></button> -->
+            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+          </div>
+          <div class="content">
+              <p>Python - Avançado</p>
+                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          </div>
+          <div class="content">
+            <p>Angular - Intermediário</p>
+              <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- CERTIFICAÇÕES -->
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-expansion">
+            <mat-panel-title class="title-expansion">
+              Certificações
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info-field">
+            <img 
+              src="../../assets/images/info.png"
+              alt="Info Icon"
+              class="info-icon">
+            <span class="info-field">Credenciais Profissionais ou certificações obtidas</span>
+          </div>
+
+          <div class="tittle">
+            <span>Suas certificações</span>
+            <!-- <button mat-button></button> -->
+            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+          </div>
+          <div class="content">
+              <p>Cloud Fundations - AWS</p>
+                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          </div>
+          <div class="content">
+              <p>Cyber Security Essentials - Cisco</p>
+                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- SOFT SKILLS -->
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-expansion">
+            <mat-panel-title class="title-expansion">
+              Soft Skills
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info-field">
+            <img 
+              src="../../assets/images/info.png"
+              alt="Info Icon"
+              class="info-icon">
+            <span class="info-field">Soft skils são habilidades interpessoais e comportamentais que influenciam a maneira como interagimos com os outros</span>
+          </div>
+          <div class="tittle">
+            <span>Suas soft skills</span>
+            <!-- <button mat-button></button> -->
+            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+          </div>
+          <div class="content">
+              <p>Criatividade</p>
+                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          </div>
+          <div class="content">
+              <p>Proatividade</p>
+                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- PREFERENCIAS -->
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-expansion">
+            <mat-panel-title class="title-expansion">
+              Preferências
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info-field">
+            <img 
+              src="../../assets/images/info.png"
+              alt="Info Icon"
+              class="info-icon">
+            <span class="info-field">Suas preferências com relação à modalidade das oportunidades</span>
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+  </div>
+</div>
