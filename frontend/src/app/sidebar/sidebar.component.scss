@@ -6,7 +6,9 @@
     cursor: pointer;
     transition: all .5s ease;
     overflow: hidden;
-    z-index: 1;
+    z-index: 99;
+    position: fixed;
+    top: 0;
 }
 
 .sidebar-collapsed {
@@ -37,11 +39,11 @@
             text-decoration: none;
             transition: color .3s ease;
             font-family: 'PoppinsLight';
-            font-size: 14px;
+            font-size: 16px;
             border-radius: 0.5rem;
 
             .sidebar-nav-icon {
-                font-size: 22px;
+                font-size: 26px;
                 width: 2rem;
                 min-width: 2rem;
                 text-align: center;

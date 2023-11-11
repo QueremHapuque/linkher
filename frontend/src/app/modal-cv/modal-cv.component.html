@@ -1,0 +1,23 @@
+<!-- FORMAÇÃO -->
+<div class="container">
+    <mat-card class="card-header">
+        <mat-card-content>Formação</mat-card-content>
+    </mat-card>
+    <div class="card-content">
+        <div class="close">
+            <button (click)="close()">
+                <i class="material-icons">clear</i>
+            </button>
+        </div>
+        <mat-form-field class="text-input">
+            <mat-label>Nome do curso</mat-label>
+            <input matInput
+            [(ngModel)]="courseName">
+        </mat-form-field>
+        <mat-form-field class="text-input">
+            <mat-label>Instituição (sigla)</mat-label>
+            <input matInput
+            [(ngModel)]="institution">
+        </mat-form-field>
+    </div>
+</div>
