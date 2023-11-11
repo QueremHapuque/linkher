@@ -1,9 +1,9 @@
-<div class="modal-overlay" (click)="closeModal()" (keydown)="closeModalOnKey($event)">
+<div class="modal-overlay"  (keydown)="closeModalOnKey($event)">
+  <div class="modal-header">
+    <h2>{{ modalTitle }}</h2>
+  </div>
   <div class="modal-container">
     <span class="close" (click)="closeModal()">X</span>
-    <div class="modal-header">
-      <h2>{{ modalTitle }}</h2>
-    </div>
     <div class="modal-content">
       <form>
         <label for="currentEmail">Email Atual:</label>
@@ -20,4 +20,3 @@
   </div>
 </div>
 
-<p>change-email-modal works!</p>

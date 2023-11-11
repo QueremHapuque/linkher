@@ -16,6 +16,7 @@ export class ChangeEmailModalComponent {
 
   closeModal() {
     this.modalClose.emit();
+    console.log("aaaaaaaa")
   }
 
   closeModalOnKey(event: KeyboardEvent) {
@@ -27,6 +28,7 @@ export class ChangeEmailModalComponent {
   confirm() {
     // Implemente a lógica para confirmar a alteração de email aqui
     // this.modalConfirmed.emit();;
+    console.log("CLIQUEI NESSA BUCETA")
 
     this.closeModal();
   }

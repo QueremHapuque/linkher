@@ -1,0 +1,26 @@
+::host {
+  background-color: none; /* Torna o fundo do modal transparente */
+}
+.transparent-background {
+  background-color: transparent !important;
+}
+
+.modal-header {
+  background-color: #D1105A;
+  width: 164px;
+  height: 46px;
+  position: absolute;
+  margin-left: 16px;
+  margin-top: -23px;
+  border-radius: 8px;
+  text-align: center;
+  align-items: center;
+  z-index: 9999;
+}
+.modal-container {
+  display: flex;
+  flex: 1;
+  padding: 56px;
+  flex-direction: column;
+  z-index: 1;
+}
