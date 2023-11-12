@@ -1,0 +1,39 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Opcional: ajusta a altura para ocupar 100% da altura da viewport */
+  }
+
+h2 {
+    font-family:  "PoppinsBold";
+    color: #884ab2;
+    margin-bottom: 52px;
+}
+
+p {
+    font-family: "PoppinsSemiBold";
+    font-size: 12pt;
+    font-weight: bold;
+    margin: 0 auto;
+}
+
+button {
+    margin: 8px 0;
+    color: #FFFFFF;
+    background-color: #D1105A;
+    border: none;
+    border-radius: 8px;
+    width: 140px;
+    height: 32px;
+}
+
+button:hover {
+    color: #D1105A;
+    background-color: #FFFFFF;
+    border: 1px solid #D1105A;
+    border-radius: 8px;
+    width: 140px;
+    height: 32px;
+}

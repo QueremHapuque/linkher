@@ -4,6 +4,7 @@ import { HomeComponent } from './home/home.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { CurriculumComponent } from './curriculum/curriculum.component';
 import { LoginComponent } from './login/login.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 const routes: Routes = [
   {
@@ -24,6 +25,11 @@ const routes: Routes = [
   {
     path: 'login',
     component: LoginComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'inicio',
+    component: InicioComponent,
     pathMatch: 'full'
   },
 ];

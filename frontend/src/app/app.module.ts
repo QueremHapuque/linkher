@@ -22,6 +22,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { CurriculumComponent } from './curriculum/curriculum.component';
 import { ModalCvComponent } from './modal-cv/modal-cv.component';
 import { LoginComponent } from './login/login.component';
+import { InicioComponent } from './inicio/inicio.component';
 
 @NgModule({
   declarations: [
@@ -32,7 +33,8 @@ import { LoginComponent } from './login/login.component';
     AccountSettingsComponent,
     CurriculumComponent,
     ModalCvComponent,
-    LoginComponent
+    LoginComponent,
+    InicioComponent
   ],
   imports: [
     RouterModule,
