@@ -6,30 +6,66 @@
     height: 100vh; /* Opcional: ajusta a altura para ocupar 100% da altura da viewport */
   }
 
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo img {
+    width: 97px;
+    margin-right: 16px;
+}
+
 h2 {
     font-family:  "PoppinsBold";
-    color: #884ab2;
+    color: #884AB2;
 }
 
 p {
     font-family: "PoppinsSemiBold";
-    font-weight: bold;
     margin: 0 auto;
 }
 
-input {
+.Inputs {
+    width: 438px;
+}
+
+.Inputs input {
     margin: 8px 0;
     border-radius: 8px;
     background-color: #884ab276;
     color: #471CA8;
     border: none;
-    width: 240px;
+    width: 438px;
+    height: 30px;
+}
+
+.CEP {
+    width: 438px;
+
+    display: flex;
+    flex-direction: row;
+}
+
+.CEP div:first-of-type {
+    margin-right: 10px;
+}
+
+.CEP input {
+    margin: 8px 0;
+    border-radius: 8px;
+    background-color: #884ab276;
+    color: #471CA8;
+    border: none;
+    width: 214px;
     height: 30px;
 }
 
 button {
-    margin: 8px 0;
+    margin-top: 56px;
     color: #FFFFFF;
+    font-family: "PoppinsSemiBold";
     background-color: #D1105A;
     border: none;
     border-radius: 8px;

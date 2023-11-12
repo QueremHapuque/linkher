@@ -5,6 +5,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { CurriculumComponent } from './curriculum/curriculum.component';
 import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 const routes: Routes = [
   {
@@ -30,6 +31,11 @@ const routes: Routes = [
   {
     path: 'inicio',
     component: InicioComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'cadastro',
+    component: CadastroComponent,
     pathMatch: 'full'
   },
 ];

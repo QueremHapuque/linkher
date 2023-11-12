@@ -23,6 +23,7 @@ import { CurriculumComponent } from './curriculum/curriculum.component';
 import { ModalCvComponent } from './modal-cv/modal-cv.component';
 import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
+import { CadastroComponent } from './cadastro/cadastro.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { InicioComponent } from './inicio/inicio.component';
     CurriculumComponent,
     ModalCvComponent,
     LoginComponent,
-    InicioComponent
+    InicioComponent,
+    CadastroComponent
   ],
   imports: [
     RouterModule,
