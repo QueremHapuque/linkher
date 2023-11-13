@@ -22,6 +22,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { CurriculumComponent } from './curriculum/curriculum.component';
 import { ModalCvComponent } from './modal-cv/modal-cv.component';
 import { ChangeEmailModalComponent } from './change-email-modal/change-email-modal.component';
+import { ChangePasswordModalComponent } from './change-password-modal/change-password-modal.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { ChangeEmailModalComponent } from './change-email-modal/change-email-mod
     AccountSettingsComponent,
     ChangeEmailModalComponent,
     CurriculumComponent,
-    ModalCvComponent
+    ModalCvComponent,
+    ChangePasswordModalComponent
   ],
   imports: [
     RouterModule,

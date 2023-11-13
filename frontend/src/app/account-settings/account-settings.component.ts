@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ChangeEmailModalComponent } from '../change-email-modal/change-email-modal.component';
+import { ChangePasswordModalComponent } from '../change-password-modal/change-password-modal.component';
 @Component({
   selector: 'app-account-settings',
   templateUrl: './account-settings.component.html',
@@ -12,6 +13,16 @@ export class AccountSettingsComponent {
 
   openChangeEmailModal() {
     const dialogRef = this.dialog.open(ChangeEmailModalComponent, {
+      width: '400px',
+       // Largura do modal, personalize conforme necessário
+    });
+
+    dialogRef.afterClosed().subscribe(result => {
+      // Esta função é chamada ao fechar o modal.
+    });
+  }
+  openChangePasswordModal() {
+    const dialogRef = this.dialog.open(ChangePasswordModalComponent, {
       width: '400px',
        // Largura do modal, personalize conforme necessário
     });

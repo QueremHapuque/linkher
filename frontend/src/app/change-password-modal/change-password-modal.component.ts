@@ -2,12 +2,14 @@ import { Component, Input, Output, EventEmitter } from '@angular/core';
 import { MatDialogRef, } from '@angular/material/dialog';
 
 @Component({
-  selector: 'app-change-email-modal',
-  templateUrl: './change-email-modal.component.html',
-  styleUrls: ['./change-email-modal.component.css']
+  selector: 'app-change-password-modal',
+  templateUrl: './change-password-modal.component.html',
+  styleUrls: ['./change-password-modal.component.css']
 })
-export class ChangeEmailModalComponent {
-  @Input() modalTitle = 'Alterar Email';
+
+
+export class ChangePasswordModalComponent {
+  @Input() modalTitle = 'Senha';
   @Output() modalConfirmed = new EventEmitter<void>();
   @Output() modalCancelled = new EventEmitter<void>();
   @Output() modalClose = new EventEmitter<void>();
@@ -16,7 +18,7 @@ export class ChangeEmailModalComponent {
   newEmail: string = '';
 
   constructor(
-    public dialogRef: MatDialogRef<ChangeEmailModalComponent>
+    public dialogRef: MatDialogRef<ChangePasswordModalComponent>
   ) {}
 
   closeModal() {
@@ -32,7 +34,6 @@ export class ChangeEmailModalComponent {
   }
 
   confirm() {
-    // Implemente a lógica para confirmar a alteração de email aqui
     // this.modalConfirmed.emit();;
     console.log("teste")
 
