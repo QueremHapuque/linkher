@@ -1,4 +1,5 @@
 import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { MatDialogRef, } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-change-email-modal',
@@ -14,8 +15,13 @@ export class ChangeEmailModalComponent {
   currentEmail: string = '';
   newEmail: string = '';
 
+  constructor(
+    public dialogRef: MatDialogRef<ChangeEmailModalComponent>
+  ) {}
+
   closeModal() {
     this.modalClose.emit();
+    this.dialogRef.close();
     console.log("aaaaaaaa")
   }
 

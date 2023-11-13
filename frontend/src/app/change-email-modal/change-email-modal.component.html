@@ -1,16 +1,19 @@
-<div class="modal-overlay"  (keydown)="closeModalOnKey($event)">
+<div class="modal-overlay">
   <div class="modal-header">
     <h2>{{ modalTitle }}</h2>
   </div>
   <div class="modal-container">
-    <span class="close" (click)="closeModal()">X</span>
+    <div class="close" (click)="closeModal()">X</div>
     <div class="modal-content">
       <form>
-        <label for="currentEmail">Email Atual:</label>
-        <input type="text" id="currentEmail" [(ngModel)]="currentEmail" />
-
-        <label for="newEmail">Novo Email:</label>
-        <input type="text" id="newEmail" [(ngModel)]="newEmail" />
+        <div class="form-group">
+          <label for="currentEmail">Email Atual:</label>
+          <input type="text" id="currentEmail" [(ngModel)]="currentEmail" />
+        </div>
+        <div class="form-group">
+          <label for="newEmail">Novo Email:</label>
+          <input type="text" id="newEmail" [(ngModel)]="newEmail" />
+        </div>
       </form>
     </div>
     <div class="modal-buttons">

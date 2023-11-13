@@ -12,7 +12,8 @@ export class AccountSettingsComponent {
 
   openChangeEmailModal() {
     const dialogRef = this.dialog.open(ChangeEmailModalComponent, {
-      width: '400px', // Largura do modal, personalize conforme necessário
+      width: '400px',
+       // Largura do modal, personalize conforme necessário
     });
 
     dialogRef.afterClosed().subscribe(result => {

@@ -1,26 +1,88 @@
-::host {
+:host {
   background-color: none; /* Torna o fundo do modal transparente */
 }
-.transparent-background {
-  background-color: transparent !important;
+
+h2{
+  font-family: "PoppinsBold";
+}
+
+.close {
+  text-align: end;
 }
 
 .modal-header {
+  color: #FBFAFC;
+  display: flex;
   background-color: #D1105A;
   width: 164px;
   height: 46px;
   position: absolute;
   margin-left: 16px;
-  margin-top: -23px;
+  /* margin-top: -23px; */
   border-radius: 8px;
   text-align: center;
   align-items: center;
-  z-index: 9999;
+  justify-content: center;
 }
 .modal-container {
   display: flex;
   flex: 1;
   padding: 56px;
   flex-direction: column;
-  z-index: 1;
+
 }
+
+.modal-content{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center ;
+  font-family: "PoppinsRegular";
+  color: #471CA8;
+
+}
+
+.form-group {
+  margin-bottom: 10px;
+
+}
+
+.form-group input{
+  display: flex;
+  min-width: 236px;
+  height: 32px;
+  border-radius: 8px;
+  background-color: #D3BDE2;
+  border: 1px solid #D3BDE2;
+}
+
+/* .form-group input:focus {
+  border-color: #884AB259;
+}
+ */
+
+ .modal-buttons {
+  margin-top: 20px;
+  display: flex;
+  max-width: 236;
+  gap: 26px;
+  justify-content: center;
+  align-items: center
+  ;
+ }
+
+ .modal-button{
+  width: 106px;
+  height: 32px;
+  font-family: "PoppinsSemiBold";
+  border-radius: 8px;
+  border: none;
+  color: #FBFAFC;
+ }
+
+ .confirm {
+  background-color: #D1105A;
+ }
+ .cancel {
+  background-color: #471CA8;
+ }
