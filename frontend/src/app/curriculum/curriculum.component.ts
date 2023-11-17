@@ -21,11 +21,13 @@ export class CurriculumComponent {
     { name: 'Sergipe', value: 'se' },
     { name: 'Ceará', value: 'ce' }
   ];
+  
 
   @Input()
   name: string | undefined;
   @Input()
   email: string | undefined;
+  education: any;
   selectedState: string | undefined;
   selectedCounty: string | undefined;
   listCounty: any;
@@ -79,10 +81,17 @@ export class CurriculumComponent {
   }
 
   openDialog(typeField: string) {
-    console.log();
     const modalOpen = this.dialog.open(ModalCvComponent, {
       disableClose: true,
       data: { Field: typeField }
+    });
+    modalOpen.afterClosed().subscribe(result => {
+      console.log("result -> ", result)
+      if (result) {
+        this.education = JSON.stringify(result);
+        console.log("AAAAAAAAAAAAAAAAAAA")
+        console.log(this.education)
+      }
     });
   }
 

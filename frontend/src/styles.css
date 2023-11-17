@@ -1,6 +1,7 @@
 /* imports */
 @import '~material-icons/iconfont/material-icons.css';
 
+/* Estilos globais */
 mat-icon {
     font-family: 'Material Icons' !important;  
 }

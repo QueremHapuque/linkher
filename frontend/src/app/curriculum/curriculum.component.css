@@ -6,7 +6,10 @@
 
 .cv-container{
     width: 70%;
-    padding: 20rem;
+    padding-top: 10rem;
+    padding-left: 20rem;
+    padding-right: 20rem;
+    padding-bottom: 10rem;
 }
 
 .cv-container .mat-accordion {
@@ -64,13 +67,13 @@
 }
 
 .save-button {
-    width: 90px;
-    height: 30px;
+    width: 140px;
+    height: 42px;
     color: #FBFAFC !important;
-    background-color: #884AB2;
+    background-color: #D1105A;
     font-family: 'PoppinsSemiBold';
     font-size: 13px;
-    border-radius: 8px;
+    border-radius: 10px;
 }
 
 .tittle {

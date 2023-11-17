@@ -1,23 +1,160 @@
 <!-- FORMAÇÃO -->
 <div class="container">
-    <mat-card class="card-header">
-        <mat-card-content>Formação</mat-card-content>
-    </mat-card>
-    <div class="card-content">
-        <div class="close">
-            <button (click)="close()">
-                <i class="material-icons">clear</i>
-            </button>
+    <div *ngIf="fieldType == 'education'">
+        <div class="header">
+            <mat-card class="card-header">
+                <mat-card-content>Formação</mat-card-content>
+            </mat-card>
+            <div class="close">
+                <mat-icon (click)="close()">clear</mat-icon>
+            </div>
         </div>
-        <mat-form-field class="text-input">
-            <mat-label>Nome do curso</mat-label>
-            <input matInput
-            [(ngModel)]="courseName">
-        </mat-form-field>
-        <mat-form-field class="text-input">
-            <mat-label>Instituição (sigla)</mat-label>
-            <input matInput
-            [(ngModel)]="institution">
-        </mat-form-field>
+        <div class="card-content">
+            <mat-form-field class="text-input">
+                <mat-label>Nome do curso</mat-label>
+                <input matInput
+                [(ngModel)]="courseName">
+            </mat-form-field>
+            <mat-form-field class="text-input">
+                <mat-label>Instituição (sigla)</mat-label>
+                <input matInput
+                [(ngModel)]="institution">
+            </mat-form-field>
+            <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
+                <button mat-button class="save-button"
+                (click)="saveFormation()">Salvar</button>
+            </div>
+        </div>
     </div>
+
+    <div *ngIf="fieldType == 'experiences'">
+        <div class="header">
+            <mat-card class="card-header">
+                <mat-card-content>Experiências</mat-card-content>
+            </mat-card>
+            <div class="close">
+                <mat-icon (click)="close()">clear</mat-icon>
+            </div>
+        </div>
+        <div class="card-content">
+            <mat-form-field class="text-input">
+                <mat-label>Cargo</mat-label>
+                <input matInput
+                [(ngModel)]="officeName">
+            </mat-form-field>
+            <mat-form-field class="text-input">
+                <mat-label>Instituição</mat-label>
+                <input matInput
+                [(ngModel)]="company">
+            </mat-form-field>
+            <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
+                <button mat-button class="save-button"
+                (click)="close()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="fieldType == 'languages'">
+        <div class="header">
+            <mat-card class="card-header">
+                <mat-card-content>Idiomas</mat-card-content>
+            </mat-card>
+            <div class="close">
+                <mat-icon (click)="close()">clear</mat-icon>
+            </div>
+        </div>
+        <div class="card-content">
+            <mat-form-field class="text-input">
+                <mat-label>Idiomas</mat-label>
+                <input matInput
+                [(ngModel)]="languageName">
+            </mat-form-field>
+            <mat-form-field class="text-input">
+                <mat-label>Expertise</mat-label>
+                <input matInput
+                [(ngModel)]="institution">
+            </mat-form-field>
+            <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
+                <button mat-button class="save-button"
+                (click)="close()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="fieldType == 'technologies'">
+        <div class="header">
+            <mat-card class="card-header">
+                <mat-card-content>Tecnologias</mat-card-content>
+            </mat-card>
+            <div class="close">
+                <mat-icon (click)="close()">clear</mat-icon>
+            </div>
+        </div>
+        <div class="card-content">
+            <mat-form-field class="text-input">
+                <mat-label>Tecnologia</mat-label>
+                <input matInput
+                [(ngModel)]="technologieName">
+            </mat-form-field>
+            <mat-form-field class="text-input">
+                <mat-label>Expertise</mat-label>
+                <input matInput
+                [(ngModel)]="expertiseTechnologiee">
+            </mat-form-field>
+            <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
+                <button mat-button class="save-button"
+                (click)="close()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="fieldType == 'certifications'">
+        <div class="header">
+            <mat-card class="card-header">
+                <mat-card-content>Certificações</mat-card-content>
+            </mat-card>
+            <div class="close">
+                <mat-icon (click)="close()">clear</mat-icon>
+            </div>
+        </div>
+        <div class="card-content">
+            <mat-form-field class="text-input">
+                <mat-label>Certificação</mat-label>
+                <input matInput
+                [(ngModel)]="certificationName">
+            </mat-form-field>
+            <mat-form-field class="text-input">
+                <mat-label>Instituição</mat-label>
+                <input matInput
+                [(ngModel)]="certificationInstitution">
+            </mat-form-field>
+            <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
+                <button mat-button class="save-button"
+                (click)="close()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="fieldType == 'softSkills'">
+        <div class="header">
+            <mat-card class="card-header">
+                <mat-card-content>Soft Skills</mat-card-content>
+            </mat-card>
+            <div class="close">
+                <mat-icon (click)="close()">clear</mat-icon>
+            </div>
+        </div>
+        <div class="card-content">
+            <mat-form-field class="text-input">
+                <mat-label>Soft skill</mat-label>
+                <input matInput
+                [(ngModel)]="softSkill">
+            </mat-form-field>
+            <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
+                <button mat-button class="save-button"
+                (click)="close()">Salvar</button>
+            </div>
+        </div>
+    </div>
+
 </div>

@@ -52,10 +52,6 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div style="display: flex; justify-content: center;">
-            <button mat-button class="save-button"
-            (click)="clickSave()">Salvar</button>
-          </div>
         </mat-expansion-panel>
     </mat-accordion>
     <!-- FORMAÇÃO -->
@@ -76,10 +72,10 @@
           <div class="tittle">
             <span>Suas formações</span>
             <!-- <button mat-button></button> -->
-            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="openDialog('education')">add</mat-icon>
           </div>
           <div class="content">
-              <p>Bacharelado em Sistemas de Informação - UFRPE</p>
+              <p>{{ education }}</p>
                 <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
           </div>
         </mat-expansion-panel>
@@ -103,7 +99,7 @@
           <div class="tittle">
             <span>Suas experiências</span>
             <!-- <button mat-button></button> -->
-            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="openDialog('experiences')">add</mat-icon>
           </div>
           <div class="content">
               <p>Estágio em desenvolvimento backend - Cesar</p>
@@ -130,11 +126,11 @@
           <div class="tittle">
             <span>Idiomas</span>
             <!-- <button mat-button></button> -->
-            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="openDialog('languages')">add</mat-icon>
           </div>
           <div class="content">
               <p>Inglês - Fluente</p>
-                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+                <mat-icon class="delete-icon" (click)="openDialog('languages')">clear</mat-icon>
           </div>
           <div class="content">
             <p>Espanhol - Intermediário</p>
@@ -144,7 +140,7 @@
           <div class="tittle">
             <span>Tecnologias</span>
             <!-- <button mat-button></button> -->
-            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="openDialog('technologies')">add</mat-icon>
           </div>
           <div class="content">
               <p>Python - Avançado</p>
@@ -175,7 +171,7 @@
           <div class="tittle">
             <span>Suas certificações</span>
             <!-- <button mat-button></button> -->
-            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="openDialog('certifications')">add</mat-icon>
           </div>
           <div class="content">
               <p>Cloud Fundations - AWS</p>
@@ -205,7 +201,7 @@
           <div class="tittle">
             <span>Suas soft skills</span>
             <!-- <button mat-button></button> -->
-            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="openDialog('softSkills')">add</mat-icon>
           </div>
           <div class="content">
               <p>Criatividade</p>
@@ -234,5 +230,9 @@
           </div>
         </mat-expansion-panel>
     </mat-accordion>
+    <div style="display: flex; justify-content: center;">
+      <button mat-button class="save-button"
+      (click)="clickSave()">Salvar</button>
+    </div>
   </div>
 </div>

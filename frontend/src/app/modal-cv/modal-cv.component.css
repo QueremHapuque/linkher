@@ -16,7 +16,7 @@
 .card-content {
     display: flex;
     flex-direction: column;
-    padding: 12px;
+    padding: 2rem;
     margin-top: 10px;
 }
 
@@ -31,4 +31,21 @@
 .close {
     display: flex;
     flex-direction: row-reverse;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.save-button {
+    width: 90px;
+    height: 30px;
+    color: #FBFAFC !important;
+    background-color: #884AB2;
+    font-family: 'PoppinsSemiBold';
+    font-size: 13px;
+    border-radius: 8px;
 }
