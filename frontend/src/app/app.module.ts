@@ -21,6 +21,10 @@ import { HomeComponent } from './home/home.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { CurriculumComponent } from './curriculum/curriculum.component';
 import { ModalCvComponent } from './modal-cv/modal-cv.component';
+import { ChangeEmailModalComponent } from './change-email-modal/change-email-modal.component';
+import { ChangePasswordModalComponent } from './change-password-modal/change-password-modal.component';
+import { DeleteAccountModalComponent } from './delete-account-modal/delete-account-modal.component';
+
 
 @NgModule({
   declarations: [
@@ -29,8 +33,11 @@ import { ModalCvComponent } from './modal-cv/modal-cv.component';
     SidebarComponent,
     HomeComponent,
     AccountSettingsComponent,
+    ChangeEmailModalComponent,
     CurriculumComponent,
-    ModalCvComponent
+    ModalCvComponent,
+    ChangePasswordModalComponent,
+    DeleteAccountModalComponent
   ],
   imports: [
     RouterModule,
