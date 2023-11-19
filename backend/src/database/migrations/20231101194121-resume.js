@@ -22,56 +22,96 @@ module.exports = {
       },
       name: {
         type: Sequelize.TEXT,
-        allowNull: false,
+        allowNull: true,
       },
       email: {
         type: Sequelize.TEXT,
-        allowNull: false,
+        allowNull: true,
       },
       state: {
         type: Sequelize.TEXT,
         allowNull: true,
       },
+      city: {
+        type: Sequelize.TEXT,
+        allowNull: true,
+      },
       education: {
         type: Sequelize.JSON,
-        allowNull: false,
+        allowNull: true,
       },
       experience: {
         type: Sequelize.JSON,
-        allowNull: false,
+        allowNull: true,
       },
       languages: {
         type: Sequelize.JSON,
-        allowNull: false,
+        allowNull: true,
       },
       technologies: {
         type: Sequelize.JSON,
-        allowNull: false,
+        allowNull: true,
       },
       certifications: {
         type: Sequelize.JSON,
-        allowNull: false,
+        allowNull: true,
       },
       soft_skills: {
         type: Sequelize.TEXT,
         defaultValue: [],
-        allowNull: false,
+        allowNull: true,
       },
-      contract_type: {
-        type: Sequelize.ENUM('CLT', 'ESTÁGIO', 'PJ'),
-        allowNull: false,
+      is_clt: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
       },
-      seniority: {
-        type: Sequelize.ENUM('JUNIOR', 'PLENO', 'SENIOR'),
-        allowNull: false,
+      is_internship: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
       },
-      modality: {
-        type: Sequelize.ENUM('PRESENCIAL', 'REMOTO', 'HÍBRIDO'),
-        allowNull: false,
+      is_pj: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
       },
-      working_hours: {
-        type: Sequelize.ENUM('20', '30', '40'),
-        allowNull: false,
+      is_search: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_junior: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_pleno: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_senior: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_in_person: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_remote: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_hybrid: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_half_time: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_three_quarters: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_full_time: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
       },
       created_at: {
         type: Sequelize.DATE,
