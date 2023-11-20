@@ -1,7 +1,7 @@
 import bcrypt from 'bcrypt';
+import 'dotenv/config';
 import jwt from 'jsonwebtoken';
 import User from '../models/User';
-import 'dotenv/config';
 
 class UserService {
   /**
@@ -31,6 +31,24 @@ class UserService {
       expiresIn: process.env.SESSION_EXPIRE_TIME!,
     });
     return token;
+  }
+
+  /**
+   *
+   * @param userId
+   * @returns
+   */
+  async getUserById(userId: string): Promise<User | null> {
+    return await User.findByPk(userId);
+  }
+
+  /**
+   *
+   * @param email
+   * @returns
+   */
+  async getByEmail(email: string): Promise<User | null> {
+    return await User.findOne({ where: { email: email } });
   }
 }
 
