@@ -22,7 +22,7 @@
             </mat-form-field>
             <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
                 <button mat-button class="save-button"
-                (click)="saveFormation()">Salvar</button>
+                (click)="saveFormation('education')">Salvar</button>
             </div>
         </div>
     </div>
@@ -49,7 +49,7 @@
             </mat-form-field>
             <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
                 <button mat-button class="save-button"
-                (click)="close()">Salvar</button>
+                (click)="saveFormation('experience')">Salvar</button>
             </div>
         </div>
     </div>
@@ -72,11 +72,11 @@
             <mat-form-field class="text-input">
                 <mat-label>Expertise</mat-label>
                 <input matInput
-                [(ngModel)]="institution">
+                [(ngModel)]="expertiseLanguage">
             </mat-form-field>
             <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
                 <button mat-button class="save-button"
-                (click)="close()">Salvar</button>
+                (click)="saveFormation('language')">Salvar</button>
             </div>
         </div>
     </div>
@@ -103,7 +103,7 @@
             </mat-form-field>
             <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
                 <button mat-button class="save-button"
-                (click)="close()">Salvar</button>
+                (click)="saveFormation('technology')">Salvar</button>
             </div>
         </div>
     </div>
@@ -130,7 +130,7 @@
             </mat-form-field>
             <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
                 <button mat-button class="save-button"
-                (click)="close()">Salvar</button>
+                (click)="saveFormation('certification')">Salvar</button>
             </div>
         </div>
     </div>
@@ -152,7 +152,7 @@
             </mat-form-field>
             <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
                 <button mat-button class="save-button"
-                (click)="close()">Salvar</button>
+                (click)="saveFormation('softSkills')">Salvar</button>
             </div>
         </div>
     </div>

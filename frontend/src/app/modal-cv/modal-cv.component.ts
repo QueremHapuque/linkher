@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
@@ -10,7 +10,7 @@ export interface DialogData {
   templateUrl: './modal-cv.component.html',
   styleUrls: ['./modal-cv.component.css']
 })
-export class ModalCvComponent implements OnInit {
+export class ModalCvComponent {
   fieldType: string;
 
   @Input()
@@ -38,16 +38,56 @@ export class ModalCvComponent implements OnInit {
   ) {
     this.fieldType = this.dataModal.Field
   }
-  ngOnInit(): void {
-    console.log('courseName -> ', this.courseName);
-    console.log('institution -> ', this.institution);
-  }
 
-  public saveFormation() {
-    const data = {
-      institution: this.institution,
-      courseName: this.courseName,
-    };
+  public saveFormation(fieldType: string) {
+    let data;
+    if (fieldType == 'education') {
+      data = [
+        {
+          institution: this.institution,
+          courseName: this.courseName,
+        }
+      ];
+    }
+    else if (fieldType == 'experience') {
+      data = [
+        {
+          officeName: this.officeName,
+          company: this.company,
+        }
+      ];
+    }
+    else if (fieldType == 'language') {
+      data = [
+        {
+          languageName: this.languageName,
+          expertiseLanguage: this.expertiseLanguage,
+        }
+      ];
+    }
+    else if (fieldType == 'technology') {
+      data = [
+        {
+          technologieName: this.technologieName,
+          expertiseTechnologiee: this.expertiseTechnologiee,
+        }
+      ];
+    }
+    else if (fieldType == 'certification') {
+      data = [
+        {
+          certificationName: this.certificationName,
+          certificationInstitution: this.certificationInstitution,
+        }
+      ];
+    }
+    else if (fieldType == 'softSkills') {
+      data = [
+        {
+          softSkill: this.softSkill,
+        }
+      ];
+    }
     this.dialogRef.close(data);
   }
 
