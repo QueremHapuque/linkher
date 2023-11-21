@@ -1,4 +1,4 @@
-import { Component, Inject, Input, OnInit } from '@angular/core';
+import { Component, Inject, Input } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 export interface DialogData {
@@ -10,12 +10,27 @@ export interface DialogData {
   templateUrl: './modal-cv.component.html',
   styleUrls: ['./modal-cv.component.css']
 })
-export class ModalCvComponent implements OnInit {
+export class ModalCvComponent {
   fieldType: string;
 
   @Input()
+  // Formação
   courseName: string | undefined;
   institution: string | undefined;
+  // Experiências
+  officeName: string | undefined;
+  company: string | undefined;
+  // Idiomas
+  languageName: string | undefined;
+  expertiseLanguage: string | undefined;
+  // Tecnologias
+  technologieName: string | undefined;
+  expertiseTechnologiee: string | undefined;
+  // Certificações
+  certificationName: string | undefined;
+  certificationInstitution: string | undefined;
+  // Experiências
+  softSkill: string | undefined;
 
   constructor(
     public dialogRef: MatDialogRef<ModalCvComponent>,
@@ -24,8 +39,56 @@ export class ModalCvComponent implements OnInit {
     this.fieldType = this.dataModal.Field
   }
 
-  ngOnInit() {
-    
+  public saveFormation(fieldType: string) {
+    let data;
+    if (fieldType == 'education') {
+      data = [
+        {
+          institution: this.institution,
+          courseName: this.courseName,
+        }
+      ];
+    }
+    else if (fieldType == 'experience') {
+      data = [
+        {
+          officeName: this.officeName,
+          company: this.company,
+        }
+      ];
+    }
+    else if (fieldType == 'language') {
+      data = [
+        {
+          languageName: this.languageName,
+          expertiseLanguage: this.expertiseLanguage,
+        }
+      ];
+    }
+    else if (fieldType == 'technology') {
+      data = [
+        {
+          technologieName: this.technologieName,
+          expertiseTechnologiee: this.expertiseTechnologiee,
+        }
+      ];
+    }
+    else if (fieldType == 'certification') {
+      data = [
+        {
+          certificationName: this.certificationName,
+          certificationInstitution: this.certificationInstitution,
+        }
+      ];
+    }
+    else if (fieldType == 'softSkills') {
+      data = [
+        {
+          softSkill: this.softSkill,
+        }
+      ];
+    }
+    this.dialogRef.close(data);
   }
 
   public close() {

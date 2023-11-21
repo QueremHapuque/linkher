@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -42,6 +44,7 @@ import { DeleteAccountModalComponent } from './delete-account-modal/delete-accou
   imports: [
     RouterModule,
     BrowserModule,
+    HttpClientModule,
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
@@ -54,6 +57,7 @@ import { DeleteAccountModalComponent } from './delete-account-modal/delete-accou
     MatSelectModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatCheckboxModule,
     AppRoutingModule
   ],
   providers: [],
