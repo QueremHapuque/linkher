@@ -92,17 +92,22 @@
     margin-bottom: 20px;
 }
 
+.tittle-2 {
+    display: flex;
+    justify-content: space-between;
+}
+
 .add-icon {
     font-weight: 600;
     color: #884AB2;
     cursor: pointer;
 }
 
-/* delete-icon {
+delete-icon {
     font-weight: 600;
     color: #D1105A;
     cursor: pointer;
-} */
+}
 
 .content {
     font-size: 14px;
@@ -114,4 +119,11 @@
 
 .checkbox-cv {
     font-family: 'PoppinsRegular';
+    display: flex;
+    flex-direction: column;
+}
+
+.checkboxes {
+    display: flex;
+    justify-content: space-between;
 }

@@ -37,11 +37,24 @@ export class CurriculumComponent {
   softSkill!: Array<SoftSkillList>;
   selectedState: string | undefined;
   disableName = false;
+  // checkbox tipo contrato
   researchGrant = false;
   internship = false;
   clt = false;
   pj = false;
-  
+  // checkbox modalidade
+  inPerson = false;
+  remote = false;
+  hybrid = false;
+  // checkbox carga horaria
+  halfTime = false;
+  fullTime = false;
+  // checkbox nvl experiencia
+  beginner = false;
+  intermediary = false;
+  advanced = false;
+
+
   getErrorMessage() {
     if (this.nameFormControl.hasError('required')) {
       return 'Este campo é obrigatório!';
@@ -74,6 +87,38 @@ export class CurriculumComponent {
 
   selectPj(check: boolean) {
     this.pj = check;
+  }
+
+  selectInPerson(check: boolean) {
+    this.inPerson = check;
+  }
+
+  selectRemote(check: boolean) {
+    this.remote = check;
+  }
+
+  selectHybrid(check: boolean) {
+    this.hybrid = check;
+  }
+
+  selectHalfTime(check: boolean) {
+    this.halfTime = check;
+  }
+
+  selectFullTime(check: boolean) {
+    this.fullTime = check;
+  }
+
+  selectBeginner(check: boolean) {
+    this.beginner = check;
+  }
+
+  selectIntermediary(check: boolean) {
+    this.intermediary = check;
+  }
+
+  selectAdvanced(check: boolean) {
+    this.advanced = check;
   }
 
   openDialog(typeField: string) {

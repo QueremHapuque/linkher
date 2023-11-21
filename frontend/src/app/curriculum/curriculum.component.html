@@ -210,74 +210,99 @@
               class="info-icon">
             <span class="info-field" style="margin-left: 7px;">Suas preferências com relação à modalidade das oportunidades</span>
           </div>
-          <div class="container text-center">
-            <div class="row align-items-start">
-              <div class="col">
-                One of three columns
+
+          <div class="checkboxes">
+            <div>
+              <div class="tittle-2">
+                <span>Tipo de contrato</span>
               </div>
-              <div class="col">
-                One of three columns
+              <div class="checkbox-cv">
+                <mat-checkbox
+                  [checked]="researchGrant"
+                  (change)="selectResearchGrant($event.checked)">
+                  Bolsa de pesquisa ou doutorado
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="internship"
+                  (change)="selectInternship($event.checked)">
+                  Estágio
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="clt"
+                  (change)="selectClt($event.checked)">
+                  Emprego CLT
+                </mat-checkbox>
+                <mat-checkbox 
+                  [checked]="pj"
+                  (change)="selectPj($event.checked)">
+                  Emprego PJ
+                </mat-checkbox>
               </div>
-              <div class="col">
-                One of three columns
+            </div>
+            
+            <div>
+              <div class="tittle-2">
+                <span>Modalidade</span>
+              </div>
+              <div class="checkbox-cv">
+                <mat-checkbox
+                  [checked]="inPerson"
+                  (change)="selectInPerson($event.checked)">
+                  Presencial
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="remote"
+                  (change)="selectRemote($event.checked)">
+                  Remoto
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="hybrid"
+                  (change)="selectHybrid($event.checked)">
+                  Híbrido
+                </mat-checkbox>
+              </div>
+            </div>
+            <div>
+              <div class="tittle-2">
+                <span>Carga horária</span>
+              </div>
+              <div class="checkbox-cv">
+                <mat-checkbox
+                  [checked]="halfTime"
+                  (change)="selectHalfTime($event.checked)">
+                  30h Semanais
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="fullTime"
+                  (change)="selectFullTime($event.checked)">
+                  40h Semanais
+                </mat-checkbox>
+              </div>
+            </div>
+            <div>
+              <div class="tittle-2">
+                <span>Nível de experiência</span>
+              </div>
+              <div class="checkbox-cv">
+                <mat-checkbox
+                  [checked]="beginner"
+                  (change)="selectBeginner($event.checked)">
+                  Iniciante
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="intermediary"
+                  (change)="selectIntermediary($event.checked)">
+                  Intermediário
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="advanced"
+                  (change)="selectAdvanced($event.checked)">
+                  Avançado
+                </mat-checkbox>
               </div>
             </div>
           </div>
-          <!-- <div class="container text-center">
-            <div class="row align-items-center">
-              <div class="col-md-2">
-                <div class="tittle">
-                  <span>Tipo de contrato</span>
-                </div>
-                <mat-checkbox class="checkbox-cv"
-                  [checked]="researchGrant"
-                  (change)="selectResearchGrant($event.checked)">
-                  Bolsa de pesquisa ou doutorado
-                </mat-checkbox>
-                <mat-checkbox class="checkbox-cv"
-                  [checked]="internship"
-                  (change)="selectInternship($event.checked)">
-                  Estágio
-                </mat-checkbox>
-                <mat-checkbox class="checkbox-cv"
-                  [checked]="clt"
-                  (change)="selectClt($event.checked)">
-                  Emprego CLT
-                </mat-checkbox>
-                <mat-checkbox class="checkbox-cv"
-                  [checked]="pj"
-                  (change)="selectPj($event.checked)">
-                  Emprego PJ
-                </mat-checkbox>
-              </div>
-  
-              <div class="col-md-2">
-                <div class="tittle">
-                  <span>Tipo de contrato</span>
-                </div>
-                <mat-checkbox class="checkbox-cv"
-                  [checked]="researchGrant"
-                  (change)="selectResearchGrant($event.checked)">
-                  Bolsa de pesquisa ou doutorado
-                </mat-checkbox>
-                <mat-checkbox class="checkbox-cv"
-                  [checked]="internship"
-                  (change)="selectInternship($event.checked)">
-                  Estágio
-                </mat-checkbox>
-                <mat-checkbox class="checkbox-cv"
-                  [checked]="clt"
-                  (change)="selectClt($event.checked)">
-                  Emprego CLT
-                </mat-checkbox>
-                <mat-checkbox class="checkbox-cv"
-                  [checked]="pj"
-                  (change)="selectPj($event.checked)">
-                  Emprego PJ
-                </mat-checkbox>
-              </div>
-            </div>
-          </div> -->
+
         </mat-expansion-panel>
     </mat-accordion>
     <div style="display: flex; justify-content: center;">
