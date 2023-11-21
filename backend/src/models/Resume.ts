@@ -5,19 +5,26 @@ import User from './User';
 class Resume extends Model {
   declare id: number;
   declare userId: number;
-  declare name: string;
-  declare email: string;
-  declare state: string;
-  declare education: Record<string, string>;
-  declare experience: Record<string, string>;
-  declare languages: Record<string, string>;
-  declare technologies: Record<string, string>;
-  declare certifications: Record<string, string>;
-  declare softSkills: string;
-  declare contractType: 'CLT' | 'ESTÁGIO' | 'PJ';
-  declare seniority: 'JUNIOR' | 'PLENO' | 'SENIOR';
-  declare modality: 'PRESENCIAL' | 'REMOTO' | 'HÍBRIDO';
-  declare workingHours: '20' | '30' | '40';
+  declare name?: string;
+  declare email?: string;
+  declare state?: string;
+  declare city?: string;
+  declare education?: Record<string, string>;
+  declare experience?: Record<string, string>;
+  declare languages?: Record<string, string>;
+  declare technologies?: Record<string, string>;
+  declare certifications?: Record<string, string>;
+  declare softSkills?: string;
+  declare isClt?: boolean;
+  declare isInternship?: boolean;
+  declare isPj?: boolean;
+  declare isSearch?: boolean;
+  declare isInPerson?: boolean;
+  declare isRemote?: boolean;
+  declare isHybrid?: boolean;
+  declare isHalfTime?: boolean;
+  declare isThreeQuarters?: boolean;
+  declare isFullTime?: boolean;
 }
 
 Resume.init(
@@ -40,56 +47,96 @@ Resume.init(
     },
     name: {
       type: sequelize.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     email: {
       type: sequelize.TEXT,
-      allowNull: false,
+      allowNull: true,
     },
     state: {
       type: sequelize.TEXT,
       allowNull: true,
     },
+    city: {
+      type: sequelize.TEXT,
+      allowNull: true,
+    },
     education: {
       type: sequelize.JSON,
-      allowNull: false,
+      allowNull: true,
     },
     experience: {
       type: sequelize.JSON,
-      allowNull: false,
+      allowNull: true,
     },
     languages: {
       type: sequelize.JSON,
-      allowNull: false,
+      allowNull: true,
     },
     technologies: {
       type: sequelize.JSON,
-      allowNull: false,
+      allowNull: true,
     },
     certifications: {
       type: sequelize.JSON,
-      allowNull: false,
+      allowNull: true,
     },
     softSkills: {
       type: sequelize.TEXT,
       defaultValue: [],
-      allowNull: false,
+      allowNull: true,
     },
-    contractType: {
-      type: sequelize.ENUM('CLT', 'ESTÁGIO', 'PJ'),
-      allowNull: false,
+    isClt: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
     },
-    seniority: {
-      type: sequelize.ENUM('JUNIOR', 'PLENO', 'SENIOR'),
-      allowNull: false,
+    isInternship: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
     },
-    modality: {
-      type: sequelize.ENUM('PRESENCIAL', 'REMOTO', 'HÍBRIDO'),
-      allowNull: false,
+    isPj: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
     },
-    workingHours: {
-      type: sequelize.ENUM('20', '30', '40'),
-      allowNull: false,
+    isSearch: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    isJunior: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    isPleno: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    isSenior: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    isInPerson: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    isRemote: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    isHybrid: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    isHalfTime: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    isThreeQuarters: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    isFullTime: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
     },
   },
   {
