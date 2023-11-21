@@ -27,6 +27,8 @@ export class CurriculumComponent {
   name: string | undefined;
   @Input()
   email: string | undefined;
+  nameFormControl = new FormControl('', [Validators.required]);
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   education!: Array<EducationList>;
   experience!: Array<ExperienceList>;
   language!: Array<LanguageList>;
@@ -34,9 +36,11 @@ export class CurriculumComponent {
   certification!: Array<CertificationList>;
   softSkill!: Array<SoftSkillList>;
   selectedState: string | undefined;
-  listCounty: any;
-  nameFormControl = new FormControl('', [Validators.required]);
-  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  disableName = false;
+  researchGrant = false;
+  internship = false;
+  clt = false;
+  pj = false;
   
   getErrorMessage() {
     if (this.nameFormControl.hasError('required')) {
@@ -54,6 +58,22 @@ export class CurriculumComponent {
     if (!this.name || !this.email || !this.selectedState) {
       console.log('campos obrigatorios nao preenchidos!')
     }
+  }
+  
+  selectResearchGrant(check: boolean) {
+    this.researchGrant = check;
+  }
+
+  selectInternship(check: boolean) {
+    this.internship = check;
+  }
+
+  selectClt(check: boolean) {
+    this.clt = check;
+  }
+
+  selectPj(check: boolean) {
+    this.pj = check;
   }
 
   openDialog(typeField: string) {
@@ -103,6 +123,13 @@ export class CurriculumComponent {
         }
       });
     }
+  }
+
+  public saveInfo() {
+    console.log('nameFormControl -> ', this.nameFormControl.value);
+    console.log('emailFormControl -> ', this.emailFormControl.value);
+    console.log('selectedState -> ', this.selectedState);
+    this.disableName = true;
   }
 
   public deleteField(fieldType: string) {

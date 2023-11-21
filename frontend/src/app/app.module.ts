@@ -13,6 +13,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -54,6 +55,7 @@ import { DeleteAccountModalComponent } from './delete-account-modal/delete-accou
     MatSelectModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatCheckboxModule,
     AppRoutingModule
   ],
   providers: [],

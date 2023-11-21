@@ -1,6 +1,6 @@
 <!-- FORMAÇÃO -->
 <div class="container">
-    <div *ngIf="fieldType == 'education'">
+    <div *ngIf="fieldType === 'education'">
         <div class="header">
             <mat-card class="card-header">
                 <mat-card-content>Formação</mat-card-content>
@@ -27,7 +27,7 @@
         </div>
     </div>
 
-    <div *ngIf="fieldType == 'experiences'">
+    <div *ngIf="fieldType === 'experiences'">
         <div class="header">
             <mat-card class="card-header">
                 <mat-card-content>Experiências</mat-card-content>
@@ -54,7 +54,7 @@
         </div>
     </div>
 
-    <div *ngIf="fieldType == 'languages'">
+    <div *ngIf="fieldType === 'languages'">
         <div class="header">
             <mat-card class="card-header">
                 <mat-card-content>Idiomas</mat-card-content>
@@ -81,7 +81,7 @@
         </div>
     </div>
 
-    <div *ngIf="fieldType == 'technologies'">
+    <div *ngIf="fieldType === 'technologies'">
         <div class="header">
             <mat-card class="card-header">
                 <mat-card-content>Tecnologias</mat-card-content>
@@ -108,7 +108,7 @@
         </div>
     </div>
 
-    <div *ngIf="fieldType == 'certifications'">
+    <div *ngIf="fieldType === 'certifications'">
         <div class="header">
             <mat-card class="card-header">
                 <mat-card-content>Certificações</mat-card-content>
@@ -135,7 +135,7 @@
         </div>
     </div>
 
-    <div *ngIf="fieldType == 'softSkills'">
+    <div *ngIf="fieldType === 'softSkills'">
         <div class="header">
             <mat-card class="card-header">
                 <mat-card-content>Soft Skills</mat-card-content>
