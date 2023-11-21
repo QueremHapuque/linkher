@@ -42,10 +42,10 @@
               </mat-select>
             </mat-form-field>
           </div>
-          <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
+          <!-- <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
             <button mat-button class="save-button-1"
             (click)="saveInfo()">Salvar</button>
-          </div>
+          </div> -->
         </mat-expansion-panel>
     </mat-accordion>
     <!-- FORMAÇÃO -->
@@ -162,7 +162,7 @@
           </div>
           <div *ngIf="certification" class="content">
             <ul *ngFor="let item of certification">
-              <li>{{ item.certificationName }} - {{ item.certificationName }}</li>
+              <li>{{ item.certificationName }} - {{ item.certificationInstitution }}</li>
             </ul>
             <mat-icon class="delete-icon" (click)="deleteField('certification')">clear</mat-icon>
           </div>
@@ -270,6 +270,11 @@
                 <mat-checkbox
                   [checked]="halfTime"
                   (change)="selectHalfTime($event.checked)">
+                  20h Semanais
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="threeQuarters"
+                  (change)="selectThreeQuarters($event.checked)">
                   30h Semanais
                 </mat-checkbox>
                 <mat-checkbox

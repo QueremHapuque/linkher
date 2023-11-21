@@ -4,6 +4,8 @@ import { MatDialog } from '@angular/material/dialog';
 import { ModalCvComponent } from '../modal-cv/modal-cv.component';
 import { EducationList, ExperienceList, LanguageList, TechnologyList, CertificationList, SoftSkillList } from './interface-cv';
 
+import { ResumeService } from '../utils/services/resume.service';
+
 @Component({
   selector: 'app-curriculum',
   templateUrl: './curriculum.component.html',
@@ -14,6 +16,7 @@ export class CurriculumComponent {
 
   constructor(
     public dialog: MatDialog,
+    private resumeService: ResumeService
   ) {}
 
   states = [
@@ -24,19 +27,20 @@ export class CurriculumComponent {
   ];
 
   @Input()
-  name: string | undefined;
+  name!: string;
   @Input()
-  email: string | undefined;
+  email!: string;
   nameFormControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
-  education!: Array<EducationList>;
-  experience!: Array<ExperienceList>;
-  language!: Array<LanguageList>;
-  technology!: Array<TechnologyList>;
-  certification!: Array<CertificationList>;
-  softSkill!: Array<SoftSkillList>;
-  selectedState: string | undefined;
+  education!: EducationList[];
+  experience!: ExperienceList[];
+  language!: LanguageList[];
+  technology!: TechnologyList[];
+  certification!: CertificationList[];
+  softSkill!: SoftSkillList[];
+  selectedState!: string;
   disableName = false;
+  tetaDura: string[] = [];
   // checkbox tipo contrato
   researchGrant = false;
   internship = false;
@@ -48,6 +52,7 @@ export class CurriculumComponent {
   hybrid = false;
   // checkbox carga horaria
   halfTime = false;
+  threeQuarters = false;
   fullTime = false;
   // checkbox nvl experiencia
   beginner = false;
@@ -61,64 +66,6 @@ export class CurriculumComponent {
     }
 
     return this.emailFormControl.hasError('email') ? 'Esse não é um email válido!' : '';
-  }
-
-  clickSelectedState(state: string) {
-    this.selectedState = state;
-  }
-
-  clickSave() {
-    if (!this.name || !this.email || !this.selectedState) {
-      console.log('campos obrigatorios nao preenchidos!')
-    }
-  }
-  
-  selectResearchGrant(check: boolean) {
-    this.researchGrant = check;
-  }
-
-  selectInternship(check: boolean) {
-    this.internship = check;
-  }
-
-  selectClt(check: boolean) {
-    this.clt = check;
-  }
-
-  selectPj(check: boolean) {
-    this.pj = check;
-  }
-
-  selectInPerson(check: boolean) {
-    this.inPerson = check;
-  }
-
-  selectRemote(check: boolean) {
-    this.remote = check;
-  }
-
-  selectHybrid(check: boolean) {
-    this.hybrid = check;
-  }
-
-  selectHalfTime(check: boolean) {
-    this.halfTime = check;
-  }
-
-  selectFullTime(check: boolean) {
-    this.fullTime = check;
-  }
-
-  selectBeginner(check: boolean) {
-    this.beginner = check;
-  }
-
-  selectIntermediary(check: boolean) {
-    this.intermediary = check;
-  }
-
-  selectAdvanced(check: boolean) {
-    this.advanced = check;
   }
 
   openDialog(typeField: string) {
@@ -176,6 +123,84 @@ export class CurriculumComponent {
     console.log('selectedState -> ', this.selectedState);
     this.disableName = true;
   }
+
+  clickSelectedState(state: string) {
+    this.selectedState = state;
+  }
+
+  clickSave() {
+    const education: Record<string, string> = {
+      [this.education[0].institution]: this.education[0].courseName
+    };
+    const experience: Record<string, string> = {
+      [this.experience[0].company]: this.experience[0].officeName
+    };
+    const language: Record<string, string> = {
+      [this.language[0].languageName]: this.language[0].expertiseLanguage
+    };
+    const technology: Record<string, string> = {
+      [this.technology[0].technologieName]: this.technology[0].expertiseTechnologiee
+    };
+    const certification: Record<string, string> = {
+      [this.certification[0].certificationInstitution]: this.certification[0].certificationName
+    };
+    const softSkills: string = this.softSkill[0].softSkill;
+    this.resumeService.createResume(1, this.name, this.email, this.selectedState, education, experience, language, technology, certification, softSkills, this.researchGrant,
+      this.internship, this.clt, this.pj, this.inPerson, this.remote, this.hybrid, this.halfTime, this.threeQuarters, this.fullTime, this.beginner, this.intermediary, this.advanced);
+  }
+  
+  selectResearchGrant(check: boolean) {
+    this.researchGrant = check;
+  }
+
+  selectInternship(check: boolean) {
+    this.internship = check;
+  }
+
+  selectClt(check: boolean) {
+    this.clt = check;
+  }
+
+  selectPj(check: boolean) {
+    this.pj = check;
+  }
+
+  selectInPerson(check: boolean) {
+    this.inPerson = check;
+  }
+
+  selectRemote(check: boolean) {
+    this.remote = check;
+  }
+
+  selectHybrid(check: boolean) {
+    this.hybrid = check;
+  }
+
+  selectHalfTime(check: boolean) {
+    this.halfTime = check;
+  }
+
+  selectThreeQuarters(check: boolean) {
+    this.threeQuarters = check;
+  }
+
+  selectFullTime(check: boolean) {
+    this.fullTime = check;
+  }
+
+  selectBeginner(check: boolean) {
+    this.beginner = check;
+  }
+
+  selectIntermediary(check: boolean) {
+    this.intermediary = check;
+  }
+
+  selectAdvanced(check: boolean) {
+    this.advanced = check;
+  }
+
 
   public deleteField(fieldType: string) {
     if (fieldType == 'education') {
