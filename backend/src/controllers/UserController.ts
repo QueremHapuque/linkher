@@ -61,7 +61,12 @@ class UserController {
 
       const token = UserService.createAccessToken(user);
 
-      return res.status(200).send({ token: token });
+      const userAccessInfo = {
+        token: token,
+        userId: user.getDataValue('id'),
+      };
+
+      return res.status(200).send(userAccessInfo);
     } catch (error) {
       return errorHandler(error, res);
     }
