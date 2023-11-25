@@ -3,6 +3,7 @@ import { MatDialog } from '@angular/material/dialog';
 import { ChangeEmailModalComponent } from '../change-email-modal/change-email-modal.component';
 import { ChangePasswordModalComponent } from '../change-password-modal/change-password-modal.component';
 import { DeleteAccountModalComponent } from '../delete-account-modal/delete-account-modal.component';
+import { AccountSettingsService } from '../utils/services/acconut-settings.service';
 @Component({
   selector: 'app-account-settings',
   templateUrl: './account-settings.component.html',
@@ -10,7 +11,7 @@ import { DeleteAccountModalComponent } from '../delete-account-modal/delete-acco
 })
 export class AccountSettingsComponent {
 
-  constructor(private dialog: MatDialog) {}
+  constructor(private dialog: MatDialog, private accountSettingsService: AccountSettingsService) {}
 
   openChangeEmailModal() {
     const dialogRef = this.dialog.open(ChangeEmailModalComponent, {
@@ -19,9 +20,23 @@ export class AccountSettingsComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // Esta função é chamada ao fechar o modal.
+      if (result && result.newEmail) {
+        // Chame o serviço para atualizar o email
+        this.accountSettingsService.updateEmail(1, result.newEmail).subscribe(
+          response => {
+            // Lógica para tratamento de sucesso
+            console.log('Email atualizado com sucesso', response);
+          },
+          error => {
+            // Lógica para tratamento de erro
+            console.error('Erro ao atualizar o email', error);
+          }
+        );
+      }
     });
   }
+
+
   openChangePasswordModal() {
     const dialogRef = this.dialog.open(ChangePasswordModalComponent, {
       width: '400px',

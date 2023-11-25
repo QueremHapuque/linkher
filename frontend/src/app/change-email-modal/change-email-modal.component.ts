@@ -1,5 +1,9 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { MatDialogRef, } from '@angular/material/dialog';
+import { Component, Input, Inject, Output, EventEmitter } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+
+export interface DialogData {
+  Field: string;
+}
 
 @Component({
   selector: 'app-change-email-modal',
@@ -8,21 +12,14 @@ import { MatDialogRef, } from '@angular/material/dialog';
 })
 export class ChangeEmailModalComponent {
   @Input() modalTitle = 'Alterar Email';
-  @Output() modalConfirmed = new EventEmitter<void>();
-  @Output() modalCancelled = new EventEmitter<void>();
-  @Output() modalClose = new EventEmitter<void>();
 
-  currentEmail: string = '';
-  newEmail: string = '';
+  currentEmail: string | undefined;
+  newEmail: string | undefined;
 
-  constructor(
-    public dialogRef: MatDialogRef<ChangeEmailModalComponent>
-  ) {}
+  constructor(public dialogRef: MatDialogRef<ChangeEmailModalComponent>, @Inject(MAT_DIALOG_DATA) public dataModal: DialogData) { }
 
   closeModal() {
-    this.modalClose.emit();
     this.dialogRef.close();
-    console.log("aaaaaaaa")
   }
 
   closeModalOnKey(event: KeyboardEvent) {
@@ -32,15 +29,14 @@ export class ChangeEmailModalComponent {
   }
 
   confirm() {
-    // Implemente a lógica para confirmar a alteração de email aqui
-    // this.modalConfirmed.emit();;
-    console.log("teste")
 
-    this.closeModal();
+    console.log(this.newEmail);
+    this.dialogRef.close({ newEmail: this.newEmail });
+
+    // this.closeModal();
   }
 
   cancel() {
-    this.modalCancelled.emit();
     this.closeModal();
   }
 }
