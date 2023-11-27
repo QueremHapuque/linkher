@@ -4,6 +4,9 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User';
 
 class UserService {
+  // async createUser(email: string, password: string): Promise<User | null> {
+  //   return User.create()
+  // }
   /**
    * @description verify if the user password is correct
    * @param password
