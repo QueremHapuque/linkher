@@ -44,7 +44,19 @@ export class AccountSettingsComponent {
     });
 
     dialogRef.afterClosed().subscribe(result => {
-      // Esta função é chamada ao fechar o modal.
+      if (result && result.newPassword) {
+        // Chame o serviço para atualizar o email
+        this.accountSettingsService.updatePassword(1, result.newPassword).subscribe(
+          response => {
+            // Lógica para tratamento de sucesso
+            console.log('Senha atualizada com sucesso', response);
+          },
+          error => {
+            // Lógica para tratamento de erro
+            console.error('Erro ao atualizar o email', error);
+          }
+        );
+      }
     });
   }
   openDeleteAccountModal() {

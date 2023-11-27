@@ -50,7 +50,16 @@ export class AccountSettingsService {
   //   };
   updateEmail(userId: number, email: string,): Observable<any> {
     const body = {
-      email
+      "email": email
+    };
+    // const url = `${this.apiUrl}/update/${userId}`;
+    const url = `${this.apiUrl}/update/1`;
+    return this.http.put(url, body);
+  }
+
+  updatePassword(userId: number, password: string,): Observable<any> {
+    const body = {
+      "password": password
     };
     // const url = `${this.apiUrl}/update/${userId}`;
     const url = `${this.apiUrl}/update/1`;

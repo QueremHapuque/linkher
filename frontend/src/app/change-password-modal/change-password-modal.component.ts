@@ -1,6 +1,9 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
-import { MatDialogRef, } from '@angular/material/dialog';
+import { Component, Input, Inject, Output, EventEmitter } from '@angular/core';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 
+export interface DialogData {
+  Field: string;
+}
 @Component({
   selector: 'app-change-password-modal',
   templateUrl: './change-password-modal.component.html',
@@ -10,21 +13,15 @@ import { MatDialogRef, } from '@angular/material/dialog';
 
 export class ChangePasswordModalComponent {
   @Input() modalTitle = 'Senha';
-  @Output() modalConfirmed = new EventEmitter<void>();
-  @Output() modalCancelled = new EventEmitter<void>();
-  @Output() modalClose = new EventEmitter<void>();
 
-  currentEmail: string = '';
-  newEmail: string = '';
+  currentPassword: string | undefined;
+  newPassword: string | undefined;
+  confirmNewPassword: string | undefined;
 
-  constructor(
-    public dialogRef: MatDialogRef<ChangePasswordModalComponent>
-  ) {}
+  constructor(public dialogRef: MatDialogRef<ChangePasswordModalComponent>, @Inject(MAT_DIALOG_DATA) public dataModal: DialogData) { }
 
   closeModal() {
-    this.modalClose.emit();
     this.dialogRef.close();
-    console.log("aaaaaaaa")
   }
 
   closeModalOnKey(event: KeyboardEvent) {
@@ -34,14 +31,11 @@ export class ChangePasswordModalComponent {
   }
 
   confirm() {
-    // this.modalConfirmed.emit();;
-    console.log("teste")
-
-    this.closeModal();
+    console.log(this.newPassword)
+    this.dialogRef.close({ newPassword: this.newPassword });
   }
 
   cancel() {
-    this.modalCancelled.emit();
     this.closeModal();
   }
 }
