@@ -17,6 +17,7 @@ export class ChangePasswordModalComponent {
   currentPassword: string | undefined;
   newPassword: string | undefined;
   confirmNewPassword: string | undefined;
+  passwordsMatch = true;
 
   constructor(public dialogRef: MatDialogRef<ChangePasswordModalComponent>, @Inject(MAT_DIALOG_DATA) public dataModal: DialogData) { }
 
@@ -32,7 +33,13 @@ export class ChangePasswordModalComponent {
 
   confirm() {
     console.log(this.newPassword)
-    this.dialogRef.close({ newPassword: this.newPassword });
+    // this.dialogRef.close({ newPassword: this.newPassword });
+    if (this.newPassword === this.confirmNewPassword) {
+      this.passwordsMatch = true;
+      this.dialogRef.close({ newPassword: this.newPassword });
+    } else {
+      this.passwordsMatch = false;
+    }
   }
 
   cancel() {
