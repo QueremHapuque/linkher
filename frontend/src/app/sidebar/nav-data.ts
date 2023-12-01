@@ -1,6 +1,6 @@
 export const navbarData = [
     {
-        routeLink: '',
+        routeLink: 'home',
         icon: 'home',
         label: 'Oportunidades'
     },
@@ -10,12 +10,12 @@ export const navbarData = [
         label: 'Meu CV'
     },
     {
-        routeLink: '',
+        routeLink: 'home',
         icon: 'add',
         label: 'Cadastrar Oportunidade'
     },
     {
-        routeLink: '',
+        routeLink: 'home',
         icon: 'email',
         label: 'Fale Conosco'
     },
@@ -25,7 +25,7 @@ export const navbarData = [
         label: 'Configurações'
     },
     {
-        routeLink: '',
+        routeLink: 'home',
         icon: 'info',
         label: 'Sobre o Linkher'
     }

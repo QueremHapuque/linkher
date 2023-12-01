@@ -7,7 +7,7 @@ import { HttpClient, HttpHeaders  } from '@angular/common/http';
 })
 export class ResumeService {
   private apiUrl = 'http://localhost:3000/users/resume'
-  private token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJxdWVyZW0ubGltYUBlbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzAwNTgxNjEwLCJleHAiOjE3MDA1OTk2MTB9.Z-rziU2vr47-QOYjPolNW2zlvS9JzCkOYOJvyCTHfxM'; 
+  private token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwiZW1haWwiOiJxdWVyZW0ubGltYUBlbWFpbC5jb20iLCJpc0FkbWluIjpmYWxzZSwiaWF0IjoxNzAxNDAzOTYyLCJleHAiOjE3MDE0MjE5NjJ9.nupTQ1OmCfkSnxq92RwZZEUjfPkOedCBdtPUDca1m00'; 
 
   constructor(private http: HttpClient) { }
 
