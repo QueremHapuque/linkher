@@ -108,7 +108,7 @@
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "src/tests/controllers/userController.spec.ts"  ],
   "exclude": [
     "node_modules"
   ]

@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { BrowserModule } from '@angular/platform-browser';
+import { HttpClientModule } from '@angular/common/http';
 import { MatIconModule } from '@angular/material/icon';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatButtonModule } from '@angular/material/button';
@@ -13,6 +14,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -24,6 +26,10 @@ import { ModalCvComponent } from './modal-cv/modal-cv.component';
 import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { CadastroComponent } from './cadastro/cadastro.component';
+import { ChangeEmailModalComponent } from './change-email-modal/change-email-modal.component';
+import { ChangePasswordModalComponent } from './change-password-modal/change-password-modal.component';
+import { DeleteAccountModalComponent } from './delete-account-modal/delete-account-modal.component';
+
 
 @NgModule({
   declarations: [
@@ -32,15 +38,19 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     SidebarComponent,
     HomeComponent,
     AccountSettingsComponent,
+    ChangeEmailModalComponent,
     CurriculumComponent,
     ModalCvComponent,
     LoginComponent,
     InicioComponent,
-    CadastroComponent
+    CadastroComponent,
+    ChangePasswordModalComponent,
+    DeleteAccountModalComponent
   ],
   imports: [
     RouterModule,
     BrowserModule,
+    HttpClientModule,
     MatIconModule,
     MatMenuModule,
     MatButtonModule,
@@ -53,6 +63,7 @@ import { CadastroComponent } from './cadastro/cadastro.component';
     MatSelectModule,
     BrowserAnimationsModule,
     MatCardModule,
+    MatCheckboxModule,
     AppRoutingModule
   ],
   providers: [],

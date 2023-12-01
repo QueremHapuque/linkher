@@ -1,38 +1,42 @@
-<div class="config-content">
-  <h2>Informações do Usuário</h2>
+<div class="container-content">
+  <app-navbar></app-navbar>
+  <app-sidebar></app-sidebar>
+  <div class="config-content">
+    <h2>Informações do Usuário</h2>
 
-  <div class="config-option">
-    <div class="option-info">
-      <img src="/assets/images/email-icon.png" alt="Ícone de Alterar Email">
-      <span>Email</span>
+    <div class="config-option">
+      <div class="option-info">
+        <img src="/assets/images/email-icon.png" alt="Ícone de Alterar Email">
+        <span>Email</span>
+      </div>
+      <button (click)="openChangeEmailModal()" class="option-button">Alterar Email</button>
     </div>
-    <button (click)="'openChangeEmailModal()'" class="option-button">Alterar Email</button>
+
+    <hr>
+
+    <div class="config-option">
+      <div class="option-info">
+        <img src="/assets/images/change-password-icon.png" alt="Ícone de Alterar Senha">
+        <span>Senha</span>
+      </div>
+      <button (click)="openChangePasswordModal()" class="option-button">Alterar Senha</button>
+    </div>
+
+    <hr>
+
+    <div class="config-option">
+      <div class="option-info">
+        <img src="/assets/images/delete-account-icon.png" alt="Ícone de Deletar Conta">
+        <span>Conta</span>
+      </div>
+      <button (click)="openDeleteAccountModal()" class="option-button">Excluir Conta</button>
+    </div>
+
+    <button (click)="'logout()'" class="logout-button">
+      <div class="logout-content">
+        <img src="/assets/images/logout-icon.png" alt="Ícone de Encerrar Sessão">
+        <span>Encerrar Sessão</span>
+      </div>
+    </button>
   </div>
-
-  <hr>
-
-  <div class="config-option">
-    <div class="option-info">
-      <img src="/assets/images/change-password-icon.png" alt="Ícone de Alterar Senha">
-      <span>Senha</span>
-    </div>
-    <button (click)="'openChangePasswordModal()'" class="option-button">Alterar Senha</button>
-  </div>
-
-  <hr>
-
-  <div class="config-option">
-    <div class="option-info">
-      <img src="/assets/images/delete-account-icon.png" alt="Ícone de Deletar Conta">
-      <span>Conta</span>
-    </div>
-    <button (click)="'openDeleteAccountModal()'" class="option-button">Excluir Conta</button>
-  </div>
-
-  <button (click)="'logout()'" class="logout-button">
-    <div class="logout-content">
-      <img src="/assets/images/logout-icon.png" alt="Ícone de Encerrar Sessão">
-      <span>Encerrar Sessão</span>
-    </div>
-  </button>
 </div>

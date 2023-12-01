@@ -15,7 +15,7 @@
               src="../../assets/images/info.png"
               alt="Info Icon"
               class="info-icon">
-            <span class="info-field">Dados pessoais e de contato</span>
+            <span class="info-field" style="margin-left: 7px;">Dados pessoais e de contato</span>
           </div>
           <div>
             <mat-form-field class="text-input">
@@ -41,21 +41,11 @@
                 </mat-option>
               </mat-select>
             </mat-form-field>
-            
-            <mat-form-field class="sel-input">
-              <mat-label>Município</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let county of listCounty" [value]="county.value"
-                (click)="clickSelectedCounty(county.value)">
-                <span [innerHTML]="county.name"></span>
-                </mat-option>
-              </mat-select>
-            </mat-form-field>
           </div>
-          <div style="display: flex; justify-content: center;">
-            <button mat-button class="save-button"
-            (click)="clickSave()">Salvar</button>
-          </div>
+          <!-- <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
+            <button mat-button class="save-button-1"
+            (click)="saveInfo()">Salvar</button>
+          </div> -->
         </mat-expansion-panel>
     </mat-accordion>
     <!-- FORMAÇÃO -->
@@ -71,16 +61,17 @@
               src="../../assets/images/info.png"
               alt="Info Icon"
               class="info-icon">
-            <span class="info-field">Formação acadêmica</span>
+            <span class="info-field" style="margin-left: 7px;">Formação acadêmica</span>
           </div>
           <div class="tittle">
             <span>Suas formações</span>
-            <!-- <button mat-button></button> -->
-            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="openDialog('education')">add</mat-icon>
           </div>
-          <div class="content">
-              <p>Bacharelado em Sistemas de Informação - UFRPE</p>
-                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          <div *ngIf="education" class="content">
+              <ul *ngFor="let item of education">
+                <li>{{ item.courseName }} - {{ item.institution }}</li>
+              </ul>
+              <mat-icon class="delete-icon" (click)="deleteField('education')">clear</mat-icon>
           </div>
         </mat-expansion-panel>
     </mat-accordion>
@@ -97,17 +88,18 @@
               src="../../assets/images/info.png"
               alt="Info Icon"
               class="info-icon">
-            <span class="info-field">Experiência profissional</span>
+            <span class="info-field" style="margin-left: 7px;">Experiência profissional</span>
           </div>
 
           <div class="tittle">
             <span>Suas experiências</span>
-            <!-- <button mat-button></button> -->
-            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="openDialog('experiences')">add</mat-icon>
           </div>
-          <div class="content">
-              <p>Estágio em desenvolvimento backend - Cesar</p>
-                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          <div *ngIf="experience" class="content">
+            <ul *ngFor="let item of experience">
+              <li>{{ item.officeName }} - {{ item.company }}</li>
+            </ul>
+            <mat-icon class="delete-icon" (click)="deleteField('experience')">clear</mat-icon>
           </div>
         </mat-expansion-panel>
     </mat-accordion>
@@ -124,35 +116,28 @@
               src="../../assets/images/info.png"
               alt="Info Icon"
               class="info-icon">
-            <span class="info-field">Idiomas e Tecnologias que você domina</span>
+            <span class="info-field" style="margin-left: 7px;">Idiomas e Tecnologias que você domina</span>
           </div>
-
           <div class="tittle">
             <span>Idiomas</span>
-            <!-- <button mat-button></button> -->
-            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="openDialog('languages')">add</mat-icon>
           </div>
-          <div class="content">
-              <p>Inglês - Fluente</p>
-                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
-          </div>
-          <div class="content">
-            <p>Espanhol - Intermediário</p>
-              <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          <div *ngIf="language" class="content">
+            <ul *ngFor="let item of language">
+              <li>{{ item.languageName }} - {{ item.expertiseLanguage }}</li>
+            </ul>
+            <mat-icon class="delete-icon" (click)="deleteField('language')">clear</mat-icon>
           </div>
 
           <div class="tittle">
             <span>Tecnologias</span>
-            <!-- <button mat-button></button> -->
-            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="openDialog('technologies')">add</mat-icon>
           </div>
-          <div class="content">
-              <p>Python - Avançado</p>
-                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
-          </div>
-          <div class="content">
-            <p>Angular - Intermediário</p>
-              <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          <div *ngIf="technology" class="content">
+            <ul *ngFor="let item of technology">
+              <li>{{ item.technologieName }} - {{ item.expertiseTechnologiee }}</li>
+            </ul>
+            <mat-icon class="delete-icon" (click)="deleteField('technology')">clear</mat-icon>
           </div>
         </mat-expansion-panel>
     </mat-accordion>
@@ -169,21 +154,17 @@
               src="../../assets/images/info.png"
               alt="Info Icon"
               class="info-icon">
-            <span class="info-field">Credenciais Profissionais ou certificações obtidas</span>
+            <span class="info-field" style="margin-left: 7px;">Credenciais Profissionais ou certificações obtidas</span>
           </div>
-
           <div class="tittle">
             <span>Suas certificações</span>
-            <!-- <button mat-button></button> -->
-            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="openDialog('certifications')">add</mat-icon>
           </div>
-          <div class="content">
-              <p>Cloud Fundations - AWS</p>
-                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
-          </div>
-          <div class="content">
-              <p>Cyber Security Essentials - Cisco</p>
-                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          <div *ngIf="certification" class="content">
+            <ul *ngFor="let item of certification">
+              <li>{{ item.certificationName }} - {{ item.certificationInstitution }}</li>
+            </ul>
+            <mat-icon class="delete-icon" (click)="deleteField('certification')">clear</mat-icon>
           </div>
         </mat-expansion-panel>
     </mat-accordion>
@@ -200,20 +181,17 @@
               src="../../assets/images/info.png"
               alt="Info Icon"
               class="info-icon">
-            <span class="info-field">Soft skils são habilidades interpessoais e comportamentais que influenciam a maneira como interagimos com os outros</span>
+            <span class="info-field" style="margin-left: 7px;">Soft skils são habilidades interpessoais e comportamentais que influenciam a maneira como interagimos com os outros</span>
           </div>
           <div class="tittle">
             <span>Suas soft skills</span>
-            <!-- <button mat-button></button> -->
-            <mat-icon class="add-icon" (click)="openDialog('formation')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="openDialog('softSkills')">add</mat-icon>
           </div>
-          <div class="content">
-              <p>Criatividade</p>
-                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
-          </div>
-          <div class="content">
-              <p>Proatividade</p>
-                <mat-icon class="delete-icon" (click)="openDialog('formation')">clear</mat-icon>
+          <div *ngIf="softSkill" class="content">
+            <ul *ngFor="let item of softSkill">
+              <li>{{ item.softSkill }}</li>
+            </ul>
+            <mat-icon class="delete-icon" (click)="deleteField('softSkills')">clear</mat-icon>
           </div>
         </mat-expansion-panel>
     </mat-accordion>
@@ -230,9 +208,111 @@
               src="../../assets/images/info.png"
               alt="Info Icon"
               class="info-icon">
-            <span class="info-field">Suas preferências com relação à modalidade das oportunidades</span>
+            <span class="info-field" style="margin-left: 7px;">Suas preferências com relação à modalidade das oportunidades</span>
           </div>
+
+          <div class="checkboxes">
+            <div>
+              <div class="tittle-2">
+                <span>Tipo de contrato</span>
+              </div>
+              <div class="checkbox-cv">
+                <mat-checkbox
+                  [checked]="researchGrant"
+                  (change)="selectResearchGrant($event.checked)">
+                  Bolsa de pesquisa ou doutorado
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="internship"
+                  (change)="selectInternship($event.checked)">
+                  Estágio
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="clt"
+                  (change)="selectClt($event.checked)">
+                  Emprego CLT
+                </mat-checkbox>
+                <mat-checkbox 
+                  [checked]="pj"
+                  (change)="selectPj($event.checked)">
+                  Emprego PJ
+                </mat-checkbox>
+              </div>
+            </div>
+            
+            <div>
+              <div class="tittle-2">
+                <span>Modalidade</span>
+              </div>
+              <div class="checkbox-cv">
+                <mat-checkbox
+                  [checked]="inPerson"
+                  (change)="selectInPerson($event.checked)">
+                  Presencial
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="remote"
+                  (change)="selectRemote($event.checked)">
+                  Remoto
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="hybrid"
+                  (change)="selectHybrid($event.checked)">
+                  Híbrido
+                </mat-checkbox>
+              </div>
+            </div>
+            <div>
+              <div class="tittle-2">
+                <span>Carga horária</span>
+              </div>
+              <div class="checkbox-cv">
+                <mat-checkbox
+                  [checked]="halfTime"
+                  (change)="selectHalfTime($event.checked)">
+                  20h Semanais
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="threeQuarters"
+                  (change)="selectThreeQuarters($event.checked)">
+                  30h Semanais
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="fullTime"
+                  (change)="selectFullTime($event.checked)">
+                  40h Semanais
+                </mat-checkbox>
+              </div>
+            </div>
+            <div>
+              <div class="tittle-2">
+                <span>Nível de experiência</span>
+              </div>
+              <div class="checkbox-cv">
+                <mat-checkbox
+                  [checked]="beginner"
+                  (change)="selectBeginner($event.checked)">
+                  Iniciante
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="intermediary"
+                  (change)="selectIntermediary($event.checked)">
+                  Intermediário
+                </mat-checkbox>
+                <mat-checkbox
+                  [checked]="advanced"
+                  (change)="selectAdvanced($event.checked)">
+                  Avançado
+                </mat-checkbox>
+              </div>
+            </div>
+          </div>
+
         </mat-expansion-panel>
     </mat-accordion>
+    <div style="display: flex; justify-content: center;">
+      <button mat-button class="save-button-2"
+      (click)="clickSave()">Salvar</button>
+    </div>
   </div>
 </div>

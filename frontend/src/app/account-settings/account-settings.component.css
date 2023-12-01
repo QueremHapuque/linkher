@@ -1,6 +1,11 @@
-:host {
+/* :host {
   flex: 1;
   margin: 8% auto 0;
+} */
+
+.container-content{
+  padding-top: 56px;
+  align-items: center;
 }
 
 .config-content {

@@ -16,7 +16,7 @@ class UserController {
       };
       res.status(200).send(userInfo);
     } catch (error) {
-      errorHandler(error, res);
+      return errorHandler(error, res);
     }
   }
 
@@ -32,7 +32,7 @@ class UserController {
 
       return res.status(200).send(newUser);
     } catch (error) {
-      errorHandler(error, res);
+      return errorHandler(error, res);
     }
   }
 
@@ -61,9 +61,14 @@ class UserController {
 
       const token = UserService.createAccessToken(user);
 
-      return res.status(200).send({ token: token });
+      const userAccessInfo = {
+        token: token,
+        userId: user.getDataValue('id'),
+      };
+
+      return res.status(200).send(userAccessInfo);
     } catch (error) {
-      errorHandler(error, res);
+      return errorHandler(error, res);
     }
   }
 }
