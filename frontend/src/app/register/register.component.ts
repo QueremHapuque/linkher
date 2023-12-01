@@ -23,16 +23,12 @@ export class RegisterComponent {
   @Input()
   confirmPassword!: string;
 
-  showNotification(severity: string, summary: string, message: string) {
-    this.messageService.add({ severity: severity, summary: summary, detail: message });
-  }
-
   register() {
     if (!this.email || !this.password || !this.confirmPassword) {
-      console.log('CAMPOS OBRIGATORIOS NAO PREENCHIDOS!!');
+      this.showNotification('warn', 'Atenção!', 'Campo(s) obrigatório(s) não preenchido(s)!');
     }
     else if (this.password != this.confirmPassword) {
-      console.log('AS SENHAS DIVERGEM!');
+      this.showNotification('warn', 'Atenção!', 'As senhas divergem!');
     }
     else {
       this.userService.createUser(this.email, this.password).subscribe(
@@ -48,6 +44,10 @@ export class RegisterComponent {
         }
       );
     }
+  }
+
+  showNotification(severity: string, summary: string, message: string) {
+    this.messageService.add({ severity: severity, summary: summary, detail: message });
   }
 
   public delay(ms: number): Promise<boolean> {

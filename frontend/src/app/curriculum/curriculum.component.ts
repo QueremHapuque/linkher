@@ -1,10 +1,11 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalCvComponent } from '../modal-cv/modal-cv.component';
 import { EducationList, ExperienceList, LanguageList, TechnologyList, CertificationList, SoftSkillList } from './interface-cv';
 
 import { ResumeService } from '../utils/services/resume.service';
+import { UserService } from '../utils/services/user.service';
 
 @Component({
   selector: 'app-curriculum',
@@ -12,12 +13,21 @@ import { ResumeService } from '../utils/services/resume.service';
   styleUrls: ['./curriculum.component.css']
 })
 
-export class CurriculumComponent {
+export class CurriculumComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
-    private resumeService: ResumeService
+    private resumeService: ResumeService,
+    private userService: UserService
   ) {}
+
+  ngOnInit(): void {
+    if (this.userService.isLoggedIn()) {
+      const token = this.userService.getAuthToken();
+      console.log('token ->>>', token)
+      // É ASSIM QUE RECUPERA O TOKEN
+    }
+  }
 
   states = [
     { name: 'Pernambuco', value: 'pe' },
@@ -145,6 +155,7 @@ export class CurriculumComponent {
       [this.certification[0].certificationInstitution]: this.certification[0].certificationName
     };
     const softSkills: string = this.softSkill[0].softSkill;
+    console.log('vou me matarrrrrrrrrrrrrrrrrr')
     this.resumeService.createResume(1, this.name, this.email, this.selectedState, education, experience, language, technology, certification, softSkills, this.researchGrant,
       this.internship, this.clt, this.pj, this.inPerson, this.remote, this.hybrid, this.halfTime, this.threeQuarters, this.fullTime, this.beginner, this.intermediary, this.advanced);
   }

@@ -5,13 +5,13 @@
 
 <div class="Inputs">
     <p>Nome de usuário:</p>
-    <input type="text" id="username" name="username" required>
+    <input [(ngModel)]="email" type="text" id="username" name="username" required>
 
     <p>Senha:</p>
-    <input type="password" id="password" name="password" required>
+    <input [(ngModel)]="password" type="password" id="password" name="password" required>
 </div>
 
-
-<button>Login</button>      
+<p-toast></p-toast>
+<button (click)="login()">Login</button>      
 <p>Esqueceu a senha?</p>
 <button>Redefinir</button>
