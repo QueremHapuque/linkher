@@ -15,6 +15,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 import { AppComponent } from './app.component';
 import { NavbarComponent } from './navbar/navbar.component';
@@ -25,7 +27,7 @@ import { CurriculumComponent } from './curriculum/curriculum.component';
 import { ModalCvComponent } from './modal-cv/modal-cv.component';
 import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { RegisterComponent } from './cadastro/register.component';
+import { RegisterComponent } from './register/register.component';
 import { ChangeEmailModalComponent } from './change-email-modal/change-email-modal.component';
 import { ChangePasswordModalComponent } from './change-password-modal/change-password-modal.component';
 import { DeleteAccountModalComponent } from './delete-account-modal/delete-account-modal.component';
@@ -64,9 +66,12 @@ import { DeleteAccountModalComponent } from './delete-account-modal/delete-accou
     BrowserAnimationsModule,
     MatCardModule,
     MatCheckboxModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [
+    MessageService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

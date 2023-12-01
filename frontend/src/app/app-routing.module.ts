@@ -5,7 +5,7 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { CurriculumComponent } from './curriculum/curriculum.component';
 import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { RegisterComponent } from './cadastro/register.component';
+import { RegisterComponent } from './register/register.component';
 
 const routes: Routes = [
   {
