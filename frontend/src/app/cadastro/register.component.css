@@ -4,7 +4,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh; /* Opcional: ajusta a altura para ocupar 100% da altura da viewport */
-  }
+}
 
 .logo {
     display: flex;
@@ -38,27 +38,6 @@ p {
     color: #471CA8;
     border: none;
     width: 438px;
-    height: 30px;
-}
-
-.CEP {
-    width: 438px;
-
-    display: flex;
-    flex-direction: row;
-}
-
-.CEP div:first-of-type {
-    margin-right: 10px;
-}
-
-.CEP input {
-    margin: 8px 0;
-    border-radius: 8px;
-    background-color: #884ab276;
-    color: #471CA8;
-    border: none;
-    width: 214px;
     height: 30px;
 }
 

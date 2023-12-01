@@ -1,0 +1,19 @@
+<div class="logo">
+    <img src="../../assets/images/logo.png" alt="logo">
+    <h2>LinkHer</h2>
+</div>
+
+<div class="Inputs">
+    <p>Email:</p>
+    <input [(ngModel)]="email" type="text" id="username" name="username" required>
+
+    <p>Senha:</p>
+    <input [(ngModel)]="password" type="password" id="password" name="password" required>
+    
+    <p>Confirmação de Senha:</p>
+    <input [(ngModel)]="confirmPassword" type="password" id="confirmpassword" name="confirmpassword" required>
+</div>
+
+<button type="submit" (click)="register()">
+    Cadastrar
+</button>

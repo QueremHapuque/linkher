@@ -5,11 +5,11 @@ import { AccountSettingsComponent } from './account-settings/account-settings.co
 import { CurriculumComponent } from './curriculum/curriculum.component';
 import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { CadastroComponent } from './cadastro/cadastro.component';
+import { RegisterComponent } from './cadastro/register.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: 'home',
     component: HomeComponent,
     pathMatch: 'full'
   },
@@ -29,13 +29,13 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'inicio',
+    path: '',
     component: InicioComponent,
     pathMatch: 'full'
   },
   {
-    path: 'cadastro',
-    component: CadastroComponent,
+    path: 'register',
+    component: RegisterComponent,
     pathMatch: 'full'
   },
 ];

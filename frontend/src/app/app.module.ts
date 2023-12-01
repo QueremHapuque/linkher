@@ -25,7 +25,7 @@ import { CurriculumComponent } from './curriculum/curriculum.component';
 import { ModalCvComponent } from './modal-cv/modal-cv.component';
 import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
-import { CadastroComponent } from './cadastro/cadastro.component';
+import { RegisterComponent } from './cadastro/register.component';
 import { ChangeEmailModalComponent } from './change-email-modal/change-email-modal.component';
 import { ChangePasswordModalComponent } from './change-password-modal/change-password-modal.component';
 import { DeleteAccountModalComponent } from './delete-account-modal/delete-account-modal.component';
@@ -43,7 +43,7 @@ import { DeleteAccountModalComponent } from './delete-account-modal/delete-accou
     ModalCvComponent,
     LoginComponent,
     InicioComponent,
-    CadastroComponent,
+    RegisterComponent,
     ChangePasswordModalComponent,
     DeleteAccountModalComponent
   ],

@@ -3,7 +3,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh; /* Opcional: ajusta a altura para ocupar 100% da altura da viewport */
+    height: 100vh;
   }
 
 h2 {
@@ -36,4 +36,5 @@ button:hover {
     border-radius: 8px;
     width: 140px;
     height: 32px;
+    cursor: pointer;
 }
