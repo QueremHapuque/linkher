@@ -1,7 +1,8 @@
 import express from 'express';
+import JobVacancieController from '../controllers/JobVacancieController';
+import ResumeController from '../controllers/ResumeController';
 import UserController from '../controllers/UserController';
 import userAuth from '../middlewares/auth';
-import ResumeController from '../controllers/ResumeController';
 
 const router = express.Router();
 
@@ -13,5 +14,17 @@ router.put('/user/update/:id', UserController.update);
 router.get('/users/resume/:id', userAuth, ResumeController.get);
 router.post('/users/resume/create', userAuth, ResumeController.create);
 router.put('/user/resume/update/:id', userAuth, ResumeController.Update);
+
+router.get('/users/jobVacancie/:id', userAuth, JobVacancieController.get);
+router.post(
+  '/users/jobVacancie/create',
+  userAuth,
+  JobVacancieController.create,
+);
+router.put(
+  '/user/jobVacancie/update/:id',
+  userAuth,
+  JobVacancieController.Update,
+);
 
 export default router;

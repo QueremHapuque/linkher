@@ -2,26 +2,26 @@ import sequelize, { Model } from 'sequelize';
 import { db } from '../database/db';
 import User from './User';
 
-class JobVacancies extends Model {
+class JobVacancie extends Model {
   declare id: number;
-  declare userId: number;
+  declare user_id: number;
   declare name: string;
-  declare oportunityType: 'Vaga de emprego' | 'Edital de Pesquisa';
+  declare oportunity_type: 'Vaga de emprego' | 'Edital de Pesquisa';
   declare company: string;
   declare link: string;
   declare description: string;
   declare requeriments: string;
   declare local: string;
-  declare expireDate: Date;
-  declare isAffirmative: boolean;
-  declare contractType: 'CLT' | 'ESTÁGIO' | 'PJ';
+  declare expire_date: Date;
+  declare is_affirmative: boolean;
+  declare contract_type: 'CLT' | 'ESTÁGIO' | 'PJ';
   declare seniority: 'JUNIOR' | 'PLENO' | 'SENIOR';
   declare modality: 'PRESENCIAL' | 'REMOTO' | 'HÍBRIDO';
-  declare workingHours: '20' | '30' | '40';
-  declare isSecure: boolean;
+  declare working_hours: '20' | '30' | '40';
+  declare is_secure: boolean;
 }
 
-JobVacancies.init(
+JobVacancie.init(
   {
     id: {
       type: sequelize.INTEGER,
@@ -29,7 +29,7 @@ JobVacancies.init(
       allowNull: false,
       primaryKey: true,
     },
-    userId: {
+    user_id: {
       type: sequelize.INTEGER,
       allowNull: false,
       references: {
@@ -43,7 +43,7 @@ JobVacancies.init(
       type: sequelize.TEXT,
       allowNull: false,
     },
-    oportunityType: {
+    oportunity_type: {
       type: sequelize.ENUM('Vaga de emprego', 'Edital de Pesquisa'),
       allowNull: false,
     },
@@ -67,16 +67,16 @@ JobVacancies.init(
       type: sequelize.TEXT,
       allowNull: false,
     },
-    expireDate: {
+    expire_date: {
       type: sequelize.DATEONLY,
       allowNull: false,
     },
-    isAffirmative: {
+    is_affirmative: {
       type: sequelize.BOOLEAN,
       defaultValue: false,
       allowNull: false,
     },
-    contractType: {
+    contract_type: {
       type: sequelize.ENUM('CLT', 'ESTÁGIO', 'PJ'),
       allowNull: false,
     },
@@ -88,11 +88,11 @@ JobVacancies.init(
       type: sequelize.ENUM('PRESENCIAL', 'REMOTO', 'HÍBRIDO'),
       allowNull: false,
     },
-    workingHours: {
+    working_hours: {
       type: sequelize.ENUM('20', '30', '40'),
       allowNull: false,
     },
-    isSecure: {
+    is_secure: {
       type: sequelize.BOOLEAN,
       defaultValue: true,
       allowNull: false,
@@ -100,13 +100,14 @@ JobVacancies.init(
   },
   {
     sequelize: db,
-    tableName: 'users',
+    tableName: 'job_vacancies',
+    timestamps: false,
   },
 );
 
-JobVacancies.belongsTo(User, {
-  foreignKey: 'userId',
+JobVacancie.belongsTo(User, {
+  foreignKey: 'user_id',
   as: 'user',
 });
 
-export default JobVacancies;
+export default JobVacancie;
