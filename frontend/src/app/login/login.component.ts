@@ -28,11 +28,10 @@ export class LoginComponent {
     else {
       this.userService.login(this.email, this.password).subscribe(
         async (response) => {
-          console.log('Sucesso:', response);
+          localStorage.setItem('TOKEN', response.token);
+          localStorage.setItem('USER_ID', response.userId);
           this.showNotification('success', 'Login realizado com sucesso!', 'Seja bem vinda.');
-          const token = response.token;
-          this.userService.setAuthToken(token);
-          await this.delay(4000);
+          await this.delay(2500);
           this.router.navigateByUrl('home', { replaceUrl: true });
         },
         (error) => {

@@ -60,9 +60,21 @@
     font-size: 14px;
 }
 
+.text-input-disabled {
+    width: 97%;
+    height: 70px;
+    font-size: 14px;
+}
+
 .sel-input {
     width: 40vh;
     width: 100%;
+    font-size: 14px;
+}
+
+.sel-input-disabled {
+    width: 40vh;
+    width: 97%;
     font-size: 14px;
 }
 
@@ -70,7 +82,7 @@
     width: 90px;
     height: 30px;
     color: #FBFAFC !important;
-    background-color: #884AB2;
+    background-color: #D1105A;
     font-family: 'PoppinsSemiBold';
     font-size: 13px;
     border-radius: 8px;
@@ -84,6 +96,20 @@
     font-family: 'PoppinsSemiBold';
     font-size: 13px;
     border-radius: 10px;
+}
+
+.save-button-2:disabled {
+    opacity: 50%;
+}
+
+.edit-button {
+    width: 90px;
+    height: 30px;
+    color: #FBFAFC !important;
+    background-color: #884AB2;
+    font-family: 'PoppinsSemiBold';
+    font-size: 13px;
+    border-radius: 8px;
 }
 
 .tittle {
@@ -103,6 +129,12 @@
     cursor: pointer;
 }
 
+.edit-icon {
+    font-weight: 600;
+    color: #D1105A;
+    cursor: pointer;
+}
+
 delete-icon {
     font-weight: 600;
     color: #D1105A;
@@ -111,9 +143,12 @@ delete-icon {
 
 .content {
     font-size: 14px;
+    margin-right: 30px;
+}
+
+.content-list {
     display: flex;
     justify-content: space-between;
-    margin-right: 30px;
     align-items: center;
 }
 
@@ -126,4 +161,10 @@ delete-icon {
 .checkboxes {
     display: flex;
     justify-content: space-between;
+}
+
+.disabled-fields {
+    display: flex; justify-content:
+    space-between;
+    align-items: baseline;
 }

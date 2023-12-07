@@ -25,7 +25,7 @@ export class ModalCvComponent {
   expertiseLanguage: string | undefined;
   // Tecnologias
   technologieName: string | undefined;
-  expertiseTechnologiee: string | undefined;
+  expertiseTechnologie: string | undefined;
   // Certificações
   certificationName: string | undefined;
   certificationInstitution: string | undefined;
@@ -69,7 +69,7 @@ export class ModalCvComponent {
       data = [
         {
           technologieName: this.technologieName,
-          expertiseTechnologiee: this.expertiseTechnologiee,
+          expertiseTechnologie: this.expertiseTechnologie,
         }
       ];
     }

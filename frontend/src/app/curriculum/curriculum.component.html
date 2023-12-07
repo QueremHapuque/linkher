@@ -18,34 +18,81 @@
             <span class="info-field" style="margin-left: 7px;">Dados pessoais e de contato</span>
           </div>
           <div>
-            <mat-form-field class="text-input">
-              <mat-label>Nome</mat-label>
-              <input matInput
-              [formControl]="nameFormControl" [(ngModel)]="name" required>
-              <mat-error>{{getErrorMessage()}}</mat-error>
-            </mat-form-field>
-  
-            <mat-form-field class="text-input">
-              <mat-label>Email</mat-label>
-              <input matInput [formControl]="emailFormControl" [(ngModel)]="email" required>
-              <mat-error>{{getErrorMessage()}}</mat-error>
-            </mat-form-field>            
-          </div>
-          <div style="display: flex; justify-content: space-between;">
-            <mat-form-field class="sel-input">
-              <mat-label>Estado</mat-label>
-              <mat-select>
-                <mat-option *ngFor="let state of states" [value]="state.value"
-                  (click)="clickSelectedState(state.value)">
+            <ng-container *ngIf="disableName">
+              <div class="disabled-fields">
+                <mat-form-field class="text-input-disabled">
+                  <mat-label>Nome</mat-label>
+                  <input matInput [disabled]="disableName" [(ngModel)]="name">
+                </mat-form-field>
+                <button style="background: none; border: none;" (click)="editName()">
+                  <mat-icon class="edit-icon">edit</mat-icon>
+                </button>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="!disableName">
+              <mat-form-field class="text-input">
+                <mat-label>Nome</mat-label>
+                <input matInput
+                [formControl]="nameFormControl" [(ngModel)]="name" required>
+                <mat-error>{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </ng-container>
+
+            <ng-container *ngIf="disableEmail">
+              <div class="disabled-fields">
+                <mat-form-field class="text-input-disabled">
+                  <mat-label>Email</mat-label>
+                  <input matInput [(ngModel)]="email" [disabled]="disableEmail">
+                  <mat-error>{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <button style="background: none; border: none;" (click)="editEmail()">
+                  <mat-icon class="edit-icon">edit</mat-icon>
+                </button>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="!disableEmail">
+              <mat-form-field class="text-input">
+                <mat-label>Email</mat-label>
+                <input matInput [formControl]="emailFormControl" [(ngModel)]="email" required>
+                <mat-error>{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </ng-container>
+              
+            <ng-container *ngIf="disableState">
+              <div class="disabled-fields">
+                <mat-form-field class="sel-input-disabled">
+                  <mat-label>Estado</mat-label>
+                  <mat-select [(ngModel)]="curriculum.state" [disabled]="disableState">
+                    <mat-option *ngFor="let state of states" [value]="state.value">
+                      <span [innerHTML]="state.name"></span>
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button style="background: none; border: none;" (click)="editState()">
+                  <mat-icon class="edit-icon">edit</mat-icon>
+                </button>
+              </div>
+            </ng-container>
+            
+            <ng-container *ngIf="!disableState">
+              <mat-form-field class="sel-input">
+                <mat-label>Estado</mat-label>
+                <mat-select [(ngModel)]="selectedState">
+                  <mat-option *ngFor="let state of states" [value]="state.value">
                   <span [innerHTML]="state.name"></span>
                 </mat-option>
               </mat-select>
-            </mat-form-field>
+              </mat-form-field>
+            </ng-container>
+            <ng-container *ngIf="(!disableName || !disableEmail || !disableState) && !isNew">
+              <div style="display: flex; justify-content: center;">
+                <button mat-button class="save-button-1"
+                (click)="saveInfo()">Salvar</button>
+              </div>
+            </ng-container>
           </div>
-          <!-- <div style="display: flex; justify-content: center; margin-top: 2.5rem;">
-            <button mat-button class="save-button-1"
-            (click)="saveInfo()">Salvar</button>
-          </div> -->
         </mat-expansion-panel>
     </mat-accordion>
     <!-- FORMAÇÃO -->
@@ -67,11 +114,13 @@
             <span>Suas formações</span>
             <mat-icon class="add-icon" (click)="openDialog('education')">add</mat-icon>
           </div>
-          <div *ngIf="education" class="content">
-              <ul *ngFor="let item of education">
-                <li>{{ item.courseName }} - {{ item.institution }}</li>
+          <div *ngIf="education">
+              <ul *ngFor="let item of education" class="content">
+                <li class="content-list">
+                  {{ item.courseName }} - {{ item.institution }}
+                  <mat-icon class="delete-icon" (click)="deleteField('education')">clear</mat-icon>
+                </li>
               </ul>
-              <mat-icon class="delete-icon" (click)="deleteField('education')">clear</mat-icon>
           </div>
         </mat-expansion-panel>
     </mat-accordion>
@@ -135,7 +184,7 @@
           </div>
           <div *ngIf="technology" class="content">
             <ul *ngFor="let item of technology">
-              <li>{{ item.technologieName }} - {{ item.expertiseTechnologiee }}</li>
+              <li>{{ item.technologieName }} - {{ item.expertiseTechnologie }}</li>
             </ul>
             <mat-icon class="delete-icon" (click)="deleteField('technology')">clear</mat-icon>
           </div>
@@ -187,8 +236,8 @@
             <span>Suas soft skills</span>
             <mat-icon class="add-icon" (click)="openDialog('softSkills')">add</mat-icon>
           </div>
-          <div *ngIf="softSkill" class="content">
-            <ul *ngFor="let item of softSkill">
+          <div *ngIf="softSkills" class="content">
+            <ul *ngFor="let item of softSkills">
               <li>{{ item.softSkill }}</li>
             </ul>
             <mat-icon class="delete-icon" (click)="deleteField('softSkills')">clear</mat-icon>
@@ -219,22 +268,22 @@
               <div class="checkbox-cv">
                 <mat-checkbox
                   [checked]="researchGrant"
-                  (change)="selectResearchGrant($event.checked)">
+                  [disabled]="disableCheckboxes">
                   Bolsa de pesquisa ou doutorado
                 </mat-checkbox>
                 <mat-checkbox
                   [checked]="internship"
-                  (change)="selectInternship($event.checked)">
+                  [disabled]="disableCheckboxes">
                   Estágio
                 </mat-checkbox>
                 <mat-checkbox
                   [checked]="clt"
-                  (change)="selectClt($event.checked)">
+                  [disabled]="disableCheckboxes">
                   Emprego CLT
                 </mat-checkbox>
                 <mat-checkbox 
                   [checked]="pj"
-                  (change)="selectPj($event.checked)">
+                  [disabled]="disableCheckboxes">
                   Emprego PJ
                 </mat-checkbox>
               </div>
@@ -247,17 +296,17 @@
               <div class="checkbox-cv">
                 <mat-checkbox
                   [checked]="inPerson"
-                  (change)="selectInPerson($event.checked)">
+                  [disabled]="disableCheckboxes">
                   Presencial
                 </mat-checkbox>
                 <mat-checkbox
                   [checked]="remote"
-                  (change)="selectRemote($event.checked)">
+                  [disabled]="disableCheckboxes">
                   Remoto
                 </mat-checkbox>
                 <mat-checkbox
                   [checked]="hybrid"
-                  (change)="selectHybrid($event.checked)">
+                  [disabled]="disableCheckboxes">
                   Híbrido
                 </mat-checkbox>
               </div>
@@ -269,17 +318,17 @@
               <div class="checkbox-cv">
                 <mat-checkbox
                   [checked]="halfTime"
-                  (change)="selectHalfTime($event.checked)">
+                  [disabled]="disableCheckboxes">
                   20h Semanais
                 </mat-checkbox>
                 <mat-checkbox
                   [checked]="threeQuarters"
-                  (change)="selectThreeQuarters($event.checked)">
+                  [disabled]="disableCheckboxes">
                   30h Semanais
                 </mat-checkbox>
                 <mat-checkbox
                   [checked]="fullTime"
-                  (change)="selectFullTime($event.checked)">
+                  [disabled]="disableCheckboxes">
                   40h Semanais
                 </mat-checkbox>
               </div>
@@ -291,28 +340,38 @@
               <div class="checkbox-cv">
                 <mat-checkbox
                   [checked]="beginner"
-                  (change)="selectBeginner($event.checked)">
+                  [disabled]="disableCheckboxes">
                   Iniciante
                 </mat-checkbox>
                 <mat-checkbox
                   [checked]="intermediary"
-                  (change)="selectIntermediary($event.checked)">
+                  [disabled]="disableCheckboxes">
                   Intermediário
                 </mat-checkbox>
                 <mat-checkbox
                   [checked]="advanced"
-                  (change)="selectAdvanced($event.checked)">
+                  [disabled]="disableCheckboxes">
                   Avançado
                 </mat-checkbox>
               </div>
             </div>
           </div>
+          <div *ngIf="disableCheckboxes" style="display: flex; justify-content: center;">
+            <button mat-button class="edit-button"
+            (click)="editPreferences()">Editar</button>
+          </div>
 
+          <div *ngIf="!disableCheckboxes" style="display: flex; justify-content: center;">
+            <button mat-button class="save-button-1"
+            (click)="saveInfo()">Salvar</button>
+          </div>
+          
         </mat-expansion-panel>
     </mat-accordion>
-    <div style="display: flex; justify-content: center;">
+    <p-toast></p-toast>
+    <div *ngIf="!curriculum" style="display: flex; justify-content: center;">
       <button mat-button class="save-button-2"
-      (click)="clickSave()">Salvar</button>
+      (click)="saveCurriculum()">Salvar Currículo</button>
     </div>
   </div>
 </div>
