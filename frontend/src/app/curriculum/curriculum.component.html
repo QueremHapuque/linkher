@@ -115,8 +115,8 @@
             <mat-icon class="add-icon" (click)="openDialog('education')">add</mat-icon>
           </div>
           <div *ngIf="education">
-              <ul *ngFor="let item of education" class="content">
-                <li class="content-list">
+              <ul *ngFor="let item of education">
+                <li>
                   {{ item.courseName }} - {{ item.institution }}
                   <mat-icon class="delete-icon" (click)="deleteField('education')">clear</mat-icon>
                 </li>
@@ -146,9 +146,10 @@
           </div>
           <div *ngIf="experience" class="content">
             <ul *ngFor="let item of experience">
-              <li>{{ item.officeName }} - {{ item.company }}</li>
+              <li>{{ item.officeName }} - {{ item.company }}
+                <mat-icon class="delete-icon" (click)="deleteField('experience')">clear</mat-icon>
+              </li>
             </ul>
-            <mat-icon class="delete-icon" (click)="deleteField('experience')">clear</mat-icon>
           </div>
         </mat-expansion-panel>
     </mat-accordion>
@@ -173,9 +174,10 @@
           </div>
           <div *ngIf="language" class="content">
             <ul *ngFor="let item of language">
-              <li>{{ item.languageName }} - {{ item.expertiseLanguage }}</li>
+              <li>{{ item.languageName }} - {{ item.expertiseLanguage }}
+                <mat-icon class="delete-icon" (click)="deleteField('language')">clear</mat-icon>
+              </li>
             </ul>
-            <mat-icon class="delete-icon" (click)="deleteField('language')">clear</mat-icon>
           </div>
 
           <div class="tittle">
@@ -184,9 +186,10 @@
           </div>
           <div *ngIf="technology" class="content">
             <ul *ngFor="let item of technology">
-              <li>{{ item.technologieName }} - {{ item.expertiseTechnologie }}</li>
+              <li>{{ item.technologieName }} - {{ item.expertiseTechnologie }}
+                <mat-icon class="delete-icon" (click)="deleteField('technology')">clear</mat-icon>
+              </li>
             </ul>
-            <mat-icon class="delete-icon" (click)="deleteField('technology')">clear</mat-icon>
           </div>
         </mat-expansion-panel>
     </mat-accordion>
@@ -211,9 +214,10 @@
           </div>
           <div *ngIf="certification" class="content">
             <ul *ngFor="let item of certification">
-              <li>{{ item.certificationName }} - {{ item.certificationInstitution }}</li>
+              <li>{{ item.certificationName }} - {{ item.certificationInstitution }}
+                <mat-icon class="delete-icon" (click)="deleteField('certification')">clear</mat-icon>
+              </li>
             </ul>
-            <mat-icon class="delete-icon" (click)="deleteField('certification')">clear</mat-icon>
           </div>
         </mat-expansion-panel>
     </mat-accordion>
@@ -238,9 +242,10 @@
           </div>
           <div *ngIf="softSkills" class="content">
             <ul *ngFor="let item of softSkills">
-              <li>{{ item.softSkill }}</li>
+              <li>{{ item.softSkill }}
+                <mat-icon class="delete-icon" (click)="deleteField('softSkills')">clear</mat-icon>
+              </li>
             </ul>
-            <mat-icon class="delete-icon" (click)="deleteField('softSkills')">clear</mat-icon>
           </div>
         </mat-expansion-panel>
     </mat-accordion>
@@ -267,21 +272,25 @@
               </div>
               <div class="checkbox-cv">
                 <mat-checkbox
+                  [(ngModel)]="researchGrant"
                   [checked]="researchGrant"
                   [disabled]="disableCheckboxes">
                   Bolsa de pesquisa ou doutorado
                 </mat-checkbox>
                 <mat-checkbox
+                  [(ngModel)]="internship"
                   [checked]="internship"
                   [disabled]="disableCheckboxes">
                   Estágio
                 </mat-checkbox>
                 <mat-checkbox
+                  [(ngModel)]="clt"
                   [checked]="clt"
                   [disabled]="disableCheckboxes">
                   Emprego CLT
                 </mat-checkbox>
-                <mat-checkbox 
+                <mat-checkbox
+                  [(ngModel)]="pj"
                   [checked]="pj"
                   [disabled]="disableCheckboxes">
                   Emprego PJ
@@ -295,16 +304,19 @@
               </div>
               <div class="checkbox-cv">
                 <mat-checkbox
+                  [(ngModel)]="inPerson"
                   [checked]="inPerson"
                   [disabled]="disableCheckboxes">
                   Presencial
                 </mat-checkbox>
                 <mat-checkbox
+                  [(ngModel)]="remote"
                   [checked]="remote"
                   [disabled]="disableCheckboxes">
                   Remoto
                 </mat-checkbox>
                 <mat-checkbox
+                  [(ngModel)]="hybrid"
                   [checked]="hybrid"
                   [disabled]="disableCheckboxes">
                   Híbrido
@@ -317,16 +329,19 @@
               </div>
               <div class="checkbox-cv">
                 <mat-checkbox
+                  [(ngModel)]="halfTime"
                   [checked]="halfTime"
                   [disabled]="disableCheckboxes">
                   20h Semanais
                 </mat-checkbox>
                 <mat-checkbox
+                  [(ngModel)]="threeQuarters"
                   [checked]="threeQuarters"
                   [disabled]="disableCheckboxes">
                   30h Semanais
                 </mat-checkbox>
                 <mat-checkbox
+                  [(ngModel)]="fullTime"
                   [checked]="fullTime"
                   [disabled]="disableCheckboxes">
                   40h Semanais
@@ -339,16 +354,19 @@
               </div>
               <div class="checkbox-cv">
                 <mat-checkbox
+                  [(ngModel)]="beginner"
                   [checked]="beginner"
                   [disabled]="disableCheckboxes">
                   Iniciante
                 </mat-checkbox>
                 <mat-checkbox
+                  [(ngModel)]="intermediary"
                   [checked]="intermediary"
                   [disabled]="disableCheckboxes">
                   Intermediário
                 </mat-checkbox>
                 <mat-checkbox
+                  [(ngModel)]="advanced"
                   [checked]="advanced"
                   [disabled]="disableCheckboxes">
                   Avançado
@@ -356,12 +374,12 @@
               </div>
             </div>
           </div>
-          <div *ngIf="disableCheckboxes" style="display: flex; justify-content: center;">
+          <div *ngIf="disableCheckboxes && !isNew" style="display: flex; justify-content: center;">
             <button mat-button class="edit-button"
             (click)="editPreferences()">Editar</button>
           </div>
 
-          <div *ngIf="!disableCheckboxes" style="display: flex; justify-content: center;">
+          <div *ngIf="!disableCheckboxes && !isNew" style="display: flex; justify-content: center;">
             <button mat-button class="save-button-1"
             (click)="saveInfo()">Salvar</button>
           </div>

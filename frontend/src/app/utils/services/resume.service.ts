@@ -14,11 +14,11 @@ export class ResumeService {
 
   constructor(private http: HttpClient) { }
 
-  listResume(userId: number): Observable<Curriculum> {
+  listResume(): Observable<Curriculum> {
     const headers = new HttpHeaders({
       'Authorization': `Bearer ${this.userToken}`
     });
-    return this.http.get<Curriculum>(`${this.apiUrl}/${userId}`,{ headers })
+    return this.http.get<Curriculum>(`${this.apiUrl}/${this.userId}`,{ headers })
   }
 
   createResume(userId: number, name: string, email: string, state: string, education: Record<string, string>, experience: Record<string, string>,
