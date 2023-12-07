@@ -3,6 +3,7 @@ import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
 import { ModalCvComponent } from '../modal-cv/modal-cv.component';
 import { EducationList, ExperienceList, LanguageList, TechnologyList, CertificationList, SoftSkillList, Curriculum } from './interface-cv';
+import { Router } from '@angular/router';
 
 import { ResumeService } from '../utils/services/resume.service';
 import { MessageService } from 'primeng/api';
@@ -17,6 +18,7 @@ export class CurriculumComponent implements OnInit {
 
   constructor(
     public dialog: MatDialog,
+    private router: Router,
     private resumeService: ResumeService,
     private messageService: MessageService
   ) {}
@@ -46,6 +48,7 @@ export class CurriculumComponent implements OnInit {
   disableName = false;
   disableEmail = false;
   disableState = false;
+  disableFormation = false;
   disableCheckboxes = false;
   userId!: number;
   
@@ -83,6 +86,10 @@ export class CurriculumComponent implements OnInit {
   advanced = false;
 
   ngOnInit() {
+    const userToken = localStorage.getItem('TOKEN');
+    if (!userToken) {
+      this.router.navigateByUrl('', { replaceUrl: true });
+    }
     this.getCurriculum();
   }
 
@@ -100,6 +107,8 @@ export class CurriculumComponent implements OnInit {
     this.beginner = curriculum.isJunior;
     this.intermediary = curriculum.isPleno;
     this.advanced = curriculum.isSenior;
+
+    console.log('this.inPerson -> ', this.inPerson)
   }
 
   getErrorMessage() {
@@ -213,11 +222,7 @@ export class CurriculumComponent implements OnInit {
   }
 
   getCurriculum() {
-    if (localStorage.getItem('USER_ID')) {
-      const userIdString = localStorage.getItem('USER_ID');
-      this.userId = userIdString !== null ? Number(userIdString) : 0;
-    }
-    this.resumeService.listResume(this.userId).subscribe(
+    this.resumeService.listResume().subscribe(
       (response) => {
         this.curriculum = response;
         if (this.curriculum) {
@@ -275,6 +280,7 @@ export class CurriculumComponent implements OnInit {
   }
 
   updateCurriculum() {
+    console.log('this.inPerson -> ', this.inPerson)
     const education: Record<string, string> = {
       [this.education[0].institution]: this.education[0].courseName
     };

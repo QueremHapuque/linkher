@@ -135,10 +135,12 @@
     cursor: pointer;
 }
 
-delete-icon {
+.delete-icon {
     font-weight: 600;
-    color: #D1105A;
+    color: #D1105A !important;
     cursor: pointer;
+    right: 24px;
+    position: absolute;
 }
 
 .content {

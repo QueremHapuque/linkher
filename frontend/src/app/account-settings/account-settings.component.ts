@@ -1,17 +1,30 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { ChangeEmailModalComponent } from '../change-email-modal/change-email-modal.component';
 import { ChangePasswordModalComponent } from '../change-password-modal/change-password-modal.component';
 import { DeleteAccountModalComponent } from '../delete-account-modal/delete-account-modal.component';
 import { AccountSettingsService } from '../utils/services/acconut-settings.service';
+import { Router } from '@angular/router';
 @Component({
   selector: 'app-account-settings',
   templateUrl: './account-settings.component.html',
   styleUrls: ['./account-settings.component.css']
 })
-export class AccountSettingsComponent {
+export class AccountSettingsComponent implements OnInit {
 
-  constructor(private dialog: MatDialog, private accountSettingsService: AccountSettingsService) {}
+  constructor(
+    private dialog: MatDialog, 
+    private accountSettingsService: AccountSettingsService,
+    private router: Router
+
+  ) { }
+
+  ngOnInit() {
+    const userToken = localStorage.getItem('TOKEN');
+    if (!userToken) {
+      this.router.navigateByUrl('', { replaceUrl: true });
+    }
+  }
 
   openChangeEmailModal() {
     const dialogRef = this.dialog.open(ChangeEmailModalComponent, {
