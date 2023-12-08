@@ -41,6 +41,17 @@ describe('User Controller Tests', () => {
     expect(response.body.email).toBe('test2.user@gmail.com');
     expect(response.statusCode).toBe(200);
   });
+
+  it('Should return the user email and return 200', async () => {
+    const authValue = `Bearer ${userInfo.token}`;
+
+    const response = await request(server)
+      .get(`/user/email/${userInfo.id}`)
+      .set('authorization', authValue);
+
+    expect(response.body.email).toBe('test2.user@gmail.com');
+    expect(response.statusCode).toBe(200);
+  });
 });
 
 afterAll(async () => {

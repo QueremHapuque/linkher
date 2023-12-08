@@ -71,6 +71,30 @@ class UserController {
       return errorHandler(error, res);
     }
   }
+
+  async getUserEmail(
+    req: Request,
+    res: Response,
+  ): Promise<Response | undefined> {
+    try {
+      const userId = req.params.id as string;
+      const email = await UserService.getUserEmail(userId);
+
+      if (!email) throw new NotFoundError(UserErrorMessages.USER_NOT_FOUND);
+
+      return res.status(200).send({ email: email });
+    } catch (error) {
+      return errorHandler(error, res);
+    }
+  }
+
+  async updatePassword(req: Request, res: Response): Promise<Response | undefined>{
+    try {
+      
+    } catch (error) {
+      return errorHandler(error, res);
+    }
+  }
 }
 
 export default new UserController();

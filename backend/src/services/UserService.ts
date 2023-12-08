@@ -53,6 +53,12 @@ class UserService {
   async getByEmail(email: string): Promise<User | null> {
     return await User.findOne({ where: { email: email } });
   }
+
+  async getUserEmail(userId: string): Promise<string | null> {
+    return await User.findOne({ where: { id: userId } }).then(
+      (x) => x?.getDataValue('email'),
+    );
+  }
 }
 
 export default new UserService();
