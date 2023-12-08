@@ -8,7 +8,7 @@ const userInfo = {
   password: '123456',
   is_admin: false,
   id: 0,
-  token: '',
+  accessToken: '',
 };
 
 const resume = {
@@ -43,7 +43,7 @@ const resume = {
 
 describe('Resume Controller Tests', () => {
   it('should create an users resume and return 200', async () => {
-    const authValue = `Bearer ${userInfo.token}`;
+    const authValue = `Bearer ${userInfo.accessToken}`;
     const response = await request(server)
       .post(`/users/resume/create/`)
       .set('authorization', authValue)
@@ -54,7 +54,7 @@ describe('Resume Controller Tests', () => {
   });
 
   it('Should get the users resume and return 200', async () => {
-    const authValue = `Bearer ${userInfo.token}`;
+    const authValue = `Bearer ${userInfo.accessToken}`;
     const response = await request(server)
       .get(`/users/resume/${userInfo.id}`)
       .set('authorization', authValue);
@@ -64,7 +64,7 @@ describe('Resume Controller Tests', () => {
   });
 
   it('Should update the users resume and return 200', async () => {
-    const authValue = `Bearer ${userInfo.token}`;
+    const authValue = `Bearer ${userInfo.accessToken}`;
     const response = await request(server)
       .put(`/user/resume/update/${userInfo.id}`)
       .set('authorization', authValue)
@@ -87,7 +87,7 @@ beforeAll(async () => {
   });
 
   userInfo.id = login.body.userId;
-  userInfo.token = login.body.token;
+  userInfo.accessToken = login.body.accessToken;
   resume.userId = login.body.userId;
 });
 

@@ -53,6 +53,8 @@ User.init(
   },
   {
     sequelize: db,
+    createdAt: 'created_at',
+    updatedAt: 'updated_at',
     tableName: 'users',
     hooks: {
       beforeSave: async (user: User) => {
