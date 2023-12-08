@@ -9,3 +9,7 @@ export enum UserErrorMessages {
   USER_USERNAME_USED = 'Username already in use',
   USER_AUTH = 'user are not authenticated',
 }
+
+export enum UserMessages {
+  USER_CHANGE_PASSWORD = 'Senha alterada com sucesso !',
+}

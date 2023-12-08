@@ -1,8 +1,10 @@
 import bcrypt from 'bcrypt';
 import 'dotenv/config';
 import jwt from 'jsonwebtoken';
+import { UserErrorMessages } from '../exceptions/messages/UserMessages';
 import User from '../models/User';
 import { IToken } from '../models/dto/Token.dto';
+import { changePasswordDto } from '../models/dto/chagePassword.dto';
 
 class UserService {
   // async createUser(email: string, password: string): Promise<User | null> {
@@ -73,6 +75,25 @@ class UserService {
   async getUserEmail(userId: string): Promise<string | null> {
     return await User.findOne({ where: { id: userId } }).then(
       (x) => x?.getDataValue('email'),
+    );
+  }
+
+  async updatePassword(
+    userId: string,
+    hash: string,
+    payload: changePasswordDto,
+  ): Promise<void> {
+    const isMatch = await this.passwordCheck(payload.currentPassword, hash);
+
+    if (!isMatch) throw new Error(UserErrorMessages.USER_PASSWORD);
+
+    await User.update(
+      {
+        password_hash: await bcrypt.hash(payload.newPassword, 8),
+      },
+      {
+        where: { id: userId },
+      },
     );
   }
 }

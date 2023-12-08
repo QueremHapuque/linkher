@@ -2,6 +2,7 @@ import {} from 'jest';
 import request from 'supertest';
 import User from '../../models/User';
 import { server } from '../../server';
+import { UserMessages } from '../../exceptions/messages/UserMessages';
 
 const userInfo = {
   email: 'test.user@gmail.com',
@@ -43,13 +44,25 @@ describe('User Controller Tests', () => {
   });
 
   it('Should return the user email and return 200', async () => {
-    const authValue = `Bearer ${userInfo.token}`;
+    const authValue = `Bearer ${userInfo.accessToken}`;
 
     const response = await request(server)
       .get(`/user/email/${userInfo.id}`)
       .set('authorization', authValue);
 
     expect(response.body.email).toBe('test2.user@gmail.com');
+    expect(response.statusCode).toBe(200);
+  });
+
+  it('Should change the user password and return 200', async () => {
+    const authValue = `Bearer ${userInfo.accessToken}`;
+
+    const response = await request(server)
+      .put(`/user/update/password/${userInfo.id}`)
+      .send({ currentPassword: userInfo.password, newPassword: '1234567' })
+      .set('authorization', authValue);
+
+    expect(response.body.message).toBe(UserMessages.USER_CHANGE_PASSWORD);
     expect(response.statusCode).toBe(200);
   });
 });
