@@ -24,9 +24,13 @@ module.exports = {
         type: Sequelize.TEXT,
         allowNull: false,
       },
-      oportunity_type: {
-        type: Sequelize.ENUM('Vaga de emprego', 'Edital de Pesquisa'),
-        allowNull: false,
+      is_job: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_researchCall: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
       },
       company: {
         type: Sequelize.TEXT,
@@ -53,28 +57,60 @@ module.exports = {
         allowNull: false,
       },
       is_affirmative: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.BOOLEAN(),
         defaultValue: false,
         allowNull: false,
       },
-      contract_type: {
-        type: Sequelize.ENUM('CLT', 'ESTÁGIO', 'PJ'),
-        allowNull: false,
+      is_clt: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
       },
-      seniority: {
-        type: Sequelize.ENUM('JUNIOR', 'PLENO', 'SENIOR'),
-        allowNull: false,
+      is_internship: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
       },
-      modality: {
-        type: Sequelize.ENUM('PRESENCIAL', 'REMOTO', 'HÍBRIDO'),
-        allowNull: false,
+      is_pj: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
       },
-      working_hours: {
-        type: Sequelize.ENUM('20', '30', '40'),
-        allowNull: false,
+      is_junior: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_pleno: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_senior: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_inPerson: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_remote: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_hybrid: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_halfTime: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_threeQuarters: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
+      },
+      is_fullTime: {
+        type: Sequelize.BOOLEAN(),
+        allowNull: true,
       },
       is_secure: {
-        type: Sequelize.BOOLEAN,
+        type: Sequelize.BOOLEAN(),
         defaultValue: true,
         allowNull: false,
       },

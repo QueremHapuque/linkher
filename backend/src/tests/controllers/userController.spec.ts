@@ -8,7 +8,7 @@ const userInfo = {
   password: '123456',
   is_admin: false,
   id: 0,
-  token: '',
+  accessToken: '',
 };
 
 describe('User Controller Tests', () => {
@@ -27,9 +27,9 @@ describe('User Controller Tests', () => {
     });
 
     userInfo.id = response.body.userId;
-    userInfo.token = response.body.token;
+    userInfo.accessToken = response.body.accessToken;
 
-    expect(typeof response.body.token).toEqual('string');
+    expect(typeof response.body.accessToken).toEqual('string');
     expect(response.statusCode).toBe(200);
   });
 
