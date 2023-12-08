@@ -3,17 +3,20 @@ import { NextFunction, Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import { UserErrorMessages } from '../exceptions/messages/UserMessages';
 
-async function userAuth(req: Request, res: Response, next: NextFunction) {
+async function verifyRefreshToken(
+  req: Request,
+  res: Response,
+  next: NextFunction,
+) {
   try {
-    console.log(req.headers);
-    const token = req.headers['authorization']?.split(' ')[1];
-    const secret = process.env.AUTH_SECRET_KEY;
+    const { refreshToken } = req.body;
+    const secret = process.env.AUTH_REFRESH_SECRET_KEY;
 
-    if (!token)
+    if (!refreshToken)
       return res.status(401).json({ message: UserErrorMessages.USER_AUTH });
 
     try {
-      jwt.verify(token, secret!);
+      jwt.verify(refreshToken, secret!);
       next();
     } catch (error) {
       return res.status(401).json({ message: UserErrorMessages.USER_AUTH });
@@ -23,4 +26,4 @@ async function userAuth(req: Request, res: Response, next: NextFunction) {
   }
 }
 
-export default userAuth;
+export default verifyRefreshToken;

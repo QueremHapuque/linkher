@@ -26,7 +26,7 @@ class JobVacancieController {
     }
   }
 
-  async Update(
+  async update(
     req: ReqJobVacanciesDto,
     res: Response,
   ): Promise<Response<JobVacancie>> {

@@ -59,10 +59,11 @@ class UserController {
 
       if (!isMatch) throw new Error(UserErrorMessages.USER_PASSWORD);
 
-      const token = UserService.createAccessToken(user);
+      const { acessToken, refreshToken } = UserService.createAccessToken(user);
 
       const userAccessInfo = {
-        token: token,
+        acessToken,
+        refreshToken,
         userId: user.getDataValue('id'),
       };
 

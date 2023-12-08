@@ -1,8 +1,10 @@
 import express from 'express';
 import JobVacancieController from '../controllers/JobVacancieController';
+import RefreshTokenController from '../controllers/RefreshTokenController';
 import ResumeController from '../controllers/ResumeController';
 import UserController from '../controllers/UserController';
 import userAuth from '../middlewares/auth';
+import verifyRefreshToken from '../middlewares/refreshToken';
 
 const router = express.Router();
 
@@ -24,7 +26,13 @@ router.post(
 router.put(
   '/user/jobVacancie/update/:id',
   userAuth,
-  JobVacancieController.Update,
+  JobVacancieController.update,
+);
+
+router.post(
+  '/refresh-token',
+  verifyRefreshToken,
+  RefreshTokenController.verifyToken,
 );
 
 export default router;
