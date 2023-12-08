@@ -8,13 +8,13 @@ const userInfo = {
   password: '123456',
   is_admin: false,
   id: 0,
-  token: '',
+  accessToken: '',
 };
 
 const jobVacancie = {
   user_id: userInfo.id,
   name: 'teste job',
-  oportunity_type: 'Vaga de emprego',
+  is_job: true,
   company: 'Empresa teste',
   link: 'https://google.com',
   description: 'descrição da vaga',
@@ -22,16 +22,16 @@ const jobVacancie = {
   local: 'PE',
   expire_date: '01/02/2003',
   is_affirmative: true,
-  contract_type: 'CLT',
-  seniority: 'JUNIOR',
-  modality: 'PRESENCIAL',
-  working_hours: '20',
+  is_clt: true,
+  is_junior: true,
+  is_hybrid: true,
+  is_fullTime: true,
   is_secure: true,
 };
 
 describe('Job Vacancie Controller Tests', () => {
   it('should create an users job vacancie and return 200', async () => {
-    const authValue = `Bearer ${userInfo.token}`;
+    const authValue = `Bearer ${userInfo.accessToken}`;
     const response = await request(server)
       .post(`/users/jobVacancie/create/`)
       .set('authorization', authValue)
@@ -42,17 +42,17 @@ describe('Job Vacancie Controller Tests', () => {
   });
 
   it('Should get the user job vacancie and return 200', async () => {
-    const authValue = `Bearer ${userInfo.token}`;
+    const authValue = `Bearer ${userInfo.accessToken}`;
     const response = await request(server)
       .get(`/users/jobVacancie/${userInfo.id}`)
       .set('authorization', authValue);
 
-    expect(response.body.modality).toEqual('PRESENCIAL');
+    expect(response.body.is_hybrid).toEqual(true);
     expect(response.statusCode).toBe(200);
   });
 
   it('Should update the user job vacancie and return 200', async () => {
-    const authValue = `Bearer ${userInfo.token}`;
+    const authValue = `Bearer ${userInfo.accessToken}`;
     const response = await request(server)
       .put(`/user/jobVacancie/update/${userInfo.id}`)
       .set('authorization', authValue)
@@ -71,7 +71,7 @@ beforeAll(async () => {
   });
 
   userInfo.id = login.body.userId;
-  userInfo.token = login.body.token;
+  userInfo.accessToken = login.body.accessToken;
   jobVacancie.user_id = login.body.userId;
 });
 

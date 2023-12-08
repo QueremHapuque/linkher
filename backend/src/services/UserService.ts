@@ -36,11 +36,11 @@ class UserService {
       expiresIn: process.env.SESSION_EXPIRE_SECRET_TIME!,
     });
 
-    const acessToken = jwt.sign({ refresh_token: refreshToken }, secret!, {
+    const accessToken = jwt.sign({ refresh_token: refreshToken }, secret!, {
       expiresIn: process.env.SESSION_EXPIRE_TIME!,
     });
 
-    return { acessToken, refreshToken };
+    return { accessToken, refreshToken };
   }
 
   refreshToken(refreshToken: string): string {

@@ -6,7 +6,8 @@ class JobVacancie extends Model {
   declare id: number;
   declare user_id: number;
   declare name: string;
-  declare oportunity_type: 'Vaga de emprego' | 'Edital de Pesquisa';
+  declare is_job?: boolean;
+  declare is_researchCall?: boolean;
   declare company: string;
   declare link: string;
   declare description: string;
@@ -14,10 +15,18 @@ class JobVacancie extends Model {
   declare local: string;
   declare expire_date: Date;
   declare is_affirmative: boolean;
-  declare contract_type: 'CLT' | 'ESTÁGIO' | 'PJ';
-  declare seniority: 'JUNIOR' | 'PLENO' | 'SENIOR';
-  declare modality: 'PRESENCIAL' | 'REMOTO' | 'HÍBRIDO';
-  declare working_hours: '20' | '30' | '40';
+  declare is_clt?: boolean;
+  declare is_internship?: boolean;
+  declare is_pj?: boolean;
+  declare is_junior?: boolean;
+  declare is_pleno?: boolean;
+  declare is_senior?: boolean;
+  declare is_inPerson?: boolean;
+  declare is_remote?: boolean;
+  declare is_hybrid?: boolean;
+  declare is_halfTime?: boolean;
+  declare is_threeQuarters?: boolean;
+  declare is_fullTime?: boolean;
   declare is_secure: boolean;
 }
 
@@ -43,9 +52,13 @@ JobVacancie.init(
       type: sequelize.TEXT,
       allowNull: false,
     },
-    oportunity_type: {
-      type: sequelize.ENUM('Vaga de emprego', 'Edital de Pesquisa'),
-      allowNull: false,
+    is_job: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    is_researchCall: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
     },
     company: {
       type: sequelize.TEXT,
@@ -72,28 +85,60 @@ JobVacancie.init(
       allowNull: false,
     },
     is_affirmative: {
-      type: sequelize.BOOLEAN,
+      type: sequelize.BOOLEAN(),
       defaultValue: false,
       allowNull: false,
     },
-    contract_type: {
-      type: sequelize.ENUM('CLT', 'ESTÁGIO', 'PJ'),
-      allowNull: false,
+    is_clt: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
     },
-    seniority: {
-      type: sequelize.ENUM('JUNIOR', 'PLENO', 'SENIOR'),
-      allowNull: false,
+    is_internship: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
     },
-    modality: {
-      type: sequelize.ENUM('PRESENCIAL', 'REMOTO', 'HÍBRIDO'),
-      allowNull: false,
+    is_pj: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
     },
-    working_hours: {
-      type: sequelize.ENUM('20', '30', '40'),
-      allowNull: false,
+    is_junior: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    is_pleno: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    is_senior: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    is_inPerson: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    is_remote: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    is_hybrid: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    is_halfTime: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    is_threeQuarters: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
+    },
+    is_fullTime: {
+      type: sequelize.BOOLEAN(),
+      allowNull: true,
     },
     is_secure: {
-      type: sequelize.BOOLEAN,
+      type: sequelize.BOOLEAN(),
       defaultValue: true,
       allowNull: false,
     },

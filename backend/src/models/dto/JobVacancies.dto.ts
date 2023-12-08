@@ -7,7 +7,8 @@ export interface IJobVacancie {
   id?: number;
   user_id?: number;
   name?: string;
-  oportunity_type?: 'Vaga de emprego' | 'Edital de Pesquisa';
+  is_job?: boolean;
+  is_researchCall?: boolean;
   company?: string;
   link?: string;
   description?: string;
@@ -15,9 +16,17 @@ export interface IJobVacancie {
   local?: string;
   expire_date?: Date;
   is_affirmative?: boolean;
-  contract_type?: 'CLT' | 'ESTÁGIO' | 'PJ';
-  seniority?: 'JUNIOR' | 'PLENO' | 'SENIOR';
-  modality?: 'PRESENCIAL' | 'REMOTO' | 'HÍBRIDO';
-  working_hours?: '20' | '30' | '40';
+  is_clt?: boolean;
+  is_internship?: boolean;
+  is_pj?: boolean;
+  is_junior?: boolean;
+  is_pleno?: boolean;
+  is_senior?: boolean;
+  is_inPerson?: boolean;
+  is_remote?: boolean;
+  is_hybrid?: boolean;
+  is_halfTime?: boolean;
+  is_threeQuarters?: boolean;
+  is_fullTime?: boolean;
   is_secure?: boolean;
 }
