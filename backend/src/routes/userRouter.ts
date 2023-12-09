@@ -12,6 +12,12 @@ router.post('/users/create', UserController.create);
 router.post('/users/login', UserController.login);
 router.get('/users/test', userAuth, UserController.test);
 router.put('/user/update/:id', UserController.update);
+router.get('/user/email/:id', userAuth, UserController.getUserEmail);
+router.put(
+  '/user/update/password/:id',
+  userAuth,
+  UserController.updatePassword,
+);
 
 router.get('/users/resume/:id', userAuth, ResumeController.get);
 router.post('/users/resume/create', userAuth, ResumeController.create);
