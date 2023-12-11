@@ -1,8 +1,15 @@
 import { Request, Response } from 'express';
 import errorHandler from '../exceptions/errorHandler';
-import { UserErrorMessages } from '../exceptions/messages/UserMessages';
+import {
+  UserErrorMessages,
+  UserMessages,
+} from '../exceptions/messages/UserMessages';
 import { NotFoundError } from '../exceptions/types';
 import User from '../models/User';
+import {
+  ReqChangePasswordDto,
+  changePasswordDto,
+} from '../models/dto/chagePassword.dto';
 import UserService from '../services/UserService';
 
 class UserController {
@@ -68,6 +75,48 @@ class UserController {
       };
 
       return res.status(200).send(userAccessInfo);
+    } catch (error) {
+      return errorHandler(error, res);
+    }
+  }
+
+  async getUserEmail(
+    req: Request,
+    res: Response,
+  ): Promise<Response | undefined> {
+    try {
+      const userId = req.params.id as string;
+      const email = await UserService.getUserEmail(userId);
+
+      if (!email) throw new NotFoundError(UserErrorMessages.USER_NOT_FOUND);
+
+      return res.status(200).send({ email: email });
+    } catch (error) {
+      return errorHandler(error, res);
+    }
+  }
+
+  async updatePassword(
+    req: ReqChangePasswordDto,
+    res: Response,
+  ): Promise<Response | undefined> {
+    try {
+      const userId = req.params.id as string;
+      const payload = req.body as changePasswordDto;
+
+      const user = await UserService.getUserById(userId);
+
+      if (!user) throw new NotFoundError(UserErrorMessages.USER_NOT_FOUND);
+
+      await UserService.updatePassword(
+        userId,
+        user.getDataValue('password_hash'),
+        payload,
+      );
+
+      return res
+        .status(200)
+        .send({ message: UserMessages.USER_CHANGE_PASSWORD });
     } catch (error) {
       return errorHandler(error, res);
     }
