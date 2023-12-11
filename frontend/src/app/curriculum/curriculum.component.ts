@@ -51,7 +51,7 @@ export class CurriculumComponent implements OnInit {
   disableFormation = false;
   disableCheckboxes = false;
   userId!: number;
-  
+
   curriculum!: Curriculum;
 
   // checkbox tipo contrato
@@ -179,7 +179,7 @@ export class CurriculumComponent implements OnInit {
   editState() {
     this.disableState = false;
   }
-  
+
   editPreferences() {
     this.disableCheckboxes = false;
   }
