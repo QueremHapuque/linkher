@@ -54,7 +54,7 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   changeEmail() {
-    this.accountSettingsService.updateEmail(1, this.newEmail).subscribe(
+    this.accountSettingsService.updateEmail(this.newEmail).subscribe(
       response => {
         // Lógica para tratamento de sucesso
         console.log('Email atualizado com sucesso', response);
@@ -68,6 +68,7 @@ export class AccountSettingsComponent implements OnInit {
     );
   }
 
+  // função antiga para chamada da api
   updatePassword() {
     this.accountSettingsService.updatePassword(1, this.newPassword).subscribe(
       response => {
@@ -80,6 +81,37 @@ export class AccountSettingsComponent implements OnInit {
       }
     );
   }
+
+  // nova função para chamada de api
+  updatePasswordd() {
+    this.accountSettingsService.updatePasswordd(this.currentPassword, this.newPassword).subscribe(
+      response => {
+        // Lógica para tratamento de sucesso
+        console.log('Senha atualizada com sucesso', response);
+      },
+      error => {
+        // Lógica para tratamento de erro
+        console.error('Erro ao atualizar o senha', error);
+      }
+    );
+  }
+
+  logout() {
+    localStorage.clear();
+    this.router.navigateByUrl('', { replaceUrl: true });
+  }
+
+  getUserEmail() {
+    this.accountSettingsService.getUserEmail().subscribe(
+      (response) => {
+        this.currentEmail = response;
+        console.log(response)
+      },
+      (error) => {
+        console.log(error)
+      }
+    )
+  }
   openChangeEmailModal() {
     const dialogRef = this.dialog.open(ChangeEmailModalComponent, {
       width: '400px',
@@ -89,7 +121,7 @@ export class AccountSettingsComponent implements OnInit {
     dialogRef.afterClosed().subscribe(result => {
       if (result && result.newEmail) {
         // Chame o serviço para atualizar o email
-        this.accountSettingsService.updateEmail(1, result.newEmail).subscribe(
+        this.accountSettingsService.updateEmail(result.newEmail).subscribe(
           response => {
             // Lógica para tratamento de sucesso
             console.log('Email atualizado com sucesso', response);

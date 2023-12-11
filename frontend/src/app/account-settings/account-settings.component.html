@@ -19,7 +19,7 @@
 
           <ng-container *ngIf="!disableName">
             <mat-form-field class="text-input">
-              <mat-label>Nome</mat-label>
+              <mat-label>Email Atual</mat-label>
               <input matInput [formControl]="nameFormControl" [(ngModel)]="currentEmail" required>
               <mat-error>{{getErrorMessage()}}</mat-error>
             </mat-form-field>
@@ -66,7 +66,7 @@
           <ng-container>
             <mat-form-field class="text-input">
               <mat-label>Nova senha</mat-label>
-              <input matInput [formControl]="emailFormControl" [(ngModel)]="newPassword" required>
+              <input matInput [formControl]="nameFormControl" [(ngModel)]="newPassword" required>
               <mat-error>{{getErrorMessage()}}</mat-error>
             </mat-form-field>
           </ng-container>
@@ -74,14 +74,14 @@
           <ng-container>
             <mat-form-field class="text-input">
               <mat-label>Confirmar senha</mat-label>
-              <input matInput [formControl]="emailFormControl" [(ngModel)]="confirmNewPassword" required>
+              <input matInput [formControl]="nameFormControl" [(ngModel)]="confirmNewPassword" required>
               <mat-error>{{getErrorMessage()}}</mat-error>
             </mat-form-field>
           </ng-container>
 
           <ng-container *ngIf="(!disableName || !disableEmail || !disableState)">
             <div style="display: flex; justify-content: center;">
-              <button mat-button class="save-button-1" (click)="'saveInfo()'">Salvar</button>
+              <button mat-button class="save-button-1" (click)="updatePassword()">Salvar</button>
             </div>
           </ng-container>
         </div>
@@ -104,7 +104,7 @@
             excluir permanentemente a sua conta?</p>
           <ng-container *ngIf="(!disableName || !disableEmail || !disableState)">
             <div style="display: flex; justify-content: center;">
-              <button mat-button class="save-button-1" (click)="'saveInfo()'">Excluir</button>
+              <button mat-button class="save-button-1" (click)="logout()">Excluir</button>
             </div>
           </ng-container>
         </div>
@@ -112,7 +112,7 @@
     </mat-accordion>
 
 
-    <div class="config-option">
+    <!-- <div class="config-option">
       <div class="option-info">
         <img src="/assets/images/email-icon.png" alt="Ícone de Alterar Email">
         <span>Email</span>
@@ -138,9 +138,9 @@
         <span>Conta</span>
       </div>
       <button (click)="openDeleteAccountModal()" class="option-button">Excluir Conta</button>
-    </div>
+    </div> -->
 
-    <button (click)="'logout()'" class="logout-button">
+    <button (click)="logout()" class="logout-button">
       <div class="logout-content">
         <img src="/assets/images/logout-icon.png" alt="Ícone de Encerrar Sessão">
         <span>Encerrar Sessão</span>
