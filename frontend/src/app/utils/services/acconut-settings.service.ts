@@ -1,37 +1,5 @@
-// import { Injectable } from '@angular/core';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class AcconutSettingsService {
-
-//   constructor() { }
-// }
-
-
-
-// import { Injectable } from '@angular/core';
-// import { HttpClient } from '@angular/common/http';
-// import { Observable } from 'rxjs';
-
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class AccountSettingsService {
-//   private baseUrl = 'http://localhost:3000/user/update/1';
-
-//   constructor(private http: HttpClient) {}
-
-//   updateEmail(email: string): Observable<any> {
-//     // Supondo que você precise enviar apenas o novo email para a API
-//     const body = { email };
-
-//     return this.http.put(this.baseUrl, body);
-//   }
-// }
-
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -39,24 +7,20 @@ import { Observable } from 'rxjs';
 })
 export class AccountSettingsService {
   private apiUrl = 'http://localhost:3000/user';
+  private userToken = localStorage.getItem('TOKEN');
+  private userId = localStorage.getItem('USER_ID')
 
   constructor(private http: HttpClient) {}
 
-  // updateEmail(userId: number, email: string, password: string): Observable<any> {
-  //   const body = {
-  //     email,
-  //     password,
-  //     is_admin: false
-  //   };
-  updateEmail(userId: number, email: string,): Observable<any> {
+
+  updateEmail(email: string,): Observable<any> {
     const body = {
       "email": email
     };
-    // const url = `${this.apiUrl}/update/${userId}`;
-    const url = `${this.apiUrl}/update/1`;
+    const url = `${this.apiUrl}/update/${this.userId}`;
     return this.http.put(url, body);
   }
-
+// função antiga para chamada da api
   updatePassword(userId: number, password: string,): Observable<any> {
     const body = {
       "password": password
@@ -64,5 +28,28 @@ export class AccountSettingsService {
     // const url = `${this.apiUrl}/update/${userId}`;
     const url = `${this.apiUrl}/update/1`;
     return this.http.put(url, body);
+  }
+// nova função para chamada de api
+  updatePasswordd( currentPassword: string, newPassword: string): Observable<any> {
+    const body = {
+      "currentPassword": currentPassword,
+      "newPassword": newPassword
+    };
+    // const url = `${this.apiUrl}/update/${userId}`;
+    const url = `${this.apiUrl}/update/${this.userId}`;
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userToken}`
+    });
+    return this.http.put(url, body, { headers });
+  }
+
+
+
+  getUserEmail(): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userToken}`
+    });
+    const url = `${this.apiUrl}/email/${this.userId}`;
+    return this.http.get(url, { headers });
   }
 }
