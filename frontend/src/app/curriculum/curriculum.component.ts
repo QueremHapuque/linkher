@@ -50,7 +50,6 @@ export class CurriculumComponent implements OnInit {
   disableState = false;
   disableFormation = false;
   disableCheckboxes = false;
-  userId!: number;
 
   curriculum!: Curriculum;
 
@@ -263,7 +262,7 @@ export class CurriculumComponent implements OnInit {
     };
     const softSkills: string = this.softSkills[0].softSkill;
 
-    this.resumeService.createResume(this.userId, this.name, this.email, this.selectedState, education, experience, language, technology, certification, softSkills,
+    this.resumeService.createResume(this.name, this.email, this.selectedState, education, experience, language, technology, certification, softSkills,
       this.researchGrant, this.internship, this.clt, this.pj, this.inPerson, this.remote, this.hybrid, this.halfTime, this.threeQuarters, this.fullTime, this.beginner,
       this.intermediary, this.advanced).subscribe(
         async (response) => {

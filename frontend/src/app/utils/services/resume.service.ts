@@ -21,12 +21,12 @@ export class ResumeService {
     return this.http.get<Curriculum>(`${this.apiUrl}/${this.userId}`,{ headers })
   }
 
-  createResume(userId: number, name: string, email: string, state: string, education: Record<string, string>, experience: Record<string, string>,
+  createResume(name: string, email: string, state: string, education: Record<string, string>, experience: Record<string, string>,
     languages: Record<string, string>, technologies: Record<string, string>, certifications: Record<string, string>, softSkills: string,
     isSearch: boolean, isInternship: boolean, isClt: boolean, isPj: boolean, isInPerson: boolean, isRemote: boolean, isHybrid: boolean,
     isHalfTime: boolean, isThreeQuarters: boolean, isFullTime: boolean, isJunior: boolean, isPleno: boolean, isSenior: boolean): Observable<Curriculum> {
     const data = {
-      'userId': userId,
+      'userId': this.userId,
       'name': name,
       'email': email,
       'state': state,
