@@ -28,7 +28,8 @@ export class LoginComponent {
     else {
       this.userService.login(this.email, this.password).subscribe(
         async (response) => {
-          localStorage.setItem('TOKEN', response.token);
+          localStorage.setItem('TOKEN', response.accessToken);
+          localStorage.setItem('REFRESH_TOKEN', response.refreshToken);
           localStorage.setItem('USER_ID', response.userId);
           this.showNotification('success', 'Login realizado com sucesso!', 'Seja bem vinda.');
           await this.delay(2500);
