@@ -6,6 +6,7 @@ import { CurriculumComponent } from './curriculum/curriculum.component';
 import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { RegisterComponent } from './register/register.component';
+import { SobrenosComponent } from './sobrenos/sobrenos.component';
 
 const routes: Routes = [
   {
@@ -38,6 +39,12 @@ const routes: Routes = [
     component: RegisterComponent,
     pathMatch: 'full'
   },
+  {
+    path: 'sobrenos',
+    component: SobrenosComponent,
+    pathMatch: 'full'
+  },
+
 ];
 
 
