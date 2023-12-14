@@ -7,6 +7,7 @@ import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { RegisterComponent } from './register/register.component';
 import { SobrenosComponent } from './sobrenos/sobrenos.component';
+import { ContactComponent } from './contact/contact.component';
 
 const routes: Routes = [
   {
@@ -44,7 +45,11 @@ const routes: Routes = [
     component: SobrenosComponent,
     pathMatch: 'full'
   },
-
+  {
+    path: 'contact',
+    component: ContactComponent,
+    pathMatch: 'full'
+  },
 ];
 
 
