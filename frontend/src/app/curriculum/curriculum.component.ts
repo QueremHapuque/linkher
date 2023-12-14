@@ -1,7 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
 import { MatDialog } from '@angular/material/dialog';
-import { ModalCvComponent } from '../modal-cv/modal-cv.component';
 import { EducationList, ExperienceList, LanguageList, TechnologyList, CertificationList, SoftSkillList, Curriculum } from './interface-cv';
 import { Router } from '@angular/router';
 
@@ -31,11 +30,28 @@ export class CurriculumComponent implements OnInit {
   ];
 
   @Input()
+  // Informações básicas
   name!: string;
-  @Input()
   email!: string;
-  @Input()
   selectedState!: string;
+  // Formação
+  courseName!: string;
+  institution!: string;
+  // Experiências
+  officeName!: string;
+  company!: string;
+  // Idiomas
+  languageName!: string;
+  expertiseLanguage!: string;
+  // Tecnologias
+  technologieName!: string;
+  expertiseTechnologie!: string;
+  // Certificações
+  certificationName!: string;
+  certificationInstitution!: string;
+  // Experiências
+  softSkill!: string;
+
   nameFormControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   education!: EducationList[];
@@ -45,43 +61,36 @@ export class CurriculumComponent implements OnInit {
   certification!: CertificationList[];
   softSkills!: SoftSkillList[];
   isNew = true;
+  newFormation = false;
+  newExperience = false;
+  newLanguage = false;
+  newTechnologie = false;
+  newCertification = false;
+  newSoftskill = false;
   disableName = false;
   disableEmail = false;
   disableState = false;
   disableFormation = false;
   disableCheckboxes = false;
-
   curriculum!: Curriculum;
 
+  @Input()
   // checkbox tipo contrato
-  @Input()
   researchGrant = false;
-  @Input()
   internship = false;
-  @Input()
   clt = false;
-  @Input()
   pj = false;
   // checkbox modalidade
-  @Input()
   inPerson = false;
-  @Input()
   remote = false;
-  @Input()
   hybrid = false;
   // checkbox carga horaria
-  @Input()
   halfTime = false;
-  @Input()
   threeQuarters = false;
-  @Input()
   fullTime = false;
   // checkbox nvl experiencia
-  @Input()
   beginner = false;
-  @Input()
   intermediary = false;
-  @Input()
   advanced = false;
 
   ngOnInit() {
@@ -106,8 +115,6 @@ export class CurriculumComponent implements OnInit {
     this.beginner = curriculum.isJunior;
     this.intermediary = curriculum.isPleno;
     this.advanced = curriculum.isSenior;
-
-    console.log('this.inPerson -> ', this.inPerson)
   }
 
   getErrorMessage() {
@@ -116,55 +123,6 @@ export class CurriculumComponent implements OnInit {
     }
 
     return this.emailFormControl.hasError('email') ? 'Esse não é um email válido!' : '';
-  }
-
-  openDialog(typeField: string) {
-    const modalOpen = this.dialog.open(ModalCvComponent, {
-      disableClose: true,
-      data: { Field: typeField }
-    });
-    if (typeField == 'education') {
-      modalOpen.afterClosed().subscribe(result => {
-        if (result) {
-          this.education = result;
-        }
-      });
-    }
-    else if (typeField == 'experiences') {
-      modalOpen.afterClosed().subscribe(result => {
-        if (result) {
-          this.experience = result;
-        }
-      });
-    }
-    else if (typeField == 'languages') {
-      modalOpen.afterClosed().subscribe(result => {
-        if (result) {
-          this.language = result;
-        }
-      });
-    }
-    else if (typeField == 'technologies') {
-      modalOpen.afterClosed().subscribe(result => {
-        if (result) {
-          this.technology = result;
-        }
-      });
-    }
-    else if (typeField == 'certifications') {
-      modalOpen.afterClosed().subscribe(result => {
-        if (result) {
-          this.certification = result;
-        }
-      });
-    }
-    else if (typeField == 'softSkills') {
-      modalOpen.afterClosed().subscribe(result => {
-        if (result) {
-          this.softSkills = result;
-        }
-      });
-    }
   }
 
   editName() {
@@ -188,6 +146,88 @@ export class CurriculumComponent implements OnInit {
     this.disableEmail = true;
     this.disableState = true;
     this.updateCurriculum();
+  }
+
+  addFormation() {
+    this.newFormation = true;
+  }
+
+  addExperience() {
+    this.newExperience = true;
+  }
+
+  addLanguage() {
+    this.newLanguage = true;
+  }
+
+  addTechnologie() {
+    this.newTechnologie = true;
+  }
+
+  addCertification() {
+    this.newCertification = true;
+  }
+
+  addSoftskill() {
+    this.newSoftskill = true;
+  }
+
+  saveFormation() {
+    const newFormation: EducationList = {
+      institution: this.institution,
+      courseName: this.courseName
+    };
+    this.education.push(newFormation);
+    this.updateCurriculum();
+    this.courseName = '';
+    this.institution = '';
+  }
+
+  saveExperience() {
+    const newExperience: ExperienceList = {
+      officeName: this.officeName,
+      company: this.company
+    };
+    this.experience.push(newExperience);
+    this.updateCurriculum();
+  }
+
+  saveLanguage() {
+    const newLanguage: LanguageList = {
+      languageName: this.languageName,
+      expertiseLanguage: this.expertiseLanguage
+    };
+    this.language.push(newLanguage);
+    this.updateCurriculum();
+  }
+
+  saveTechnologie() {
+    const newTechnologie: TechnologyList = {
+      technologieName: this.technologieName,
+      expertiseTechnologie: this.expertiseTechnologie
+    };
+    this.technology.push(newTechnologie);
+    this.updateCurriculum();
+  }
+
+  saveCertification() {
+    const newCertification: CertificationList = {
+      certificationName: this.certificationName,
+      certificationInstitution: this.certificationInstitution
+    };
+    this.certification.push(newCertification);
+    this.updateCurriculum();
+  }
+
+  saveSoftskill() {
+    const newSoftskill: SoftSkillList = {
+      softSkill: this.softSkill
+    };
+    console.log('this.softSkills ->> ', this.softSkills);
+    this.softSkills.push(newSoftskill);
+    console.log("this.softSkills -> ", this.softSkills);
+    // this.updateCurriculum();
+    this.softSkill = '';
   }
 
   transformObjectToArray(curriculum: Curriculum) {
@@ -218,6 +258,13 @@ export class CurriculumComponent implements OnInit {
 
     // soft skills
     this.softSkills = [{ softSkill: curriculum.softSkills } as unknown as SoftSkillList];
+
+    console.log('this.softSkills aaa -> ', this.softSkills);
+    console.log('curriculum.softSkills -> ', curriculum.softSkills);
+
+    for (let i = 0; i < this.softSkills.length; i++) {
+      console.log(this.softSkills[i]);
+    }
   }
 
   getCurriculum() {
@@ -279,23 +326,30 @@ export class CurriculumComponent implements OnInit {
   }
 
   updateCurriculum() {
-    console.log('this.inPerson -> ', this.inPerson)
-    const education: Record<string, string> = {
-      [this.education[0].institution]: this.education[0].courseName
-    };
-    const experience: Record<string, string> = {
-      [this.experience[0].company]: this.experience[0].officeName
-    };
-    const language: Record<string, string> = {
-      [this.language[0].languageName]: this.language[0].expertiseLanguage
-    };
-    const technology: Record<string, string> = {
-      [this.technology[0].technologieName]: this.technology[0].expertiseTechnologie
-    };
-    const certification: Record<string, string> = {
-      [this.certification[0].certificationInstitution]: this.certification[0].certificationName
-    };
-    const softSkills: string = this.softSkills[0].softSkill;
+    const education: Record<string, string> = {};
+    this.education.forEach(item => {
+      education[item.institution] = item.courseName;
+    });
+    const experience: Record<string, string> = {};
+    this.experience.forEach(item => {
+      experience[item.company] = item.officeName;
+    });
+
+    const language: Record<string, string> = {};
+    this.language.forEach(item => {
+      language[item.languageName] = item.expertiseLanguage;
+    });
+
+    const technology: Record<string, string> = {};
+    this.technology.forEach(item => {
+      technology[item.technologieName] = item.expertiseTechnologie;
+    });
+
+    const certification: Record<string, string> = {};
+    this.certification.forEach(item => {
+      certification[item.certificationInstitution] = item.certificationName;
+    });
+    const softSkills: string = this.softSkills.join(', ');
 
     this.resumeService.updateResume(Number(localStorage.getItem('RESUME_ID')), this.name, this.email, this.selectedState, education, experience, language, technology,
     certification, softSkills, this.researchGrant, this.internship, this.clt, this.pj, this.inPerson, this.remote, this.hybrid, this.halfTime, this.threeQuarters,
@@ -313,25 +367,40 @@ export class CurriculumComponent implements OnInit {
     );
   }
 
-  public deleteField(fieldType: string) {
-    if (fieldType == 'education') {
-      this.education = [];
-    }
-    else if (fieldType == 'experience') {
-      this.experience = [];
-    }
-    else if (fieldType == 'language') {
-      this.language = [];
-    }
-    else if (fieldType == 'technology') {
-      this.technology = [];
-    }
-    else if (fieldType == 'certification') {
-      this.certification = [];
-    }
-    else if (fieldType == 'softSkills') {
-      this.softSkills = [];
-    }
+  async deleteFormation(formation: EducationList) {
+    this.education = this.education.filter(item => item !== formation);
+    await this.delay(1000);
+    this.updateCurriculum();
+  }
+
+  async deleteExperience(experience: ExperienceList) {
+    this.experience = this.experience.filter(item => item !== experience);
+    await this.delay(1000);
+    this.updateCurriculum();
+  }
+
+  async deleteLanguage(language: LanguageList) {
+    this.language = this.language.filter(item => item !== language);
+    await this.delay(1000);
+    this.updateCurriculum();
+  }
+
+  async deleteTechnologie(technology: TechnologyList) {
+    this.technology = this.technology.filter(item => item !== technology);
+    await this.delay(1000);
+    this.updateCurriculum();
+  }
+
+  async deleteCertification(certification: CertificationList) {
+    this.certification = this.certification.filter(item => item !== certification);
+    await this.delay(1000);
+    this.updateCurriculum();
+  }
+
+  async deleteSoftskill(softSkill: SoftSkillList) {
+    this.softSkills = this.softSkills.filter(item => item !== softSkill);
+    await this.delay(1000);
+    this.updateCurriculum();
   }
 
   showNotification(severity: string, summary: string, message: string) {
