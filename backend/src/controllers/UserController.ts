@@ -16,8 +16,9 @@ class UserController {
   async create(req: Request, res: Response) {
     try {
       await User.create(req.body);
-      const { email, is_admin } = req.body;
+      const { email, is_admin, name } = req.body;
       const userInfo = {
+        name: name,
         email: email,
         is_admin: is_admin ?? false,
       };
@@ -72,6 +73,7 @@ class UserController {
         accessToken,
         refreshToken,
         userId: user.getDataValue('id'),
+        name: user.getDataValue('name'),
       };
 
       return res.status(200).send(userAccessInfo);
