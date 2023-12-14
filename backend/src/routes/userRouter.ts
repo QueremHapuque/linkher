@@ -24,6 +24,7 @@ router.post('/users/resume/create', userAuth, ResumeController.create);
 router.put('/user/resume/update/:id', userAuth, ResumeController.Update);
 
 router.get('/users/jobVacancie/:id', userAuth, JobVacancieController.get);
+router.get('/user/jobVacancies/:id', userAuth, JobVacancieController.getFilter);
 router.post(
   '/users/jobVacancie/create',
   userAuth,

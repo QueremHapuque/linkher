@@ -32,6 +32,7 @@ import { ChangeEmailModalComponent } from './change-email-modal/change-email-mod
 import { ChangePasswordModalComponent } from './change-password-modal/change-password-modal.component';
 import { DeleteAccountModalComponent } from './delete-account-modal/delete-account-modal.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { ContactComponent } from './contact/contact.component';
 
 
 @NgModule({
@@ -49,7 +50,8 @@ import { AboutUsComponent } from './about-us/about-us.component';
     RegisterComponent,
     ChangePasswordModalComponent,
     DeleteAccountModalComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    ContactComponent
   ],
   imports: [
     RouterModule,

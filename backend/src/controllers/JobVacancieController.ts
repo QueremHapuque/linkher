@@ -15,12 +15,26 @@ class JobVacancieController {
       return errorHandler(error, res);
     }
   }
+
   async get(req: Request, res: Response): Promise<Response<JobVacancie>> {
     try {
       const userId = req.params.id;
       const jobVacancie = await JobVacancieService.getByUserId(userId);
 
       return res.status(200).send(jobVacancie);
+    } catch (error) {
+      return errorHandler(error, res);
+    }
+  }
+
+  async getFilter(
+    req: Request,
+    res: Response,
+  ): Promise<Response<JobVacancie[]>> {
+    try {
+      const userId = req.params.id;
+      const jobVacancies = await JobVacancieService.getByUserFilter(userId);
+      return res.status(200).send(jobVacancies);
     } catch (error) {
       return errorHandler(error, res);
     }

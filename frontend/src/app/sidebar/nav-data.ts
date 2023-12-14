@@ -15,7 +15,7 @@ export const navbarData = [
         label: 'Cadastrar Oportunidade'
     },
     {
-        routeLink: 'home',
+        routeLink: 'contact',
         icon: 'email',
         label: 'Fale Conosco'
     },
