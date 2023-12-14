@@ -18,6 +18,10 @@ User.init(
       allowNull: false,
       primaryKey: true,
     },
+    name: {
+      type: sequelize.STRING(100),
+      allowNull: false,
+    },
     email: {
       type: sequelize.STRING(100),
       allowNull: false,
