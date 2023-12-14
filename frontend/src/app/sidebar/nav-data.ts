@@ -10,7 +10,7 @@ export const navbarData = [
         label: 'Meu CV'
     },
     {
-        routeLink: 'home',
+        routeLink: 'register-opportunities',
         icon: 'add',
         label: 'Cadastrar Oportunidade'
     },

@@ -33,6 +33,7 @@ import { ChangePasswordModalComponent } from './change-password-modal/change-pas
 import { DeleteAccountModalComponent } from './delete-account-modal/delete-account-modal.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
+import { RegisterOpportunitiesComponent } from './register-opportunities/register-opportunities.component';
 
 
 @NgModule({
@@ -51,7 +52,8 @@ import { ContactComponent } from './contact/contact.component';
     ChangePasswordModalComponent,
     DeleteAccountModalComponent,
     AboutUsComponent,
-    ContactComponent
+    ContactComponent,
+    RegisterOpportunitiesComponent
   ],
   imports: [
     RouterModule,
