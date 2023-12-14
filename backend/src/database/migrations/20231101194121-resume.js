@@ -37,28 +37,27 @@ module.exports = {
         allowNull: true,
       },
       education: {
-        type: Sequelize.JSON,
+        type: Sequelize.TEXT,
         allowNull: true,
       },
       experience: {
-        type: Sequelize.JSON,
+        type: Sequelize.TEXT,
         allowNull: true,
       },
       languages: {
-        type: Sequelize.JSON,
+        type: Sequelize.TEXT,
         allowNull: true,
       },
       technologies: {
-        type: Sequelize.JSON,
+        type: Sequelize.TEXT,
         allowNull: true,
       },
       certifications: {
-        type: Sequelize.JSON,
+        type: Sequelize.TEXT,
         allowNull: true,
       },
       soft_skills: {
         type: Sequelize.TEXT,
-        defaultValue: [],
         allowNull: true,
       },
       is_clt: {
