@@ -8,6 +8,7 @@ import { InicioComponent } from './inicio/inicio.component';
 import { RegisterComponent } from './register/register.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
+import { RegisterOpportunitiesComponent } from './register-opportunities/register-opportunities.component';
 
 const routes: Routes = [
   {
@@ -50,6 +51,11 @@ const routes: Routes = [
     component: ContactComponent,
     pathMatch: 'full'
   },
+  {
+    path: 'register-opportunities',
+    component: RegisterOpportunitiesComponent,
+    pathMatch: 'full'
+  }
 ];
 
 
