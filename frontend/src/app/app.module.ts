@@ -24,7 +24,6 @@ import { SidebarComponent } from './sidebar/sidebar.component';
 import { HomeComponent } from './home/home.component';
 import { AccountSettingsComponent } from './account-settings/account-settings.component';
 import { CurriculumComponent } from './curriculum/curriculum.component';
-import { ModalCvComponent } from './modal-cv/modal-cv.component';
 import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { RegisterComponent } from './register/register.component';
@@ -45,7 +44,6 @@ import { RegisterOpportunitiesComponent } from './register-opportunities/registe
     AccountSettingsComponent,
     ChangeEmailModalComponent,
     CurriculumComponent,
-    ModalCvComponent,
     LoginComponent,
     InicioComponent,
     RegisterComponent,
