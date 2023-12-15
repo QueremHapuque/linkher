@@ -5,25 +5,20 @@
 </div>
 
 <div class="Inputs">
+    <p>Nome:</p>
+    <input [(ngModel)]="name" type="text" required>
+
     <p>Email:</p>
-    <input [(ngModel)]="email" type="text" id="username" name="username" required>
+    <input [(ngModel)]="email" type="text" id="email" name="email" required>
 
     <p>Senha:</p>
-    <input [(ngModel)]="password" type="password" id="password" name="password" required>
+    <input [(ngModel)]="password" type="password" required>
     
     <p>Confirmação de Senha:</p>
-    <input [(ngModel)]="confirmPassword" type="password" id="confirmpassword" name="confirmpassword" required>
+    <input [(ngModel)]="confirmPassword" type="password" required>
 </div>
 
 <p-toast></p-toast>
-<button type="submit" (click)="register()">
+<button class="button" type="submit" (click)="register()">
     Cadastrar
 </button>
-
-<!-- <div class="card flex justify-content-center gap-2">
-    <p-toast></p-toast>
-    <button type="button" pButton pRipple (click)="showSuccess()" label="Success" class="p-button-success">success</button>
-    <button type="button" pButton pRipple (click)="showInfo()" label="Info" class="p-button-info">info</button>
-    <button type="button" pButton pRipple (click)="showWarn()" label="Warn" class="p-button-warning">warning</button>
-    <button type="button" pButton pRipple (click)="showError()" label="Error" class="p-button-danger">danger</button>
-</div> -->

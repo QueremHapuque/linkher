@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Curriculum } from 'src/app/curriculum/interface-cv';
+import { Curriculum, EducationList, ExperienceList, LanguageList, TechnologyList, CertificationList, SoftSkillList } from 'src/app/curriculum/interface-cv';
 import { HttpClient, HttpHeaders  } from '@angular/common/http';
 import { Observable } from 'rxjs';
 
@@ -21,10 +21,10 @@ export class ResumeService {
     return this.http.get<Curriculum>(`${this.apiUrl}/${this.userId}`,{ headers })
   }
 
-  createResume(name: string, email: string, state: string, education: Record<string, string>, experience: Record<string, string>,
-    languages: Record<string, string>, technologies: Record<string, string>, certifications: Record<string, string>, softSkills: string,
-    isSearch: boolean, isInternship: boolean, isClt: boolean, isPj: boolean, isInPerson: boolean, isRemote: boolean, isHybrid: boolean,
-    isHalfTime: boolean, isThreeQuarters: boolean, isFullTime: boolean, isJunior: boolean, isPleno: boolean, isSenior: boolean): Observable<Curriculum> {
+  createResume(name: string, email: string, state: string, education: EducationList[], experience: ExperienceList[], languages: LanguageList[],
+    technologies: TechnologyList[], certifications: CertificationList[], softSkills: SoftSkillList[], isSearch: boolean, isInternship: boolean,
+    isClt: boolean, isPj: boolean, isInPerson: boolean, isRemote: boolean, isHybrid: boolean, isHalfTime: boolean, isThreeQuarters: boolean,
+    isFullTime: boolean, isJunior: boolean, isPleno: boolean, isSenior: boolean): Observable<Curriculum> {
     const data = {
       'userId': this.userId,
       'name': name,
@@ -58,10 +58,10 @@ export class ResumeService {
     return this.http.post<Curriculum>(`${this.apiUrl}/create`, data, { headers });
   }
 
-    updateResume(id: number, name: string, email: string, state: string, education: Record<string, string>, experience: Record<string, string>,
-      languages: Record<string, string>, technologies: Record<string, string>, certifications: Record<string, string>, softSkills: string,
-      isSearch: boolean, isInternship: boolean, isClt: boolean, isPj: boolean, isInPerson: boolean, isRemote: boolean, isHybrid: boolean,
-      isHalfTime: boolean, isThreeQuarters: boolean, isFullTime: boolean, isJunior: boolean, isPleno: boolean, isSenior: boolean): Observable<Curriculum> {
+    updateResume(id: number, name: string, email: string, state: string, education: EducationList[], experience: ExperienceList[], languages: LanguageList[],
+      technologies: TechnologyList[], certifications: CertificationList[], softSkills: SoftSkillList[], isSearch: boolean, isInternship: boolean,
+      isClt: boolean, isPj: boolean, isInPerson: boolean, isRemote: boolean, isHybrid: boolean, isHalfTime: boolean, isThreeQuarters: boolean,
+      isFullTime: boolean, isJunior: boolean, isPleno: boolean, isSenior: boolean): Observable<Curriculum> {
       const data = {
         'id': id,
         'name': name,

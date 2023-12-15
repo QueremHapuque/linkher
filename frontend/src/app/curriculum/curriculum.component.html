@@ -112,16 +112,35 @@
           </div>
           <div class="tittle">
             <span>Suas formações</span>
-            <mat-icon class="add-icon" (click)="openDialog('education')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="addFormation()">add</mat-icon>
           </div>
-          <div *ngIf="education">
-              <ul *ngFor="let item of education">
+          <div *ngIf="curriculum" class="content">
+              <ul *ngFor="let item of curriculum.education">
                 <li>
                   {{ item.courseName }} - {{ item.institution }}
-                  <mat-icon class="delete-icon" (click)="deleteField('education')">clear</mat-icon>
+                  <mat-icon class="delete-icon" (click)="deleteFormation(item)">clear</mat-icon>
                 </li>
               </ul>
           </div>
+          <ng-container *ngIf="newFormation">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <mat-form-field class="text-input-2">
+                <mat-label>Nome do curso</mat-label>
+                <input matInput
+                [(ngModel)]="courseName">
+              </mat-form-field>
+              <mat-form-field class="text-input-2">
+                <mat-label>Instituição (sigla)</mat-label>
+                <input matInput
+                [(ngModel)]="institution">
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isNew" 
+              style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1"
+              (click)="saveFormation()">Salvar</button>
+            </div>
+          </ng-container>
         </mat-expansion-panel>
     </mat-accordion>
     <!-- EXPERIENCIAS -->
@@ -139,18 +158,37 @@
               class="info-icon">
             <span class="info-field" style="margin-left: 7px;">Experiência profissional</span>
           </div>
-
           <div class="tittle">
             <span>Suas experiências</span>
-            <mat-icon class="add-icon" (click)="openDialog('experiences')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="addExperience()">add</mat-icon>
           </div>
-          <div *ngIf="experience" class="content">
-            <ul *ngFor="let item of experience">
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.experience">
               <li>{{ item.officeName }} - {{ item.company }}
-                <mat-icon class="delete-icon" (click)="deleteField('experience')">clear</mat-icon>
+                <mat-icon class="delete-icon" (click)="deleteExperience(item)">clear</mat-icon>
               </li>
             </ul>
           </div>
+
+          <ng-container *ngIf="newExperience">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <mat-form-field class="text-input-2">
+                <mat-label>Cargo</mat-label>
+                <input matInput
+                [(ngModel)]="officeName">
+              </mat-form-field>
+              <mat-form-field class="text-input-2">
+                <mat-label>Instituição</mat-label>
+                <input matInput
+                [(ngModel)]="company">
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isNew" 
+              style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1"
+              (click)="saveExperience()">Salvar</button>
+            </div>
+          </ng-container>
         </mat-expansion-panel>
     </mat-accordion>
     <!-- IDIOMAS E TECNOLOGIAS -->
@@ -170,27 +208,67 @@
           </div>
           <div class="tittle">
             <span>Idiomas</span>
-            <mat-icon class="add-icon" (click)="openDialog('languages')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="addLanguage()">add</mat-icon>
           </div>
-          <div *ngIf="language" class="content">
-            <ul *ngFor="let item of language">
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.languages">
               <li>{{ item.languageName }} - {{ item.expertiseLanguage }}
-                <mat-icon class="delete-icon" (click)="deleteField('language')">clear</mat-icon>
+                <mat-icon class="delete-icon" (click)="deleteLanguage(item)">clear</mat-icon>
               </li>
             </ul>
           </div>
 
+          <ng-container *ngIf="newLanguage">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <mat-form-field class="text-input-2">
+                <mat-label>Idioma</mat-label>
+                <input matInput
+                [(ngModel)]="languageName">
+              </mat-form-field>
+              <mat-form-field class="text-input-2">
+                <mat-label>Expertise</mat-label>
+                <input matInput
+                [(ngModel)]="expertiseLanguage">
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isNew" 
+              style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1"
+              (click)="saveLanguage()">Salvar</button>
+            </div>
+          </ng-container>
+
           <div class="tittle">
             <span>Tecnologias</span>
-            <mat-icon class="add-icon" (click)="openDialog('technologies')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="addTechnologie()">add</mat-icon>
           </div>
-          <div *ngIf="technology" class="content">
-            <ul *ngFor="let item of technology">
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.technologies">
               <li>{{ item.technologieName }} - {{ item.expertiseTechnologie }}
-                <mat-icon class="delete-icon" (click)="deleteField('technology')">clear</mat-icon>
+                <mat-icon class="delete-icon" (click)="deleteTechnologie(item)">clear</mat-icon>
               </li>
             </ul>
           </div>
+
+          <ng-container *ngIf="newTechnologie">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <mat-form-field class="text-input-2">
+                <mat-label>Tecnologia</mat-label>
+                <input matInput
+                [(ngModel)]="technologieName">
+              </mat-form-field>
+              <mat-form-field class="text-input-2">
+                <mat-label>Expertise</mat-label>
+                <input matInput
+                [(ngModel)]="expertiseTechnologie">
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isNew" 
+              style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1"
+              (click)="saveTechnologie()">Salvar</button>
+            </div>
+          </ng-container>
         </mat-expansion-panel>
     </mat-accordion>
     <!-- CERTIFICAÇÕES -->
@@ -210,15 +288,35 @@
           </div>
           <div class="tittle">
             <span>Suas certificações</span>
-            <mat-icon class="add-icon" (click)="openDialog('certifications')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="addCertification()">add</mat-icon>
           </div>
-          <div *ngIf="certification" class="content">
-            <ul *ngFor="let item of certification">
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.certifications">
               <li>{{ item.certificationName }} - {{ item.certificationInstitution }}
-                <mat-icon class="delete-icon" (click)="deleteField('certification')">clear</mat-icon>
+                <mat-icon class="delete-icon" (click)="deleteCertification(item)">clear</mat-icon>
               </li>
             </ul>
           </div>
+
+          <ng-container *ngIf="newCertification">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <mat-form-field class="text-input-2">
+                <mat-label>Certificação</mat-label>
+                <input matInput
+                [(ngModel)]="certificationName">
+              </mat-form-field>
+              <mat-form-field class="text-input-2">
+                <mat-label>Instituição</mat-label>
+                <input matInput
+                [(ngModel)]="certificationInstitution">
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isNew" 
+              style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1"
+              (click)="saveCertification()">Salvar</button>
+            </div>
+          </ng-container>
         </mat-expansion-panel>
     </mat-accordion>
     <!-- SOFT SKILLS -->
@@ -238,15 +336,33 @@
           </div>
           <div class="tittle">
             <span>Suas soft skills</span>
-            <mat-icon class="add-icon" (click)="openDialog('softSkills')">add</mat-icon>
+            <mat-icon class="add-icon" (click)="addSoftskill()">add</mat-icon>
           </div>
-          <div *ngIf="softSkills" class="content">
-            <ul *ngFor="let item of softSkills">
-              <li>{{ item.softSkill }}
-                <mat-icon class="delete-icon" (click)="deleteField('softSkills')">clear</mat-icon>
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.softSkills">
+              <li *ngFor="let skill of item.softSkill.split(', ')">
+                <div style="margin-bottom: 12px;">
+                  {{ skill }}
+                  <mat-icon class="delete-icon" (click)="deleteSoftskill(item)">clear</mat-icon>
+                </div>
               </li>
             </ul>
           </div>
+
+          <ng-container *ngIf="newSoftskill">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <mat-form-field class="text-input-2">
+                <mat-label>Soft skill</mat-label>
+                <input matInput
+                [(ngModel)]="softSkill">
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isNew" 
+              style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1"
+              (click)="saveSoftskill()">Salvar</button>
+            </div>
+          </ng-container>
         </mat-expansion-panel>
     </mat-accordion>
     <!-- PREFERENCIAS -->

@@ -25,7 +25,7 @@ export const navbarData = [
         label: 'Configurações'
     },
     {
-        routeLink: 'sobrenos',
+        routeLink: 'about-us',
         icon: 'info',
         label: 'Sobre o Linkher'
     }

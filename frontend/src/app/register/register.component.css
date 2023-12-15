@@ -41,7 +41,7 @@ p {
     height: 30px;
 }
 
-button {
+.button {
     margin-top: 56px;
     color: #FFFFFF;
     font-family: "PoppinsSemiBold";
@@ -50,9 +50,10 @@ button {
     border-radius: 8px;
     width: 140px;
     height: 32px;
+    cursor: pointer;
 }
 
-button:hover {
+.button:hover {
     color: #D1105A;
     background-color: #FFFFFF;
     border: 1px solid #D1105A;
