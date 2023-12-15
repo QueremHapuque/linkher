@@ -114,8 +114,8 @@
             <span>Suas formações</span>
             <mat-icon class="add-icon" (click)="addFormation()">add</mat-icon>
           </div>
-          <div *ngIf="education" class="content">
-              <ul *ngFor="let item of education">
+          <div *ngIf="curriculum" class="content">
+              <ul *ngFor="let item of curriculum.education">
                 <li>
                   {{ item.courseName }} - {{ item.institution }}
                   <mat-icon class="delete-icon" (click)="deleteFormation(item)">clear</mat-icon>
@@ -162,8 +162,8 @@
             <span>Suas experiências</span>
             <mat-icon class="add-icon" (click)="addExperience()">add</mat-icon>
           </div>
-          <div *ngIf="experience" class="content">
-            <ul *ngFor="let item of experience">
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.experience">
               <li>{{ item.officeName }} - {{ item.company }}
                 <mat-icon class="delete-icon" (click)="deleteExperience(item)">clear</mat-icon>
               </li>
@@ -210,8 +210,8 @@
             <span>Idiomas</span>
             <mat-icon class="add-icon" (click)="addLanguage()">add</mat-icon>
           </div>
-          <div *ngIf="language" class="content">
-            <ul *ngFor="let item of language">
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.languages">
               <li>{{ item.languageName }} - {{ item.expertiseLanguage }}
                 <mat-icon class="delete-icon" (click)="deleteLanguage(item)">clear</mat-icon>
               </li>
@@ -242,8 +242,8 @@
             <span>Tecnologias</span>
             <mat-icon class="add-icon" (click)="addTechnologie()">add</mat-icon>
           </div>
-          <div *ngIf="technology" class="content">
-            <ul *ngFor="let item of technology">
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.technologies">
               <li>{{ item.technologieName }} - {{ item.expertiseTechnologie }}
                 <mat-icon class="delete-icon" (click)="deleteTechnologie(item)">clear</mat-icon>
               </li>
@@ -290,8 +290,8 @@
             <span>Suas certificações</span>
             <mat-icon class="add-icon" (click)="addCertification()">add</mat-icon>
           </div>
-          <div *ngIf="certification" class="content">
-            <ul *ngFor="let item of certification">
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.certifications">
               <li>{{ item.certificationName }} - {{ item.certificationInstitution }}
                 <mat-icon class="delete-icon" (click)="deleteCertification(item)">clear</mat-icon>
               </li>
@@ -338,8 +338,8 @@
             <span>Suas soft skills</span>
             <mat-icon class="add-icon" (click)="addSoftskill()">add</mat-icon>
           </div>
-          <div *ngIf="softSkills" class="content">
-            <ul *ngFor="let item of softSkills">
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.softSkills">
               <li *ngFor="let skill of item.softSkill.split(', ')">
                 <div style="margin-bottom: 12px;">
                   {{ skill }}

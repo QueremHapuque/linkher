@@ -17,21 +17,20 @@ export class RegisterComponent {
   ) {}
 
   @Input()
+  name!: string;
   email!: string;
-  @Input()
   password!: string;
-  @Input()
   confirmPassword!: string;
 
   register() {
-    if (!this.email || !this.password || !this.confirmPassword) {
+    if (!this.name || !this.email || !this.password || !this.confirmPassword) {
       this.showNotification('warn', 'Atenção!', 'Campo(s) obrigatório(s) não preenchido(s)!');
     }
     else if (this.password != this.confirmPassword) {
       this.showNotification('warn', 'Atenção!', 'As senhas divergem!');
     }
     else {
-      this.userService.createUser(this.email, this.password).subscribe(
+      this.userService.createUser(this.name, this.email, this.password).subscribe(
         async (response) => {
           console.log('Sucesso:', response);
           this.showNotification('success', 'Usuário criado com sucesso!', 'Faça login para continuar.');

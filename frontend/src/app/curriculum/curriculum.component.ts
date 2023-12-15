@@ -56,9 +56,9 @@ export class CurriculumComponent implements OnInit {
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
   education!: EducationList[];
   experience!: ExperienceList[];
-  language!: LanguageList[];
-  technology!: TechnologyList[];
-  certification!: CertificationList[];
+  languages!: LanguageList[];
+  technologies!: TechnologyList[];
+  certifications!: CertificationList[];
   softSkills!: SoftSkillList[];
   isNew = true;
   newFormation = false;
@@ -94,6 +94,12 @@ export class CurriculumComponent implements OnInit {
   advanced = false;
 
   ngOnInit() {
+    this.education = [{"courseName": '', "institution": ''}];
+    this.experience = [{"officeName": '', "company": ''}];
+    this.languages = [{"languageName": '', "expertiseLanguage": ''}];
+    this.technologies = [{"technologieName": '', "expertiseTechnologie": ''}];
+    this.certifications = [{"certificationName": '', "certificationInstitution": ''}];
+    this.softSkills = [{"softSkill": ''}];
     const userToken = localStorage.getItem('TOKEN');
     if (!userToken) {
       this.router.navigateByUrl('', { replaceUrl: true });
@@ -174,10 +180,11 @@ export class CurriculumComponent implements OnInit {
 
   saveFormation() {
     const newFormation: EducationList = {
-      institution: this.institution,
-      courseName: this.courseName
+      courseName: this.courseName,
+      institution: this.institution
     };
-    this.education.push(newFormation);
+    this.curriculum.education.push(newFormation);
+    console.log('this.curriculum.education -> ', this.curriculum.education)
     this.updateCurriculum();
     this.courseName = '';
     this.institution = '';
@@ -188,7 +195,7 @@ export class CurriculumComponent implements OnInit {
       officeName: this.officeName,
       company: this.company
     };
-    this.experience.push(newExperience);
+    this.curriculum.experience.push(newExperience);
     this.updateCurriculum();
   }
 
@@ -197,7 +204,7 @@ export class CurriculumComponent implements OnInit {
       languageName: this.languageName,
       expertiseLanguage: this.expertiseLanguage
     };
-    this.language.push(newLanguage);
+    this.curriculum.languages.push(newLanguage);
     this.updateCurriculum();
   }
 
@@ -206,7 +213,7 @@ export class CurriculumComponent implements OnInit {
       technologieName: this.technologieName,
       expertiseTechnologie: this.expertiseTechnologie
     };
-    this.technology.push(newTechnologie);
+    this.curriculum.technologies.push(newTechnologie);
     this.updateCurriculum();
   }
 
@@ -215,7 +222,7 @@ export class CurriculumComponent implements OnInit {
       certificationName: this.certificationName,
       certificationInstitution: this.certificationInstitution
     };
-    this.certification.push(newCertification);
+    this.curriculum.certifications.push(newCertification);
     this.updateCurriculum();
   }
 
@@ -223,48 +230,9 @@ export class CurriculumComponent implements OnInit {
     const newSoftskill: SoftSkillList = {
       softSkill: this.softSkill
     };
-    console.log('this.softSkills ->> ', this.softSkills);
-    this.softSkills.push(newSoftskill);
-    console.log("this.softSkills -> ", this.softSkills);
-    // this.updateCurriculum();
+    this.curriculum.softSkills.push(newSoftskill);
+    this.updateCurriculum();
     this.softSkill = '';
-  }
-
-  transformObjectToArray(curriculum: Curriculum) {
-    // education
-    this.education = Object.entries(curriculum.education).map(([institution, courseName]) => {
-      return { institution, courseName } as unknown as EducationList;
-    });
-
-    // experience
-    this.experience = Object.entries(curriculum.experience).map(([officeName, company]) => {
-      return { officeName, company } as unknown as ExperienceList;
-    });
-
-    // languages
-    this.language = Object.entries(curriculum.languages).map(([languageName, expertiseLanguage]) => {
-      return { languageName, expertiseLanguage } as unknown as LanguageList;
-    });
-
-    // technologies
-    this.technology = Object.entries(curriculum.technologies).map(([technologieName, expertiseTechnologie]) => {
-      return { technologieName, expertiseTechnologie } as unknown as TechnologyList;
-    });
-
-    // certifications
-    this.certification = Object.entries(curriculum.certifications).map(([certificationName, certificationInstitution]) => {
-      return { certificationName, certificationInstitution } as unknown as CertificationList;
-    });
-
-    // soft skills
-    this.softSkills = [{ softSkill: curriculum.softSkills } as unknown as SoftSkillList];
-
-    console.log('this.softSkills aaa -> ', this.softSkills);
-    console.log('curriculum.softSkills -> ', curriculum.softSkills);
-
-    for (let i = 0; i < this.softSkills.length; i++) {
-      console.log(this.softSkills[i]);
-    }
   }
 
   getCurriculum() {
@@ -282,7 +250,6 @@ export class CurriculumComponent implements OnInit {
           this.email = this.curriculum.email;
           this.selectedState = this.curriculum.state;
           this.setCheckboxes(this.curriculum);
-          this.transformObjectToArray(this.curriculum); // APAGAR ESSA FUNÇÃO QUANDO O BACK SUBIR ATUALIZAÇÃO
         }
       },
       (error) => {
@@ -292,26 +259,40 @@ export class CurriculumComponent implements OnInit {
   }
 
   saveCurriculum() {
-    const education: Record<string, string> = {
-      [this.education[0].institution]: this.education[0].courseName
+    const education: EducationList = {
+      courseName: this.courseName,
+      institution: this.institution
     };
-    const experience: Record<string, string> = {
-      [this.experience[0].company]: this.experience[0].officeName
+    this.education.push(education);
+    const experience: ExperienceList = {
+      officeName: this.officeName,
+      company: this.company
     };
-    const language: Record<string, string> = {
-      [this.language[0].languageName]: this.language[0].expertiseLanguage
+    this.experience.push(experience);
+    const languages: LanguageList = {
+      languageName: this.languageName,
+      expertiseLanguage: this.expertiseLanguage
     };
-    const technology: Record<string, string> = {
-      [this.technology[0].technologieName]: this.technology[0].expertiseTechnologie
+    this.languages.push(languages);
+    const technologies: TechnologyList = {
+      technologieName: this.technologieName,
+      expertiseTechnologie: this.expertiseTechnologie
     };
-    const certification: Record<string, string> = {
-      [this.certification[0].certificationInstitution]: this.certification[0].certificationName
+    this.technologies.push(technologies);
+    const certifications: CertificationList = {
+      certificationName: this.certificationName,
+      certificationInstitution: this.certificationInstitution
     };
-    const softSkills: string = this.softSkills[0].softSkill;
+    this.certifications.push(certifications);
+    const softSkills: SoftSkillList = {
+      softSkill: this.softSkill
+    };
+    this.softSkills.push(softSkills);
 
-    this.resumeService.createResume(this.name, this.email, this.selectedState, education, experience, language, technology, certification, softSkills,
-      this.researchGrant, this.internship, this.clt, this.pj, this.inPerson, this.remote, this.hybrid, this.halfTime, this.threeQuarters, this.fullTime, this.beginner,
-      this.intermediary, this.advanced).subscribe(
+    this.resumeService.createResume(this.name, this.email, this.selectedState, this.education, this.experience, this.languages, this.technologies, this.certifications,
+      this.softSkills, this.researchGrant, this.internship, this.clt, this.pj, this.inPerson, this.remote, this.hybrid, this.halfTime, this.threeQuarters, this.fullTime,
+      this.beginner, this.intermediary,
+      this.advanced).subscribe(
         async (response) => {
           console.log('response -> ', response)
           this.showNotification('success', 'Currículo criado com sucesso!', '');
@@ -326,34 +307,9 @@ export class CurriculumComponent implements OnInit {
   }
 
   updateCurriculum() {
-    const education: Record<string, string> = {};
-    this.education.forEach(item => {
-      education[item.institution] = item.courseName;
-    });
-    const experience: Record<string, string> = {};
-    this.experience.forEach(item => {
-      experience[item.company] = item.officeName;
-    });
-
-    const language: Record<string, string> = {};
-    this.language.forEach(item => {
-      language[item.languageName] = item.expertiseLanguage;
-    });
-
-    const technology: Record<string, string> = {};
-    this.technology.forEach(item => {
-      technology[item.technologieName] = item.expertiseTechnologie;
-    });
-
-    const certification: Record<string, string> = {};
-    this.certification.forEach(item => {
-      certification[item.certificationInstitution] = item.certificationName;
-    });
-    const softSkills: string = this.softSkills.join(', ');
-
-    this.resumeService.updateResume(Number(localStorage.getItem('RESUME_ID')), this.name, this.email, this.selectedState, education, experience, language, technology,
-    certification, softSkills, this.researchGrant, this.internship, this.clt, this.pj, this.inPerson, this.remote, this.hybrid, this.halfTime, this.threeQuarters,
-    this.fullTime, this.beginner, this.intermediary, this.advanced).subscribe(
+    this.resumeService.updateResume(Number(localStorage.getItem('RESUME_ID')), this.name, this.email, this.selectedState, this.curriculum.education, this.curriculum.experience, this.curriculum.languages,
+    this.curriculum.technologies, this.curriculum.certifications, this.curriculum.softSkills, this.researchGrant, this.internship, this.clt, this.pj, this.inPerson, this.remote, this.hybrid, this.halfTime,
+    this.threeQuarters, this.fullTime, this.beginner, this.intermediary, this.advanced).subscribe(
       async (response) => {
         console.log('response -> ', response)
         this.showNotification('success', 'Currículo atualizado com sucesso!', '');
@@ -368,37 +324,37 @@ export class CurriculumComponent implements OnInit {
   }
 
   async deleteFormation(formation: EducationList) {
-    this.education = this.education.filter(item => item !== formation);
+    this.curriculum.education = this.curriculum.education.filter(item => item !== formation);
     await this.delay(1000);
     this.updateCurriculum();
   }
 
   async deleteExperience(experience: ExperienceList) {
-    this.experience = this.experience.filter(item => item !== experience);
+    this.curriculum.experience = this.curriculum.experience.filter(item => item !== experience);
     await this.delay(1000);
     this.updateCurriculum();
   }
 
   async deleteLanguage(language: LanguageList) {
-    this.language = this.language.filter(item => item !== language);
+    this.curriculum.languages = this.curriculum.languages.filter(item => item !== language);
     await this.delay(1000);
     this.updateCurriculum();
   }
 
   async deleteTechnologie(technology: TechnologyList) {
-    this.technology = this.technology.filter(item => item !== technology);
+    this.curriculum.technologies = this.curriculum.technologies.filter(item => item !== technology);
     await this.delay(1000);
     this.updateCurriculum();
   }
 
   async deleteCertification(certification: CertificationList) {
-    this.certification = this.certification.filter(item => item !== certification);
+    this.curriculum.certifications = this.curriculum.certifications.filter(item => item !== certification);
     await this.delay(1000);
     this.updateCurriculum();
   }
 
   async deleteSoftskill(softSkill: SoftSkillList) {
-    this.softSkills = this.softSkills.filter(item => item !== softSkill);
+    this.curriculum.softSkills = this.curriculum.softSkills.filter(item => item !== softSkill);
     await this.delay(1000);
     this.updateCurriculum();
   }
