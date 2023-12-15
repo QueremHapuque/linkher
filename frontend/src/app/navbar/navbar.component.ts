@@ -11,10 +11,10 @@ export class NavbarComponent implements OnInit {
     private router: Router
   ) {}
 
-  userName = 'user';
+  userName: string | null = null;
 
   ngOnInit() {
-    this.userName = 'Querem Hapuque';
+    this.userName = localStorage.getItem('USER_NAME');
   }
   
   logout() {

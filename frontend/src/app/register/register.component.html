@@ -5,14 +5,17 @@
 </div>
 
 <div class="Inputs">
+    <p>Nome:</p>
+    <input [(ngModel)]="name" type="text" required>
+
     <p>Email:</p>
-    <input [(ngModel)]="email" type="text" id="username" name="username" required>
+    <input [(ngModel)]="email" type="text" id="email" name="email" required>
 
     <p>Senha:</p>
-    <input [(ngModel)]="password" type="password" id="password" name="password" required>
+    <input [(ngModel)]="password" type="password" required>
     
     <p>Confirmação de Senha:</p>
-    <input [(ngModel)]="confirmPassword" type="password" id="confirmpassword" name="confirmpassword" required>
+    <input [(ngModel)]="confirmPassword" type="password" required>
 </div>
 
 <p-toast></p-toast>
