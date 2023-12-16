@@ -1,6 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, Validators } from '@angular/forms';
-import { MatDialog } from '@angular/material/dialog';
 import { EducationList, ExperienceList, LanguageList, TechnologyList, CertificationList, SoftSkillList, Curriculum } from './interface-cv';
 import { Router } from '@angular/router';
 
@@ -16,7 +15,6 @@ import { MessageService } from 'primeng/api';
 export class CurriculumComponent implements OnInit {
 
   constructor(
-    public dialog: MatDialog,
     private router: Router,
     private resumeService: ResumeService,
     private messageService: MessageService

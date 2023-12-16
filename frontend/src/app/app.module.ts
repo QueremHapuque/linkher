@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
@@ -70,6 +71,7 @@ import { RegisterOpportunitiesComponent } from './register-opportunities/registe
     BrowserAnimationsModule,
     MatCardModule,
     MatCheckboxModule,
+    MatSlideToggleModule,
     AppRoutingModule,
     ToastModule
   ],
