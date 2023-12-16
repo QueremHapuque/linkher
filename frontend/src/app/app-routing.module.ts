@@ -8,11 +8,12 @@ import { InicioComponent } from './inicio/inicio.component';
 import { RegisterComponent } from './register/register.component';
 import { SobrenosComponent } from './sobrenos/sobrenos.component';
 import { ContactComponent } from './contact/contact.component';
+import { OpportunitiesComponent } from './opportunities/opportunities.component';
 
 const routes: Routes = [
   {
     path: 'home',
-    component: HomeComponent,
+    component: OpportunitiesComponent,
     pathMatch: 'full'
   },
   {

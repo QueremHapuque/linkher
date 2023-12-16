@@ -34,6 +34,7 @@ import { DeleteAccountModalComponent } from './delete-account-modal/delete-accou
 import { SobrenosComponent } from './sobrenos/sobrenos.component';
 import { ContactComponent } from './contact/contact.component';
 import { OpportunitiesComponent } from './opportunities/opportunities.component';
+import { OpportunityCardComponent } from './opportunity-card/opportunity-card.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { OpportunitiesComponent } from './opportunities/opportunities.component'
     DeleteAccountModalComponent,
     SobrenosComponent,
     ContactComponent,
-    OpportunitiesComponent
+    OpportunitiesComponent,
+    OpportunityCardComponent
   ],
   imports: [
     RouterModule,
