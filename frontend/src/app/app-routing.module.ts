@@ -6,8 +6,9 @@ import { CurriculumComponent } from './curriculum/curriculum.component';
 import { LoginComponent } from './login/login.component';
 import { InicioComponent } from './inicio/inicio.component';
 import { RegisterComponent } from './register/register.component';
-import { SobrenosComponent } from './sobrenos/sobrenos.component';
+import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
+import { RegisterOpportunitiesComponent } from './register-opportunities/register-opportunities.component';
 import { OpportunitiesComponent } from './opportunities/opportunities.component';
 
 const routes: Routes = [
@@ -42,8 +43,8 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: 'sobrenos',
-    component: SobrenosComponent,
+    path: 'about-us',
+    component: AboutUsComponent,
     pathMatch: 'full'
   },
   {
@@ -51,6 +52,11 @@ const routes: Routes = [
     component: ContactComponent,
     pathMatch: 'full'
   },
+  {
+    path: 'register-opportunities',
+    component: RegisterOpportunitiesComponent,
+    pathMatch: 'full'
+  }
 ];
 
 

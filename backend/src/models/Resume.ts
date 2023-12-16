@@ -1,6 +1,14 @@
 import sequelize, { Model } from 'sequelize';
 import { db } from '../database/db';
 import User from './User';
+import {
+  CertificationsItem,
+  EducationItem,
+  ExperiencieItem,
+  LanguagesItem,
+  SoftSkillItem,
+  TechnologiesItem,
+} from './dto/Resume.dto';
 
 class Resume extends Model {
   declare id: number;
@@ -9,12 +17,12 @@ class Resume extends Model {
   declare email?: string;
   declare state?: string;
   declare city?: string;
-  declare education?: Record<string, string>;
-  declare experience?: Record<string, string>;
-  declare languages?: Record<string, string>;
-  declare technologies?: Record<string, string>;
-  declare certifications?: Record<string, string>;
-  declare softSkills?: string;
+  declare education?: EducationItem[];
+  declare experience?: ExperiencieItem[];
+  declare languages?: LanguagesItem[];
+  declare technologies?: TechnologiesItem[];
+  declare certifications?: CertificationsItem[];
+  declare softSkills?: SoftSkillItem[];
   declare isClt?: boolean;
   declare isInternship?: boolean;
   declare isPj?: boolean;
@@ -62,29 +70,73 @@ Resume.init(
       allowNull: true,
     },
     education: {
-      type: sequelize.JSON,
+      type: sequelize.TEXT,
       allowNull: true,
+      get() {
+        const rawValue = this.getDataValue('education');
+        return rawValue ? JSON.parse(rawValue) : null;
+      },
+      set(value) {
+        this.setDataValue('education', value ? JSON.stringify(value) : null);
+      },
     },
     experience: {
-      type: sequelize.JSON,
+      type: sequelize.TEXT,
       allowNull: true,
+      get() {
+        const rawValue = this.getDataValue('experience');
+        return rawValue ? JSON.parse(rawValue) : null;
+      },
+      set(value) {
+        this.setDataValue('experience', value ? JSON.stringify(value) : null);
+      },
     },
     languages: {
-      type: sequelize.JSON,
+      type: sequelize.TEXT,
       allowNull: true,
+      get() {
+        const rawValue = this.getDataValue('languages');
+        return rawValue ? JSON.parse(rawValue) : null;
+      },
+      set(value) {
+        this.setDataValue('languages', value ? JSON.stringify(value) : null);
+      },
     },
     technologies: {
-      type: sequelize.JSON,
+      type: sequelize.TEXT,
       allowNull: true,
+      get() {
+        const rawValue = this.getDataValue('technologies');
+        return rawValue ? JSON.parse(rawValue) : null;
+      },
+      set(value) {
+        this.setDataValue('technologies', value ? JSON.stringify(value) : null);
+      },
     },
     certifications: {
-      type: sequelize.JSON,
+      type: sequelize.TEXT,
       allowNull: true,
+      get() {
+        const rawValue = this.getDataValue('certifications');
+        return rawValue ? JSON.parse(rawValue) : null;
+      },
+      set(value) {
+        this.setDataValue(
+          'certifications',
+          value ? JSON.stringify(value) : null,
+        );
+      },
     },
     softSkills: {
       type: sequelize.TEXT,
-      defaultValue: [],
       allowNull: true,
+      get() {
+        const rawValue = this.getDataValue('softSkills');
+        return rawValue ? JSON.parse(rawValue) : null;
+      },
+      set(value) {
+        this.setDataValue('softSkills', value ? JSON.stringify(value) : null);
+      },
     },
     isClt: {
       type: sequelize.BOOLEAN(),

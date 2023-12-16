@@ -10,8 +10,9 @@ export class UserService {
 
   constructor(private http: HttpClient) { }
 
-  createUser(email: string, password: string): Observable<any> {
+  createUser(name: string, email: string, password: string): Observable<any> {
     const data = {
+      'name': name,
       'email': email,
       'password': password
     };

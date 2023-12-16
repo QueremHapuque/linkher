@@ -1,6 +1,6 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { SobrenosComponent } from './sobrenos.component';
+import { SobrenosComponent } from './about-us.component';
 
 describe('SobrenosComponent', () => {
   let component: SobrenosComponent;

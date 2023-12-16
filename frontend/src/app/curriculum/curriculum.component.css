@@ -66,6 +66,12 @@
     font-size: 14px;
 }
 
+.text-input-2 {
+    width: 97%;
+    height: 70px;
+    font-size: 14px;
+}
+
 .sel-input {
     width: 40vh;
     width: 100%;
@@ -135,11 +141,19 @@
     cursor: pointer;
 }
 
+.edit-icon-2 {
+    font-weight: 600;
+    color: #D1105A;
+    cursor: pointer;
+    right: 20px;
+    position: absolute;
+}
+
 .delete-icon {
     font-weight: 600;
     color: #D1105A !important;
     cursor: pointer;
-    right: 24px;
+    right: 47px;
     position: absolute;
 }
 
@@ -158,6 +172,7 @@
     font-family: 'PoppinsRegular';
     display: flex;
     flex-direction: column;
+    /* font-size: 14px; */
 }
 
 .checkboxes {
