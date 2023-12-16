@@ -1,9 +1,4 @@
-.container-content {
-    display: flex;
-    align-items: center;
-}
-
-.content {
+.start-content {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,23 +8,23 @@
 }
 
 .tittle {
+    margin-top: 6rem;
+    display: flex;
     font-family: 'PoppinsSemiBold';
     color: #D1105A;
     margin-bottom: 10px;
     font-size: 24px;
+    justify-content: center;
 }
 
 .tittle-2 {
     font-family: 'PoppinsRegular';
     margin-top: 15px;
-    /* display: flex;
-    justify-content: space-between; */
 }
 
 .inputs {
     font-family: 'PoppinsRegular';
     font-size: 14px;
-    width: 22%;
 }
 
 .text-input {
@@ -48,6 +43,7 @@
 
 .buttons {
     display: flex;
+    justify-content: center;
 }
 
 .save-button {
@@ -72,12 +68,15 @@
     margin: 14px;
 }
 
+.cancel-button:disabled,
+.save-button:disabled {
+    opacity: 0.5;
+}
+
 .content-job{
     display: flex;
-    width: 100%;
-    margin-top: 57px;
-    align-items: center;
-    flex-direction: column;
+    margin-left: 20%;
+    margin-right: 20%;
 }
 
 .checkboxes {

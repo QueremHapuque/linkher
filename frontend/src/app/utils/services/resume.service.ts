@@ -10,7 +10,7 @@ export class ResumeService {
   private apiUrl = 'http://localhost:3000/users/resume'
   private apiUrl2 = 'http://localhost:3000/user/resume'
   private userToken = localStorage.getItem('TOKEN');
-  private userId = localStorage.getItem('USER_ID')
+  private userId = localStorage.getItem('USER_ID');
 
   constructor(private http: HttpClient) { }
 

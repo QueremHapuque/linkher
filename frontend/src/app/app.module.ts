@@ -16,6 +16,9 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { MatCardModule } from '@angular/material/card';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MAT_DATE_LOCALE } from '@angular/material/core';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 
@@ -72,11 +75,14 @@ import { RegisterOpportunitiesComponent } from './register-opportunities/registe
     MatCardModule,
     MatCheckboxModule,
     MatSlideToggleModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
     AppRoutingModule,
     ToastModule
   ],
   providers: [
-    MessageService
+    MessageService,
+    { provide: MAT_DATE_LOCALE, useValue: 'pt-BR' },
   ],
   bootstrap: [AppComponent]
 })
