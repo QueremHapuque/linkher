@@ -2,9 +2,29 @@
   display: flex;
   flex-direction: column;
   width: 428px;
-  height: 61px;
+  height: 60px;
   flex-shrink: 0;
   background-color: #884AB2;
   border-radius: 8px;
   box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.25);
+  padding: 12px 16px;
+  font-family: "PoppinsRegular";
 }
+
+.opportunity-card h3, .opportunity-card p {
+  margin: 0; /* Remover margens padrão */
+  color: #FFFFFF; /* Cor do texto */
+  font-size: 12px; /* Tamanho da fonte */
+}
+.opportunity-card h3 {
+  font-weight: medium;
+  font-family: "PoppinsMedium";
+  font-size: 14px; /* Tamanho da fonte */
+}
+
+.opportunity-card p:last-child {
+  font-family: "PoppinsExtraLight";
+  /* font-size: 12px ;  */
+}
+
+
