@@ -1,0 +1,51 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Opcional: ajusta a altura para ocupar 100% da altura da viewport */
+}
+
+.itens {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+    margin-bottom: 16px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: space-between;
+    width: 420px;
+}
+
+#pular {
+    position: absolute;
+    right: 5%;
+    top: 56px;
+    font: 200
+}
+
+h2 {
+    font-family:  "PoppinsBold";
+    color: #884ab2;
+}
+
+p {
+    font-family: "PoppinsSemiBold";
+    font-weight: bold;
+    margin: 0 0 16px 0;
+}
+
+button {
+    border: none;
+    color: #884ab2;
+    background-color: transparent;
+}
+
+button:hover {
+    transform: 0.2s;
+    color: #D1105A;
+}
