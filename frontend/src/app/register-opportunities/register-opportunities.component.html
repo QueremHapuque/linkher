@@ -1,8 +1,283 @@
 <app-navbar></app-navbar>
-<div class="container-content">
+<ng-container>
   <app-sidebar></app-sidebar>
-  <div class="content">
-    <p>Nova Oportunidade</p>
-  </div>
+  
+  <ng-container *ngIf="!isJob && !isSearch">
+    <div class="start-content">
+      <div class="tittle">
+        <p>Nova Oportunidade</p>
+      </div>
+      <div class="inputs" style="width: 30%;">
+        <mat-form-field class="text-input">
+          <mat-label>Nome da oportunidade</mat-label>
+          <input matInput [(ngModel)]="opportunitieName" required>
+        </mat-form-field>
 
-</div>
+        <mat-form-field class="sel-input">
+          <mat-label>Tipo de oportunidade</mat-label>
+          <mat-select [(ngModel)]="opportunitieType">
+            <mat-option *ngFor="let type of opportunitieTypes" [value]="type.value"
+              (click)="selectOpportunitieType()">
+            <span [innerHTML]="type.name"></span>
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+  </ng-container>
+
+
+  <ng-container *ngIf="isJob">
+    <div class="tittle">
+      <p>Nova Oportunidade</p>
+    </div>
+
+    <div class="content-job">
+      <!-- priimeira coluna -->
+      <div>
+        <div class="inputs" style="width: 95%;">
+          <mat-form-field class="text-input">
+            <mat-label>Nome da oportunidade</mat-label>
+            <input matInput [(ngModel)]="opportunitieName" required>
+          </mat-form-field>
+  
+          <mat-form-field class="sel-input">
+            <mat-label>Tipo de oportunidade</mat-label>
+            <mat-select [(ngModel)]="opportunitieType">
+              <mat-option *ngFor="let type of opportunitieTypes" [value]="type.value"
+                (click)="selectOpportunitieType()">
+              <span [innerHTML]="type.name"></span>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field class="text-input">
+            <mat-label>Instituição</mat-label>
+            <input matInput [(ngModel)]="company" required>
+          </mat-form-field>
+  
+          <mat-form-field class="text-input">
+            <mat-label>Link</mat-label>
+            <input matInput [(ngModel)]="link" required>
+          </mat-form-field>
+  
+          <mat-form-field class="textarea-input">
+            <mat-label>Descrição geral</mat-label>
+            <textarea matInput [(ngModel)]="description" required></textarea>
+          </mat-form-field>
+  
+          <mat-form-field class="textarea-input">
+            <mat-label>Requisitos</mat-label>
+            <textarea matInput [(ngModel)]="requeriments" required></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="text-input">
+            <mat-label>Localidade</mat-label>
+            <input matInput [(ngModel)]="local" required>
+          </mat-form-field>
+        </div>
+      </div>
+        
+      <!-- segunda coluna -->
+      <div>
+        <div class="inputs">
+          <mat-form-field class="text-input">
+            <mat-label>Prazo de submissão</mat-label>
+            <input matInput  [(ngModel)]="expireDate" [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+  
+        <mat-slide-toggle style="font-family: 'PoppinsRegular';" [(ngModel)]="isAffirmative">Vaga afirmativa</mat-slide-toggle>
+        <div class="tittle-2">
+          <span>Tipo de vaga</span>
+        </div>
+        <div style="display: flex;">
+          <mat-checkbox class="checkboxes"
+            [(ngModel)]="isInternship"
+            [checked]="isInternship">
+            Estágio
+          </mat-checkbox>
+          <mat-checkbox class="checkboxes"
+            [(ngModel)]="isClt"
+            [checked]="isClt">
+            CLT
+          </mat-checkbox>
+          <mat-checkbox class="checkboxes"
+            [(ngModel)]="isPj"
+            [checked]="isPj">
+            PJ
+          </mat-checkbox>
+        </div>
+  
+        <div class="tittle-2">
+          <span>Nível de experiência</span>
+        </div>
+        <div style="display: flex;">
+          <mat-checkbox class="checkboxes"
+            [(ngModel)]="isJunior"
+            [checked]="isJunior">
+            Junior
+          </mat-checkbox>
+          <mat-checkbox class="checkboxes"
+            [(ngModel)]="isPleno"
+            [checked]="isPleno">
+            Pleno
+          </mat-checkbox>
+          <mat-checkbox class="checkboxes"
+            [(ngModel)]="isSenior"
+            [checked]="isSenior">
+            Senior
+          </mat-checkbox>
+        </div>
+  
+        <div class="tittle-2">
+          <span>Tipo de jornada</span>
+        </div>
+        <div style="display: flex;">
+          <mat-checkbox class="checkboxes"
+            [(ngModel)]="isInPerson"
+            [checked]="isInPerson">
+            Presencial
+          </mat-checkbox>
+          <mat-checkbox class="checkboxes"
+            [(ngModel)]="isRemote"
+            [checked]="isRemote">
+            Remoto
+          </mat-checkbox>
+          <mat-checkbox class="checkboxes"
+            [(ngModel)]="isHybrid"
+            [checked]="isHybrid">
+            Híbrido
+          </mat-checkbox>
+        </div>
+  
+        <div class="tittle-2">
+          <span>Carga horária semanal</span>
+        </div>
+        <div style="display: flex;">
+          <mat-checkbox class="checkboxes"
+            [(ngModel)]="isHalfTime"
+            [checked]="isHalfTime">
+            20h
+          </mat-checkbox>
+          <mat-checkbox class="checkboxes"
+            [(ngModel)]="isThreeQuarters"
+            [checked]="isThreeQuarters">
+            30h
+          </mat-checkbox>
+          <mat-checkbox class="checkboxes"
+            [(ngModel)]="isFullTime"
+            [checked]="isFullTime">
+            40h
+          </mat-checkbox>
+        </div>
+      </div>
+    
+    </div>
+  
+  </ng-container>
+
+  <ng-container *ngIf="isSearch">
+    <div class="tittle">
+      <p>Nova Oportunidade</p>
+    </div>
+
+    <div class="content-job">
+      <!-- priimeira coluna -->
+      <div>
+        <div class="inputs" style="width: 95%;">
+          <mat-form-field class="text-input">
+            <mat-label>Nome da oportunidade</mat-label>
+            <input matInput [(ngModel)]="opportunitieName" required>
+          </mat-form-field>
+  
+          <mat-form-field class="sel-input">
+            <mat-label>Tipo de oportunidade</mat-label>
+            <mat-select [(ngModel)]="opportunitieType">
+              <mat-option *ngFor="let type of opportunitieTypes" [value]="type.value"
+                (click)="selectOpportunitieType()">
+              <span [innerHTML]="type.name"></span>
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+  
+          <mat-form-field class="text-input">
+            <mat-label>Localidade</mat-label>
+            <input matInput [(ngModel)]="local" required>
+          </mat-form-field>
+  
+          <mat-form-field class="text-input">
+            <mat-label>Prazo de submissão</mat-label>
+            <input matInput  [(ngModel)]="expireDate" [matDatepicker]="picker">
+            <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+          </mat-form-field>
+        </div>
+          
+          <mat-slide-toggle style="font-family: 'PoppinsRegular';" [(ngModel)]="isAffirmative">Vaga afirmativa</mat-slide-toggle>
+
+          <div class="tittle-2">
+            <span>Tipo de jornada</span>
+          </div>
+          <div style="display: flex;">
+            <mat-checkbox class="checkboxes"
+              [(ngModel)]="isInPerson"
+              [checked]="isInPerson">
+              Presencial
+            </mat-checkbox>
+            <mat-checkbox class="checkboxes"
+              [(ngModel)]="isRemote"
+              [checked]="isRemote">
+              Remoto
+            </mat-checkbox>
+            <mat-checkbox class="checkboxes"
+              [(ngModel)]="isHybrid"
+              [checked]="isHybrid">
+              Híbrido
+            </mat-checkbox>
+          </div>
+      </div>
+        
+      <!-- segunda coluna -->
+      <div>
+        <div class="inputs">
+          <mat-form-field class="text-input">
+            <mat-label>Instituição</mat-label>
+            <input matInput [(ngModel)]="company" required>
+          </mat-form-field>
+        </div>
+
+        <mat-form-field class="text-input">
+          <mat-label>Link</mat-label>
+          <input matInput [(ngModel)]="link" required>
+        </mat-form-field>
+
+        <mat-form-field class="textarea-input">
+          <mat-label>Descrição geral</mat-label>
+          <textarea matInput [(ngModel)]="description" required></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="textarea-input">
+          <mat-label>Requisitos</mat-label>
+          <textarea matInput [(ngModel)]="requeriments" required></textarea>
+        </mat-form-field>
+      </div>
+    </div>
+  </ng-container>
+
+  <ng-container>
+    <div class="buttons">
+      <div style="display: flex; justify-content: center;">
+        <button mat-button class="cancel-button" [disabled]="disableButtons"
+          (click)="cancel()">Cancelar</button>
+        </div>
+        <div style="display: flex; justify-content: center;">
+          <button mat-button class="save-button" [disabled]="disableButtons"
+          (click)="saveInfo()">Salvar</button>
+        </div>
+    </div>
+  </ng-container>
+  
+</ng-container>

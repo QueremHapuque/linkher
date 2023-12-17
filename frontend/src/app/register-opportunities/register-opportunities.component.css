@@ -1,12 +1,85 @@
-.container-content {
-    display: flex;
-    align-items: center;
-    font-family: 'PoppinsBold';
-}
-
-.content {
-    font-size: 24px;
+.start-content {
     display: flex;
     justify-content: center;
     align-items: center;
+    flex-direction: column;
+    width: 100%;
+    height: 70vh;
+}
+
+.tittle {
+    margin-top: 6rem;
+    display: flex;
+    font-family: 'PoppinsSemiBold';
+    color: #D1105A;
+    margin-bottom: 10px;
+    font-size: 24px;
+    justify-content: center;
+}
+
+.tittle-2 {
+    font-family: 'PoppinsRegular';
+    margin-top: 15px;
+}
+
+.inputs {
+    font-family: 'PoppinsRegular';
+    font-size: 14px;
+}
+
+.text-input {
+    width: 100%;
+    height: 70px;
+}
+
+.textarea-input {
+    width: 100%;
+}
+
+.sel-input {
+    width: 100%;
+    height: 70px;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+}
+
+.save-button {
+    width: 105px;
+    height: 30px;
+    color: #FBFAFC !important;
+    background-color: #471CA8;
+    font-family: 'PoppinsSemiBold';
+    font-size: 13px;
+    border-radius: 8px;
+    margin: 14px;
+}
+
+.cancel-button {
+    width: 105px;
+    height: 30px;
+    color: #FBFAFC !important;
+    background-color: #D1105A;
+    font-family: 'PoppinsSemiBold';
+    font-size: 13px;
+    border-radius: 8px;
+    margin: 14px;
+}
+
+.cancel-button:disabled,
+.save-button:disabled {
+    opacity: 0.5;
+}
+
+.content-job{
+    display: flex;
+    margin-left: 20%;
+    margin-right: 20%;
+}
+
+.checkboxes {
+    font-family: 'PoppinsRegular';
+    font-size: 14px;
 }
