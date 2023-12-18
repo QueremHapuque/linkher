@@ -263,31 +263,31 @@ export class CurriculumComponent implements OnInit {
       courseName: this.courseName,
       institution: this.institution
     };
-    this.education.push(education);
+    this.education = [education];
     const experience: ExperienceList = {
       officeName: this.officeName,
       company: this.company
     };
-    this.experience.push(experience);
+    this.experience = [experience];
     const languages: LanguageList = {
       languageName: this.languageName,
       expertiseLanguage: this.expertiseLanguage
     };
-    this.languages.push(languages);
+    this.languages = [languages];
     const technologies: TechnologyList = {
       technologieName: this.technologieName,
       expertiseTechnologie: this.expertiseTechnologie
     };
-    this.technologies.push(technologies);
+    this.technologies = [technologies];
     const certifications: CertificationList = {
       certificationName: this.certificationName,
       certificationInstitution: this.certificationInstitution
     };
-    this.certifications.push(certifications);
+    this.certifications = [certifications];
     const softSkills: SoftSkillList = {
       softSkill: this.softSkill
     };
-    this.softSkills.push(softSkills);
+    this.softSkills = [softSkills];
 
     this.resumeService.createResume(this.name, this.email, this.selectedState, this.education, this.experience, this.languages, this.technologies, this.certifications,
       this.softSkills, this.researchGrant, this.internship, this.clt, this.pj, this.inPerson, this.remote, this.hybrid, this.halfTime, this.threeQuarters, this.fullTime,
