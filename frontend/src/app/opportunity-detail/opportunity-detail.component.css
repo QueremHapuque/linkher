@@ -1,0 +1,50 @@
+.container-content {
+  padding-top: 56px;
+  align-items: center;
+  /* display: flex; */
+  font-family: "PoppinsRegular";
+}
+
+.h1 {
+  font-family: "PoppinsMedium";
+  font-weight: medium;
+  color: #D1105A;
+}
+.h2 .h3 {
+  font-family: "PoppinsSemiBold";
+}
+.opportunity-container {
+  margin-top: 16px;
+  margin: 0 auto;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  /* align-items: center; */
+  justify-content: center;
+  width: 70%;
+}
+
+.voltar {
+  display: flex;
+  flex-direction: row;
+}
+
+.row {
+  display: flex;
+  justify-content: space-between;
+  /* flex-grow: 1; */
+}
+
+.vamosla-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 48px;
+  width: 238px;
+  background-color: #471CA8;
+  color: aliceblue;
+  font-family: "PoppinsSemiBold";
+  border-radius: 8px;
+  margin: 88px auto 0
+}
+

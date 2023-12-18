@@ -1,0 +1,90 @@
+<app-navbar></app-navbar>
+<div class="container-content">
+  <app-sidebar></app-sidebar>
+  <div class="opportunity-container">
+    <div class="voltar">
+      <!-- <p>(seta pra Voltar)</p> -->
+      <h4>Voltar à listagem de oportunidades</h4>
+    </div>
+
+    <div class="oportunidade row">
+      <h1>Oportunidade</h1>
+      <div class="denuncia row">
+        <p>Denúncia</p>
+        <!-- <p>(ícone)</p> -->
+       </div>
+    </div>
+
+    <div class="name-date row">
+      <div class="name">
+        <h2>{{opportunity.name}}</h2>
+        <h3> {{opportunity.company}} </h3>
+      </div>
+      <div class="date row">
+        <!-- <p>08/09/2023</p> -->
+        <p>{{opportunity.expire_date}}</p>
+        <!-- <p>(icone)</p> -->
+      </div>
+
+
+    </div>
+
+    <div class="local">
+      <p><span style="font-family: PoppinsBold;" >Local:</span> {{opportunity.local}}</p>
+    </div>
+
+    <div class="info-req row">
+      <div class="info">
+        <h3> Informações </h3>
+        <div class="row">
+          <p *ngIf="opportunity.is_affirmative">
+            <mat-icon>check_box</mat-icon> Afirmativa
+          </p>
+          <p *ngIf="opportunity.is_pj">
+            <mat-icon>check_box</mat-icon> PJ
+          </p>
+          <p *ngIf="opportunity.is_internship">
+            <mat-icon>check_box</mat-icon> Estágio
+          </p>
+          <p *ngIf="opportunity.is_clt">
+            <mat-icon>check_box</mat-icon> CLT
+          </p>
+          <p *ngIf="opportunity.is_junior">
+            <mat-icon>check_box</mat-icon> Júnior
+          </p>
+          <p *ngIf="opportunity.is_pleno">
+            <mat-icon>check_box</mat-icon> Pleno
+          </p>
+          <p *ngIf="opportunity.is_senior">
+            <mat-icon>check_box</mat-icon> Sênior
+          </p>
+          <p *ngIf="opportunity.is_inPerson">
+            <mat-icon>check_box</mat-icon> Presencial
+          </p>
+          <p *ngIf="opportunity.is_remote">
+            <mat-icon>check_box</mat-icon> Remoto
+          </p>
+          <p *ngIf="opportunity.is_hybrid">
+            <mat-icon>check_box</mat-icon> Híbrido
+          </p>
+
+        </div>
+      </div>
+
+      <div class="req">
+        <h3> Requisitos </h3>
+        <p> {{opportunity.requeriments}} </p>
+      </div>
+    </div>
+
+    <div class="desc">
+      <h3> Descrição </h3>
+      <p> {{opportunity.description}} </p>
+    </div>
+
+    <button  class="vamosla-button">
+      Vamos lá
+    </button>
+  </div>
+
+</div>

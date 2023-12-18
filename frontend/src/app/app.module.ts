@@ -37,6 +37,9 @@ import { DeleteAccountModalComponent } from './delete-account-modal/delete-accou
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import { RegisterOpportunitiesComponent } from './register-opportunities/register-opportunities.component';
+import { OpportunitiesComponent } from './opportunities/opportunities.component';
+import { OpportunityCardComponent } from './opportunity-card/opportunity-card.component';
+import { OpportunityDetailComponent } from './opportunity-detail/opportunity-detail.component';
 
 
 @NgModule({
@@ -55,7 +58,10 @@ import { RegisterOpportunitiesComponent } from './register-opportunities/registe
     DeleteAccountModalComponent,
     AboutUsComponent,
     ContactComponent,
-    RegisterOpportunitiesComponent
+    RegisterOpportunitiesComponent,
+    OpportunitiesComponent,
+    OpportunityCardComponent,
+    OpportunityDetailComponent
   ],
   imports: [
     RouterModule,
