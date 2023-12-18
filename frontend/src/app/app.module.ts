@@ -39,6 +39,7 @@ import { ContactComponent } from './contact/contact.component';
 import { RegisterOpportunitiesComponent } from './register-opportunities/register-opportunities.component';
 import { OpportunitiesComponent } from './opportunities/opportunities.component';
 import { OpportunityCardComponent } from './opportunity-card/opportunity-card.component';
+import { OpportunityDetailComponent } from './opportunity-detail/opportunity-detail.component';
 
 
 @NgModule({
@@ -59,7 +60,8 @@ import { OpportunityCardComponent } from './opportunity-card/opportunity-card.co
     ContactComponent,
     RegisterOpportunitiesComponent,
     OpportunitiesComponent,
-    OpportunityCardComponent
+    OpportunityCardComponent,
+    OpportunityDetailComponent
   ],
   imports: [
     RouterModule,

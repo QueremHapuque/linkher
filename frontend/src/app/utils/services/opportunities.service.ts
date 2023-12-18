@@ -20,4 +20,12 @@ export class OpportunitiesService {
     const url = `${this.apiUrl}/jobVacancies/${this.userId}`;
     return this.http.get(url, { headers });
   }
+
+  getOpportunity(opportunityId : string): Observable<any> {
+    const headers = new HttpHeaders({
+      'Authorization': `Bearer ${this.userToken}`
+    });
+    const url = `${this.apiUrl}s/jobVacancie/${opportunityId}`;
+    return this.http.get(url, { headers });
+  }
 }

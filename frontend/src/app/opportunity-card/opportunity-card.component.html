@@ -1,4 +1,4 @@
-<div class="opportunity-card">
+<div class="opportunity-card" [routerLink]="['/oportunidade', opportunity.id]">
   <h3>{{ opportunity.name }}</h3>
   <p>{{ opportunity.company }}</p>
   <!-- <p>Tipo: {{ opportunity.type }}</p> -->

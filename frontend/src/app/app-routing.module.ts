@@ -10,11 +10,17 @@ import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import { RegisterOpportunitiesComponent } from './register-opportunities/register-opportunities.component';
 import { OpportunitiesComponent } from './opportunities/opportunities.component';
+import { OpportunityDetailComponent } from './opportunity-detail/opportunity-detail.component';
 
 const routes: Routes = [
   {
     path: 'home',
     component: OpportunitiesComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'oportunidade/:id',
+    component: OpportunityDetailComponent,
     pathMatch: 'full'
   },
   {
