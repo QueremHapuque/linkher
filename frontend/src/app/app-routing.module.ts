@@ -11,6 +11,10 @@ import { ContactComponent } from './contact/contact.component';
 import { RegisterOpportunitiesComponent } from './register-opportunities/register-opportunities.component';
 import { OpportunitiesComponent } from './opportunities/opportunities.component';
 import { OpportunityDetailComponent } from './opportunity-detail/opportunity-detail.component';
+import { PageOneComponent } from './slider/page-one/page-one.component';
+import { PageTwoComponent } from './slider/page-two/page-two.component';
+import { PageThreeComponent } from './slider/page-three/page-three.component';
+import { PageFourComponent } from './slider/page-four/page-four.component';
 
 const routes: Routes = [
   {
@@ -39,8 +43,13 @@ const routes: Routes = [
     pathMatch: 'full'
   },
   {
-    path: '',
+    path: 'inicio',
     component: InicioComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: '',
+    component: PageOneComponent,
     pathMatch: 'full'
   },
   {
@@ -61,6 +70,26 @@ const routes: Routes = [
   {
     path: 'register-opportunities',
     component: RegisterOpportunitiesComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'page-one',
+    component: PageOneComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'page-two',
+    component: PageTwoComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'page-three',
+    component: PageThreeComponent,
+    pathMatch: 'full'
+  },
+  {
+    path: 'page-four',
+    component: PageFourComponent,
     pathMatch: 'full'
   }
 ];

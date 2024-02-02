@@ -40,6 +40,10 @@ import { RegisterOpportunitiesComponent } from './register-opportunities/registe
 import { OpportunitiesComponent } from './opportunities/opportunities.component';
 import { OpportunityCardComponent } from './opportunity-card/opportunity-card.component';
 import { OpportunityDetailComponent } from './opportunity-detail/opportunity-detail.component';
+import { PageOneComponent } from './slider/page-one/page-one.component';
+import { PageTwoComponent } from './slider/page-two/page-two.component';
+import { PageThreeComponent } from './slider/page-three/page-three.component';
+import { PageFourComponent } from './slider/page-four/page-four.component';
 
 
 @NgModule({
@@ -61,7 +65,11 @@ import { OpportunityDetailComponent } from './opportunity-detail/opportunity-det
     RegisterOpportunitiesComponent,
     OpportunitiesComponent,
     OpportunityCardComponent,
-    OpportunityDetailComponent
+    OpportunityDetailComponent,
+    PageOneComponent,
+    PageTwoComponent,
+    PageThreeComponent,
+    PageFourComponent
   ],
   imports: [
     RouterModule,
