@@ -1,0 +1,41 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+}
+
+.divider {
+    display: flex;
+    align-items: end;
+}
+
+img {
+    width: 128px;
+    height: 128px;
+}
+
+h3 {
+    color: #471CA8;
+    margin: 0 10px 0 0;
+    padding: 0;
+}
+ 
+b {
+    color: #D1105A;
+    font-weight: 500;
+}
+
+li, p {
+    color: #471CA8;
+}
+

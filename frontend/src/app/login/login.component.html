@@ -1,0 +1,17 @@
+
+<img src="../../assets/images/logo.png" alt="logo">
+<h2>LinkHer</h2>
+
+
+<div class="Inputs">
+    <p>Email:</p>
+    <input [(ngModel)]="email" type="text" id="email" name="email" required>
+
+    <p>Senha:</p>
+    <input [(ngModel)]="password" type="password" id="password" name="password" required>
+</div>
+
+<p-toast></p-toast>
+<button class="button" (click)="login()">Login</button>      
+<p>Esqueceu a senha?</p>
+<button class="button">Redefinir</button>

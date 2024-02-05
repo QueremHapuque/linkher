@@ -1,0 +1,150 @@
+<div class="container-content">
+  <app-navbar></app-navbar>
+  <app-sidebar></app-sidebar>
+  <div class="config-content">
+    <h2>Informações do Usuário</h2>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="header-expansion">
+          <mat-panel-title class="title-expansion">
+            Email
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="info-field">
+          <img src="../../assets/images/info.png" alt="Info Icon" class="info-icon">
+          <span class="info-field" style="margin-left: 7px;">Alterar Email</span>
+        </div>
+        <div>
+
+          <ng-container *ngIf="!disableName">
+            <mat-form-field class="text-input">
+              <mat-label>Email Atual</mat-label>
+              <input matInput [formControl]="nameFormControl" [(ngModel)]="currentEmail" required>
+              <mat-error>{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </ng-container>
+
+          <ng-container *ngIf="!disableEmail">
+            <mat-form-field class="text-input">
+              <mat-label>Email</mat-label>
+              <input matInput [formControl]="emailFormControl" [(ngModel)]="newEmail" required>
+              <mat-error>{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </ng-container>
+
+          <ng-container *ngIf="(!disableName || !disableEmail || !disableState)">
+            <div style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1" (click)="changeEmail()">Salvar</button>
+            </div>
+          </ng-container>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="header-expansion">
+          <mat-panel-title class="title-expansion">
+            Senha
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="info-field">
+          <img src="../../assets/images/info.png" alt="Info Icon" class="info-icon">
+          <span class="info-field" style="margin-left: 7px;">Alterar Senha</span>
+        </div>
+        <div>
+
+          <ng-container>
+            <mat-form-field class="text-input">
+              <mat-label>Senha atual</mat-label>
+              <input matInput [formControl]="nameFormControl" [(ngModel)]="currentPassword" required>
+              <mat-error>{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </ng-container>
+
+          <ng-container>
+            <mat-form-field class="text-input">
+              <mat-label>Nova senha</mat-label>
+              <input matInput [formControl]="nameFormControl" [(ngModel)]="newPassword" required>
+              <mat-error>{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </ng-container>
+
+          <ng-container>
+            <mat-form-field class="text-input">
+              <mat-label>Confirmar senha</mat-label>
+              <input matInput [formControl]="nameFormControl" [(ngModel)]="confirmNewPassword" required>
+              <mat-error>{{getErrorMessage()}}</mat-error>
+            </mat-form-field>
+          </ng-container>
+
+          <ng-container *ngIf="(!disableName || !disableEmail || !disableState)">
+            <div style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1" (click)="updatePassword()">Salvar</button>
+            </div>
+          </ng-container>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+    <mat-accordion>
+      <mat-expansion-panel>
+        <mat-expansion-panel-header class="header-expansion">
+          <mat-panel-title class="title-expansion">
+            Excluir conta
+          </mat-panel-title>
+        </mat-expansion-panel-header>
+        <div class="info-field">
+          <img src="../../assets/images/info.png" alt="Info Icon" class="info-icon">
+          <span class="info-field" style="margin-left: 7px;">Excluir Conta</span>
+        </div>
+        <div>
+          <p>Você tem certeza que deseja
+            excluir permanentemente a sua conta?</p>
+          <ng-container *ngIf="(!disableName || !disableEmail || !disableState)">
+            <div style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1" (click)="logout()">Excluir</button>
+            </div>
+          </ng-container>
+        </div>
+      </mat-expansion-panel>
+    </mat-accordion>
+
+
+    <!-- <div class="config-option">
+      <div class="option-info">
+        <img src="/assets/images/email-icon.png" alt="Ícone de Alterar Email">
+        <span>Email</span>
+      </div>
+      <button (click)="openChangeEmailModal()" class="option-button">Alterar Email</button>
+    </div>
+
+    <hr>
+
+    <div class="config-option">
+      <div class="option-info">
+        <img src="/assets/images/change-password-icon.png" alt="Ícone de Alterar Senha">
+        <span>Senha</span>
+      </div>
+      <button (click)="openChangePasswordModal()" class="option-button">Alterar Senha</button>
+    </div>
+
+    <hr>
+
+    <div class="config-option">
+      <div class="option-info">
+        <img src="/assets/images/delete-account-icon.png" alt="Ícone de Deletar Conta">
+        <span>Conta</span>
+      </div>
+      <button (click)="openDeleteAccountModal()" class="option-button">Excluir Conta</button>
+    </div> -->
+
+    <button (click)="logout()" class="logout-button">
+      <div class="logout-content">
+        <img src="/assets/images/logout-icon.png" alt="Ícone de Encerrar Sessão">
+        <span>Encerrar Sessão</span>
+      </div>
+    </button>
+  </div>
+</div>

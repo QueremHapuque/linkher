@@ -1,0 +1,74 @@
+:host {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh; /* Opcional: ajusta a altura para ocupar 100% da altura da viewport */
+}
+
+.logo {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.logo img {
+    width: 97px;
+    margin-right: 16px;
+}
+
+h2 {
+    font-family:  "PoppinsBold";
+    color: #884AB2;
+}
+
+p {
+    font-family: "PoppinsSemiBold";
+    margin: 0 auto;
+}
+
+.Inputs {
+    width: 438px;
+}
+
+.Inputs input {
+    margin: 8px 0;
+    border-radius: 8px;
+    background-color: #884ab276;
+    color: #471CA8;
+    border: none;
+    width: 438px;
+    height: 30px;
+}
+
+.button {
+    margin-top: 56px;
+    color: #FFFFFF;
+    font-family: "PoppinsSemiBold";
+    background-color: #D1105A;
+    border: none;
+    border-radius: 8px;
+    width: 140px;
+    height: 32px;
+    cursor: pointer;
+}
+
+.button:hover {
+    color: #D1105A;
+    background-color: #FFFFFF;
+    border: 1px solid #D1105A;
+    border-radius: 8px;
+    width: 140px;
+    height: 32px;
+}
+
+/* TENHO QUE RESOLVER ISSO */
+/* p-toast {
+    background-color: rgba(228, 248, 240, 0.7);
+    color: #1ea97c;
+    border: solid #1ea97c;
+    border-width: 0 0 0 6px;
+    height: 4rem;
+    align-items: center;
+    border-radius: 5px;
+} */

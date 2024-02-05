@@ -1,0 +1,47 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 550px;
+    margin-bottom: 16px;
+}
+
+.fone, .email {
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    width: 240px;
+    margin-bottom: 16px;
+}
+
+svg {
+    margin: 0 12px 0 0;
+}
+
+img {
+    width: 128px;
+    height: 128px;
+}
+
+h2 {
+    color: #D1105A;
+}
+
+p {
+    color: #D1105A;
+    font-weight: 550;
+    margin: 0 0 4px 0;
+}
+
+b {
+    color: #471CA8;
+    font-weight: 500;
+}

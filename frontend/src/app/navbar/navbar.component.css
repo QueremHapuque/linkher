@@ -1,0 +1,37 @@
+:host {
+    font-family: 'PoppinsBold';
+    font-size: 20px;
+}
+
+.spacer {
+    flex: 1;
+}
+
+.toolbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #FBFAFC;
+    color: #D1105A;
+    font-weight: 600;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    z-index: 100;
+}
+
+.toolbar img {
+    margin: 0 16px;
+    transition: transform 0.2s;
+}
+
+.toolbar img:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.mat-mdc-button>.mat-icon {
+    width: 30px !important;
+}

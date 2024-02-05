@@ -1,0 +1,12 @@
+<!-- eslint-disable @angular-eslint/template/interactive-supports-focus -->
+<!-- eslint-disable @angular-eslint/template/click-events-have-key-events -->
+<div class="sidebar" [ngClass]="collapsed ? 'sidebar-collapsed' : ''" (click)="toggleCollapse()">
+    <ul class="sidebar-nav">
+        <li class="sidebar-nav-item" *ngFor="let data of navData">
+            <a class="sidebar-nav-link" (click)="navigateTo(data.routeLink)">
+                <mat-icon fontIcon="{{ data.icon }}" class="sidebar-nav-icon"></mat-icon>
+                <span class="sibebar-link-text" *ngIf="collapsed">{{data.label}}</span>
+            </a>
+        </li>
+    </ul>
+</div>

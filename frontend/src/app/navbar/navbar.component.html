@@ -1,0 +1,18 @@
+<div class="toolbar" role="banner">
+    <img
+        width="45"
+        alt="Angular Logo"
+        src="../assets/images/logo.png"
+    />
+    <span>LinkHer</span>
+    <div class="spacer"></div>
+    <span>{{ userName }}</span>
+    <button mat-button [matMenuTriggerFor]="menu">
+        <mat-icon fontIcon="keyboard_arrow_down" style="font-size: 25px; font-weight: 800;
+        margin-right: 10px; color: #D1105A;">
+        </mat-icon>
+    </button>
+    <mat-menu #menu="matMenu" yPosition="below">
+    <button mat-menu-item (click)="logout()">Sair</button>
+    </mat-menu>
+</div>

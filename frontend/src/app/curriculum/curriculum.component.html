@@ -1,0 +1,511 @@
+<app-navbar></app-navbar>
+<div class="container-content">
+  <app-sidebar></app-sidebar>
+  <div class="cv-container">
+    <!-- INFORMAÇÕES PESSOAIS -->
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-expansion">
+            <mat-panel-title class="title-expansion">
+              Informações Pessoais
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info-field">
+            <img 
+              src="../../assets/images/info.png"
+              alt="Info Icon"
+              class="info-icon">
+            <span class="info-field" style="margin-left: 7px;">Dados pessoais e de contato</span>
+          </div>
+          <div>
+            <ng-container *ngIf="disableName">
+              <div class="disabled-fields">
+                <mat-form-field class="text-input-disabled">
+                  <mat-label>Nome</mat-label>
+                  <input matInput [disabled]="disableName" [(ngModel)]="name">
+                </mat-form-field>
+                <button style="background: none; border: none;" (click)="editName()">
+                  <mat-icon class="edit-icon">edit</mat-icon>
+                </button>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="!disableName">
+              <mat-form-field class="text-input">
+                <mat-label>Nome</mat-label>
+                <input matInput
+                [formControl]="nameFormControl" [(ngModel)]="name" required>
+                <mat-error>{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </ng-container>
+
+            <ng-container *ngIf="disableEmail">
+              <div class="disabled-fields">
+                <mat-form-field class="text-input-disabled">
+                  <mat-label>Email</mat-label>
+                  <input matInput [(ngModel)]="email" [disabled]="disableEmail">
+                  <mat-error>{{getErrorMessage()}}</mat-error>
+                </mat-form-field>
+                <button style="background: none; border: none;" (click)="editEmail()">
+                  <mat-icon class="edit-icon">edit</mat-icon>
+                </button>
+              </div>
+            </ng-container>
+
+            <ng-container *ngIf="!disableEmail">
+              <mat-form-field class="text-input">
+                <mat-label>Email</mat-label>
+                <input matInput [formControl]="emailFormControl" [(ngModel)]="email" required>
+                <mat-error>{{getErrorMessage()}}</mat-error>
+              </mat-form-field>
+            </ng-container>
+              
+            <ng-container *ngIf="disableState">
+              <div class="disabled-fields">
+                <mat-form-field class="sel-input-disabled">
+                  <mat-label>Estado</mat-label>
+                  <mat-select [(ngModel)]="curriculum.state" [disabled]="disableState">
+                    <mat-option *ngFor="let state of states" [value]="state.value">
+                      <span [innerHTML]="state.name"></span>
+                    </mat-option>
+                  </mat-select>
+                </mat-form-field>
+                <button style="background: none; border: none;" (click)="editState()">
+                  <mat-icon class="edit-icon">edit</mat-icon>
+                </button>
+              </div>
+            </ng-container>
+            
+            <ng-container *ngIf="!disableState">
+              <mat-form-field class="sel-input">
+                <mat-label>Estado</mat-label>
+                <mat-select [(ngModel)]="selectedState">
+                  <mat-option *ngFor="let state of states" [value]="state.value">
+                  <span [innerHTML]="state.name"></span>
+                </mat-option>
+              </mat-select>
+              </mat-form-field>
+            </ng-container>
+            <ng-container *ngIf="(!disableName || !disableEmail || !disableState) && !isNew">
+              <div style="display: flex; justify-content: center;">
+                <button mat-button class="save-button-1"
+                (click)="saveInfo()">Salvar</button>
+              </div>
+            </ng-container>
+          </div>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- FORMAÇÃO -->
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-expansion">
+            <mat-panel-title class="title-expansion">
+              Formação
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info-field">
+            <img 
+              src="../../assets/images/info.png"
+              alt="Info Icon"
+              class="info-icon">
+            <span class="info-field" style="margin-left: 7px;">Formação acadêmica</span>
+          </div>
+          <div class="tittle">
+            <span>Suas formações</span>
+            <mat-icon class="add-icon" (click)="addFormation()">add</mat-icon>
+          </div>
+          <div *ngIf="curriculum" class="content">
+              <ul *ngFor="let item of curriculum.education">
+                <li>
+                  {{ item.courseName }} - {{ item.institution }}
+                  <mat-icon class="delete-icon" (click)="deleteFormation(item)">clear</mat-icon>
+                </li>
+              </ul>
+          </div>
+          <ng-container *ngIf="newFormation">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <mat-form-field class="text-input-2">
+                <mat-label>Nome do curso</mat-label>
+                <input matInput
+                [(ngModel)]="courseName">
+              </mat-form-field>
+              <mat-form-field class="text-input-2">
+                <mat-label>Instituição (sigla)</mat-label>
+                <input matInput
+                [(ngModel)]="institution">
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isNew" 
+              style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1"
+              (click)="saveFormation()">Salvar</button>
+            </div>
+          </ng-container>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- EXPERIENCIAS -->
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-expansion">
+            <mat-panel-title class="title-expansion">
+              Experiências
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info-field">
+            <img 
+              src="../../assets/images/info.png"
+              alt="Info Icon"
+              class="info-icon">
+            <span class="info-field" style="margin-left: 7px;">Experiência profissional</span>
+          </div>
+          <div class="tittle">
+            <span>Suas experiências</span>
+            <mat-icon class="add-icon" (click)="addExperience()">add</mat-icon>
+          </div>
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.experience">
+              <li>{{ item.officeName }} - {{ item.company }}
+                <mat-icon class="delete-icon" (click)="deleteExperience(item)">clear</mat-icon>
+              </li>
+            </ul>
+          </div>
+
+          <ng-container *ngIf="newExperience">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <mat-form-field class="text-input-2">
+                <mat-label>Cargo</mat-label>
+                <input matInput
+                [(ngModel)]="officeName">
+              </mat-form-field>
+              <mat-form-field class="text-input-2">
+                <mat-label>Instituição</mat-label>
+                <input matInput
+                [(ngModel)]="company">
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isNew" 
+              style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1"
+              (click)="saveExperience()">Salvar</button>
+            </div>
+          </ng-container>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- IDIOMAS E TECNOLOGIAS -->
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-expansion">
+            <mat-panel-title class="title-expansion">
+              Idiomas e Tecnologias
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info-field">
+            <img 
+              src="../../assets/images/info.png"
+              alt="Info Icon"
+              class="info-icon">
+            <span class="info-field" style="margin-left: 7px;">Idiomas e Tecnologias que você domina</span>
+          </div>
+          <div class="tittle">
+            <span>Idiomas</span>
+            <mat-icon class="add-icon" (click)="addLanguage()">add</mat-icon>
+          </div>
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.languages">
+              <li>{{ item.languageName }} - {{ item.expertiseLanguage }}
+                <mat-icon class="delete-icon" (click)="deleteLanguage(item)">clear</mat-icon>
+              </li>
+            </ul>
+          </div>
+
+          <ng-container *ngIf="newLanguage">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <mat-form-field class="text-input-2">
+                <mat-label>Idioma</mat-label>
+                <input matInput
+                [(ngModel)]="languageName">
+              </mat-form-field>
+              <mat-form-field class="text-input-2">
+                <mat-label>Expertise</mat-label>
+                <input matInput
+                [(ngModel)]="expertiseLanguage">
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isNew" 
+              style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1"
+              (click)="saveLanguage()">Salvar</button>
+            </div>
+          </ng-container>
+
+          <div class="tittle">
+            <span>Tecnologias</span>
+            <mat-icon class="add-icon" (click)="addTechnologie()">add</mat-icon>
+          </div>
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.technologies">
+              <li>{{ item.technologieName }} - {{ item.expertiseTechnologie }}
+                <mat-icon class="delete-icon" (click)="deleteTechnologie(item)">clear</mat-icon>
+              </li>
+            </ul>
+          </div>
+
+          <ng-container *ngIf="newTechnologie">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <mat-form-field class="text-input-2">
+                <mat-label>Tecnologia</mat-label>
+                <input matInput
+                [(ngModel)]="technologieName">
+              </mat-form-field>
+              <mat-form-field class="text-input-2">
+                <mat-label>Expertise</mat-label>
+                <input matInput
+                [(ngModel)]="expertiseTechnologie">
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isNew" 
+              style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1"
+              (click)="saveTechnologie()">Salvar</button>
+            </div>
+          </ng-container>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- CERTIFICAÇÕES -->
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-expansion">
+            <mat-panel-title class="title-expansion">
+              Certificações
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info-field">
+            <img 
+              src="../../assets/images/info.png"
+              alt="Info Icon"
+              class="info-icon">
+            <span class="info-field" style="margin-left: 7px;">Credenciais Profissionais ou certificações obtidas</span>
+          </div>
+          <div class="tittle">
+            <span>Suas certificações</span>
+            <mat-icon class="add-icon" (click)="addCertification()">add</mat-icon>
+          </div>
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.certifications">
+              <li>{{ item.certificationName }} - {{ item.certificationInstitution }}
+                <mat-icon class="delete-icon" (click)="deleteCertification(item)">clear</mat-icon>
+              </li>
+            </ul>
+          </div>
+
+          <ng-container *ngIf="newCertification">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <mat-form-field class="text-input-2">
+                <mat-label>Certificação</mat-label>
+                <input matInput
+                [(ngModel)]="certificationName">
+              </mat-form-field>
+              <mat-form-field class="text-input-2">
+                <mat-label>Instituição</mat-label>
+                <input matInput
+                [(ngModel)]="certificationInstitution">
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isNew" 
+              style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1"
+              (click)="saveCertification()">Salvar</button>
+            </div>
+          </ng-container>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- SOFT SKILLS -->
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-expansion">
+            <mat-panel-title class="title-expansion">
+              Soft Skills
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info-field">
+            <img 
+              src="../../assets/images/info.png"
+              alt="Info Icon"
+              class="info-icon">
+            <span class="info-field" style="margin-left: 7px;">Soft skils são habilidades interpessoais e comportamentais que influenciam a maneira como interagimos com os outros</span>
+          </div>
+          <div class="tittle">
+            <span>Suas soft skills</span>
+            <mat-icon class="add-icon" (click)="addSoftskill()">add</mat-icon>
+          </div>
+          <div *ngIf="curriculum" class="content">
+            <ul *ngFor="let item of curriculum.softSkills">
+              <li *ngFor="let skill of item.softSkill.split(', ')">
+                <div style="margin-bottom: 12px;">
+                  {{ skill }}
+                  <mat-icon class="delete-icon" (click)="deleteSoftskill(item)">clear</mat-icon>
+                </div>
+              </li>
+            </ul>
+          </div>
+
+          <ng-container *ngIf="newSoftskill">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+              <mat-form-field class="text-input-2">
+                <mat-label>Soft skill</mat-label>
+                <input matInput
+                [(ngModel)]="softSkill">
+              </mat-form-field>
+            </div>
+            <div *ngIf="!isNew" 
+              style="display: flex; justify-content: center;">
+              <button mat-button class="save-button-1"
+              (click)="saveSoftskill()">Salvar</button>
+            </div>
+          </ng-container>
+        </mat-expansion-panel>
+    </mat-accordion>
+    <!-- PREFERENCIAS -->
+    <mat-accordion>
+        <mat-expansion-panel>
+          <mat-expansion-panel-header class="header-expansion">
+            <mat-panel-title class="title-expansion">
+              Preferências
+            </mat-panel-title>
+          </mat-expansion-panel-header>
+          <div class="info-field">
+            <img 
+              src="../../assets/images/info.png"
+              alt="Info Icon"
+              class="info-icon">
+            <span class="info-field" style="margin-left: 7px;">Suas preferências com relação à modalidade das oportunidades</span>
+          </div>
+
+          <div class="checkboxes">
+            <div>
+              <div class="tittle-2">
+                <span>Tipo de contrato</span>
+              </div>
+              <div class="checkbox-cv">
+                <mat-checkbox
+                  [(ngModel)]="researchGrant"
+                  [checked]="researchGrant"
+                  [disabled]="disableCheckboxes">
+                  Bolsa de pesquisa ou doutorado
+                </mat-checkbox>
+                <mat-checkbox
+                  [(ngModel)]="internship"
+                  [checked]="internship"
+                  [disabled]="disableCheckboxes">
+                  Estágio
+                </mat-checkbox>
+                <mat-checkbox
+                  [(ngModel)]="clt"
+                  [checked]="clt"
+                  [disabled]="disableCheckboxes">
+                  Emprego CLT
+                </mat-checkbox>
+                <mat-checkbox
+                  [(ngModel)]="pj"
+                  [checked]="pj"
+                  [disabled]="disableCheckboxes">
+                  Emprego PJ
+                </mat-checkbox>
+              </div>
+            </div>
+            
+            <div>
+              <div class="tittle-2">
+                <span>Modalidade</span>
+              </div>
+              <div class="checkbox-cv">
+                <mat-checkbox
+                  [(ngModel)]="inPerson"
+                  [checked]="inPerson"
+                  [disabled]="disableCheckboxes">
+                  Presencial
+                </mat-checkbox>
+                <mat-checkbox
+                  [(ngModel)]="remote"
+                  [checked]="remote"
+                  [disabled]="disableCheckboxes">
+                  Remoto
+                </mat-checkbox>
+                <mat-checkbox
+                  [(ngModel)]="hybrid"
+                  [checked]="hybrid"
+                  [disabled]="disableCheckboxes">
+                  Híbrido
+                </mat-checkbox>
+              </div>
+            </div>
+            <div>
+              <div class="tittle-2">
+                <span>Carga horária</span>
+              </div>
+              <div class="checkbox-cv">
+                <mat-checkbox
+                  [(ngModel)]="halfTime"
+                  [checked]="halfTime"
+                  [disabled]="disableCheckboxes">
+                  20h Semanais
+                </mat-checkbox>
+                <mat-checkbox
+                  [(ngModel)]="threeQuarters"
+                  [checked]="threeQuarters"
+                  [disabled]="disableCheckboxes">
+                  30h Semanais
+                </mat-checkbox>
+                <mat-checkbox
+                  [(ngModel)]="fullTime"
+                  [checked]="fullTime"
+                  [disabled]="disableCheckboxes">
+                  40h Semanais
+                </mat-checkbox>
+              </div>
+            </div>
+            <div>
+              <div class="tittle-2">
+                <span>Nível de experiência</span>
+              </div>
+              <div class="checkbox-cv">
+                <mat-checkbox
+                  [(ngModel)]="beginner"
+                  [checked]="beginner"
+                  [disabled]="disableCheckboxes">
+                  Iniciante
+                </mat-checkbox>
+                <mat-checkbox
+                  [(ngModel)]="intermediary"
+                  [checked]="intermediary"
+                  [disabled]="disableCheckboxes">
+                  Intermediário
+                </mat-checkbox>
+                <mat-checkbox
+                  [(ngModel)]="advanced"
+                  [checked]="advanced"
+                  [disabled]="disableCheckboxes">
+                  Avançado
+                </mat-checkbox>
+              </div>
+            </div>
+          </div>
+          <div *ngIf="disableCheckboxes && !isNew" style="display: flex; justify-content: center;">
+            <button mat-button class="edit-button"
+            (click)="editPreferences()">Editar</button>
+          </div>
+
+          <div *ngIf="!disableCheckboxes && !isNew" style="display: flex; justify-content: center;">
+            <button mat-button class="save-button-1"
+            (click)="saveInfo()">Salvar</button>
+          </div>
+          
+        </mat-expansion-panel>
+    </mat-accordion>
+    <p-toast></p-toast>
+    <div *ngIf="!curriculum" style="display: flex; justify-content: center;">
+      <button mat-button class="save-button-2"
+      (click)="saveCurriculum()">Salvar Currículo</button>
+    </div>
+  </div>
+</div>
