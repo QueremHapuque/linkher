@@ -1,5 +1,6 @@
 import { Component, OnInit  } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 import { OpportunitiesService } from '../utils/services/opportunities.service';
 
 @Component({
@@ -11,9 +12,11 @@ export class OpportunityDetailComponent implements OnInit {
   opportunityId:string | any;
   opportunity: any;
   opportunities: any[] = [];
+  linkVacancie: any;
 
   constructor(
     private route: ActivatedRoute,
+    private router: Router,
     private opportunitiesService: OpportunitiesService
     ) {}
 
@@ -43,6 +46,8 @@ export class OpportunityDetailComponent implements OnInit {
     this.opportunitiesService.getOpportunities().subscribe(
       (data) => {
         this.opportunities = data;
+        this.linkVacancie = this.opportunities[0]['link']
+        console.log('this.linkVacancie -> ', this.linkVacancie)
 
         // Encontrar a oportunidade desejada com base no opportunityId
         this.opportunity = this.opportunities.find(op => op.id.toString() === this.opportunityId.toString());
@@ -59,4 +64,7 @@ export class OpportunityDetailComponent implements OnInit {
     );
   }
 
+  returnHome() {
+    this.router.navigateByUrl('/home', { replaceUrl: true });
+  }
 }
