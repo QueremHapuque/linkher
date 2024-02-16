@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit} from '@angular/core';
 import { Router } from '@angular/router';
+import { OpportunitiesService } from '../utils/services/opportunities.service';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +9,11 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
+  opportunities: any[] = [];
+
   constructor(
-    private router: Router
+    private router: Router,
+    private opportunitiesService: OpportunitiesService
   ) {}
 
 
@@ -18,6 +22,20 @@ export class HomeComponent implements OnInit {
     if (!userToken) {
       this.router.navigateByUrl('', { replaceUrl: true });
     }
+    else {
+      this.loadOpportunities();
+    }
+  }
+
+  loadOpportunities() {
+    this.opportunitiesService.getOpportunities().subscribe(
+      (data) => {
+        this.opportunities = data;
+      },
+      (error) => {
+        console.error('Erro ao carregar as oportunidades:', error);
+      }
+    );
   }
 
 }

@@ -6,6 +6,7 @@
 .container-content{
   padding-top: 56px;
   align-items: center;
+  font-family: 'PoppinsBold';
 }
 
 .config-content {
@@ -63,6 +64,7 @@ hr{
   display: flex;
   gap: 8px;
   align-items: center;
+  cursor: pointer;
 }
 
 
@@ -225,4 +227,12 @@ hr{
   display: flex; justify-content:
   space-between;
   align-items: baseline;
+}
+
+.tittle {
+  display: flex;
+  font-family: 'PoppinsSemiBold';
+  color: #D1105A;
+  font-size: 24px;
+  justify-content: center;
 }

@@ -2,7 +2,7 @@
   <app-navbar></app-navbar>
   <app-sidebar></app-sidebar>
   <div class="config-content">
-    <h2>Informações do Usuário</h2>
+    <h2 class="tittle">Informações do Usuário</h2>
 
     <mat-accordion>
       <mat-expansion-panel>
@@ -17,17 +17,17 @@
         </div>
         <div>
 
-          <ng-container *ngIf="!disableName">
+          <ng-container>
             <mat-form-field class="text-input">
               <mat-label>Email Atual</mat-label>
-              <input matInput [formControl]="nameFormControl" [(ngModel)]="currentEmail" required>
+              <input matInput [disabled]="disableEmail" [(ngModel)]="currentEmail" required>
               <mat-error>{{getErrorMessage()}}</mat-error>
             </mat-form-field>
           </ng-container>
 
-          <ng-container *ngIf="!disableEmail">
+          <ng-container>
             <mat-form-field class="text-input">
-              <mat-label>Email</mat-label>
+              <mat-label>Novo email</mat-label>
               <input matInput [formControl]="emailFormControl" [(ngModel)]="newEmail" required>
               <mat-error>{{getErrorMessage()}}</mat-error>
             </mat-form-field>
@@ -58,7 +58,7 @@
           <ng-container>
             <mat-form-field class="text-input">
               <mat-label>Senha atual</mat-label>
-              <input matInput [formControl]="nameFormControl" [(ngModel)]="currentPassword" required>
+              <input matInput [formControl]="currentPasswordFormControl" [(ngModel)]="currentPassword" required>
               <mat-error>{{getErrorMessage()}}</mat-error>
             </mat-form-field>
           </ng-container>
@@ -66,7 +66,7 @@
           <ng-container>
             <mat-form-field class="text-input">
               <mat-label>Nova senha</mat-label>
-              <input matInput [formControl]="nameFormControl" [(ngModel)]="newPassword" required>
+              <input matInput [formControl]="passwordFormControl" [(ngModel)]="newPassword" required>
               <mat-error>{{getErrorMessage()}}</mat-error>
             </mat-form-field>
           </ng-container>
@@ -74,7 +74,7 @@
           <ng-container>
             <mat-form-field class="text-input">
               <mat-label>Confirmar senha</mat-label>
-              <input matInput [formControl]="nameFormControl" [(ngModel)]="confirmNewPassword" required>
+              <input matInput [formControl]="confirmPasswordFormControl" [(ngModel)]="confirmNewPassword" required>
               <mat-error>{{getErrorMessage()}}</mat-error>
             </mat-form-field>
           </ng-container>

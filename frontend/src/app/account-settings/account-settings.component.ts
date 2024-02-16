@@ -22,19 +22,23 @@ export class AccountSettingsComponent implements OnInit {
 
   ) { }
 
-  nameFormControl = new FormControl('', [Validators.required]);
   emailFormControl = new FormControl('', [Validators.required, Validators.email]);
+  currentPasswordFormControl = new FormControl('', [Validators.required]);
+  passwordFormControl = new FormControl('', [Validators.required]);
+  confirmPasswordFormControl = new FormControl('', [Validators.required]);
   disableName = false;
-  disableEmail = false;
+  disableEmail = true;
   disableState = false;
-  currentEmail: string | undefined;
-  newEmail: string = '';
-  currentPassword: string = '';
-  newPassword: string = '';
-  confirmNewPassword: string = '';
+  currentEmail!: string | null;
+  newEmail!: string | '';
+  currentPassword!:|string | '';
+  newPassword!: string | '';
+  confirmNewPassword!: string | '';
 
 
   ngOnInit() {
+    this.currentEmail = localStorage.getItem('USER_EMAIL');
+    console.log('this.currentEmail -> ', this.currentEmail)
     const userToken = localStorage.getItem('TOKEN');
     if (!userToken) {
       this.router.navigateByUrl('', { replaceUrl: true });
@@ -42,10 +46,18 @@ export class AccountSettingsComponent implements OnInit {
   }
 
   getErrorMessage() {
-    if (this.nameFormControl.hasError('required')) {
+    if (this.emailFormControl.hasError('required')) {
       return 'Este campo é obrigatório!';
     }
-
+    if (this.currentPasswordFormControl.hasError('required')) {
+      return 'Este campo é obrigatório!';
+    }
+    if (this.passwordFormControl.hasError('required')) {
+      return 'Este campo é obrigatório!';
+    }
+    if (this.confirmPasswordFormControl.hasError('required')) {
+      return 'Este campo é obrigatório!';
+    }
     return this.emailFormControl.hasError('email') ? 'Esse não é um email válido!' : '';
   }
 
@@ -70,16 +82,21 @@ export class AccountSettingsComponent implements OnInit {
 
   // função antiga para chamada da api
   updatePassword() {
-    this.accountSettingsService.updatePassword(1, this.newPassword).subscribe(
-      response => {
-        // Lógica para tratamento de sucesso
-        console.log('Senha atualizada com sucesso', response);
-      },
-      error => {
-        // Lógica para tratamento de erro
-        console.error('Erro ao atualizar o senha', error);
-      }
-    );
+    if (this.newPassword != this.confirmNewPassword) {
+      console.log("As senhas divergem!")
+    }
+    else {
+      this.accountSettingsService.updatePassword(1, this.newPassword).subscribe(
+        response => {
+          // Lógica para tratamento de sucesso
+          console.log('Senha atualizada com sucesso', response);
+        },
+        error => {
+          // Lógica para tratamento de erro
+          console.error('Erro ao atualizar o senha', error);
+        }
+      );
+    }
   }
 
   // nova função para chamada de api
@@ -101,17 +118,6 @@ export class AccountSettingsComponent implements OnInit {
     this.router.navigateByUrl('', { replaceUrl: true });
   }
 
-  getUserEmail() {
-    this.accountSettingsService.getUserEmail().subscribe(
-      (response) => {
-        this.currentEmail = response;
-        console.log(response)
-      },
-      (error) => {
-        console.log(error)
-      }
-    )
-  }
   openChangeEmailModal() {
     const dialogRef = this.dialog.open(ChangeEmailModalComponent, {
       width: '400px',
