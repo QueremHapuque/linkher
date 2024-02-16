@@ -2,15 +2,14 @@
 <div class="container-content">
   <app-sidebar></app-sidebar>
   <div class="opportunity-container">
-    <div class="voltar">
-      <!-- <p>(seta pra Voltar)</p> -->
-      <h4>Voltar à listagem de oportunidades</h4>
+    <div class="back">
+      <h4 (click)="returnHome()">Voltar à listagem de oportunidades</h4>
     </div>
 
     <div class="oportunidade row">
-      <h1>Oportunidade</h1>
+      <h1 style="color: #D1105A">Oportunidade</h1>
       <div class="denuncia row">
-        <p>Denúncia</p>
+        <!-- <p>Denúncia</p> -->
         <!-- <p>(ícone)</p> -->
        </div>
     </div>
@@ -36,7 +35,7 @@
     <div class="info-req row">
       <div class="info">
         <h3> Informações </h3>
-        <div class="row">
+        <div class="checkboxes">
           <p *ngIf="opportunity.is_affirmative">
             <mat-icon>check_box</mat-icon> Afirmativa
           </p>
@@ -82,9 +81,11 @@
       <p> {{opportunity.description}} </p>
     </div>
 
-    <button  class="vamosla-button">
-      Vamos lá
-    </button>
+    <a [attr.href]="linkVacancie" target="_blank">
+      <button class="vamosla-button">
+        Vamos lá
+      </button>
+    </a>
   </div>
 
 </div>
