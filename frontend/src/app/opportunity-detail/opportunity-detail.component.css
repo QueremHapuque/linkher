@@ -1,7 +1,6 @@
 .container-content {
   padding-top: 56px;
   align-items: center;
-  /* display: flex; */
   font-family: "PoppinsRegular";
 }
 
@@ -24,9 +23,11 @@
   width: 70%;
 }
 
-.voltar {
+.back {
   display: flex;
   flex-direction: row;
+  color: #471CA8;
+  cursor: pointer;
 }
 
 .row {
@@ -45,6 +46,14 @@
   color: aliceblue;
   font-family: "PoppinsSemiBold";
   border-radius: 8px;
-  margin: 88px auto 0
+  margin: 88px auto 0;
+  cursor: pointer;
 }
 
+.checkboxes {
+  color: #471CA8;
+}
+
+.req {
+  margin-left: 3%;
+}
