@@ -31,6 +31,7 @@ export class LoginComponent {
           localStorage.setItem('TOKEN', response.accessToken);
           localStorage.setItem('REFRESH_TOKEN', response.refreshToken);
           localStorage.setItem('USER_ID', response.userId);
+          localStorage.setItem('USER_EMAIL', response.email);
           localStorage.setItem('USER_NAME', response.name);
           this.showNotification('success', 'Login realizado com sucesso!', 'Seja bem vinda.');
           await this.delay(2500);

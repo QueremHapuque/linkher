@@ -9,7 +9,6 @@ import { RegisterComponent } from './register/register.component';
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import { RegisterOpportunitiesComponent } from './register-opportunities/register-opportunities.component';
-import { OpportunitiesComponent } from './opportunities/opportunities.component';
 import { OpportunityDetailComponent } from './opportunity-detail/opportunity-detail.component';
 import { PageOneComponent } from './slider/page-one/page-one.component';
 import { PageTwoComponent } from './slider/page-two/page-two.component';
@@ -19,7 +18,7 @@ import { PageFourComponent } from './slider/page-four/page-four.component';
 const routes: Routes = [
   {
     path: 'home',
-    component: OpportunitiesComponent,
+    component: HomeComponent,
     pathMatch: 'full'
   },
   {

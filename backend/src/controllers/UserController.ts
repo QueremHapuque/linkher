@@ -73,6 +73,7 @@ class UserController {
         accessToken,
         refreshToken,
         userId: user.getDataValue('id'),
+        email: user.getDataValue('email'),
         name: user.getDataValue('name'),
       };
 
