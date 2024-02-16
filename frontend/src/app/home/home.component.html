@@ -1,3 +1,12 @@
-<app-navbar></app-navbar>
-<app-sidebar></app-sidebar>
-<p>home works!</p>
+<div class="container-content">
+    <app-navbar></app-navbar>
+    <app-sidebar></app-sidebar>
+    <div class="opportunities-container">
+      <h2>Oportunidades</h2>
+      <div class="opportunities-grid">
+        <app-opportunity-card *ngFor="let opportunity of opportunities" [opportunity]="opportunity"></app-opportunity-card>
+      </div>
+    </div>
+  
+  </div>
+  

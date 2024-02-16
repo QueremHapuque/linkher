@@ -37,7 +37,6 @@ import { DeleteAccountModalComponent } from './delete-account-modal/delete-accou
 import { AboutUsComponent } from './about-us/about-us.component';
 import { ContactComponent } from './contact/contact.component';
 import { RegisterOpportunitiesComponent } from './register-opportunities/register-opportunities.component';
-import { OpportunitiesComponent } from './opportunities/opportunities.component';
 import { OpportunityCardComponent } from './opportunity-card/opportunity-card.component';
 import { OpportunityDetailComponent } from './opportunity-detail/opportunity-detail.component';
 import { PageOneComponent } from './slider/page-one/page-one.component';
@@ -63,7 +62,6 @@ import { PageFourComponent } from './slider/page-four/page-four.component';
     AboutUsComponent,
     ContactComponent,
     RegisterOpportunitiesComponent,
-    OpportunitiesComponent,
     OpportunityCardComponent,
     OpportunityDetailComponent,
     PageOneComponent,
