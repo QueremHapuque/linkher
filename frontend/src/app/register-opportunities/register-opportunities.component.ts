@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { formatDate } from '@angular/common';
 import { Router } from '@angular/router';
 import { JobVacancieService } from '../utils/services/job-vacancie.service';
+import { MessageService } from 'primeng/api';
 
 @Component({
   selector: 'app-register-opportunities',
@@ -13,7 +14,8 @@ export class RegisterOpportunitiesComponent implements OnInit {
   // eslint-disable-next-line @typescript-eslint/no-empty-function
   constructor(
     private router: Router,
-    private jobVacancieService: JobVacancieService
+    private jobVacancieService: JobVacancieService,
+    private messageService: MessageService
   ) { }
 
   opportunitieTypes = [
@@ -81,11 +83,15 @@ export class RegisterOpportunitiesComponent implements OnInit {
         formattedDate, this.isAffirmative, this.isInternship, this.isClt, this.isPj, this.isJunior, this.isPleno, this.isSenior, this.isInPerson, this.isRemote, this.isHybrid,
         this.isHalfTime, this.isThreeQuarters, this.isFullTime).subscribe(
           async (response) => {
-            console.log("response ->>> ", response)
+            console.log("response ->>> ", response);
+            this.showNotification('success', 'Oportunidade cadastrada com sucesso!', '');
+            await this.delay(2500);
+            this.router.navigate(['/home']);
+
           },
           (error) => {
             console.error('Erro:', error.error.message);
-            // this.showNotification('error', 'Erro!', error.error.message);
+            this.showNotification('error', 'Erro!', error.error.message);
           }
         );
     }
@@ -126,5 +132,17 @@ export class RegisterOpportunitiesComponent implements OnInit {
     this.isHalfTime = false;
     this.isThreeQuarters = false;
     this.isFullTime = false;
+  }
+
+  showNotification(severity: string, summary: string, message: string) {
+    this.messageService.add({ severity: severity, summary: summary, detail: message });
+  }
+
+  public delay(ms: number): Promise<boolean> {
+    return new Promise(resolve => {
+      setTimeout(() => {
+        resolve(true);
+      }, ms);
+    });
   }
 }
